@@ -16,8 +16,8 @@ public class MyBinaryNode {
 	
 	public MyBinaryNode(int value, MyBinaryNode left, MyBinaryNode right) {
 		this.value = value;
-		this.left = left;
+		this.left = left ;
 		this.right = right;
 	}
-
+	
 }

@@ -8,7 +8,7 @@ public class FirstRecurringCharacter {
 	public static void main(String[] args) {
 		int[] arr = { 1, 5, 8, 5, 1, 8, 8, 7, 4, 4, 10 };
 
-		// int[] arr = {1, 2, 3, 4};
+		//int[] arr = {1, 2, 3, 4};
 
 		System.out.println(getFirstRecurringObject(arr));
 		System.out.println(getFirstRecurringObjectBetter(arr));
