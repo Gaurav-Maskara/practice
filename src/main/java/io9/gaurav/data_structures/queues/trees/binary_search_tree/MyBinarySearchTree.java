@@ -5,6 +5,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import lombok.Getter;
+import lombok.Setter;
+
 
 
 public class MyBinarySearchTree {
@@ -18,22 +21,25 @@ public class MyBinarySearchTree {
 		    tree.insert(6);
 		    tree.insert(15);
 		    tree.insert(170);
+		   // tree.printTree();
+     	    // tree.remove(20);
+		    //tree.remove(4);
 		    tree.printTree();
-     	    tree.remove(20);
-		    tree.remove(4);
-		    tree.printTree();
-		    tree.insert(20);
+		   // tree.insert(20);
 		    tree.insert(18);
 		    tree.insert(10);
+		  //  tree.printTree();
+		  //  tree.remove(170);
 		    tree.printTree();
-		    tree.remove(170);
-		    tree.printTree();
-		System.out.println("My Breath first search " + tree.breathFirstSearchIteratively());
-		System.out.println("My Breath first search Recursively" + tree.breathFirstSearchRecursively());
+		    
+		   System.out.println( tree.searchElement(99, tree.root));
+		    
+		//System.out.println("My Breath first search " + tree.breathFirstSearchIteratively());
+		//System.out.println("My Breath first search Recursively" + tree.breathFirstSearchRecursively());
 
-	    System.out.println("My Depth first search - in order " + tree.depthFirstSearchInOrder());
-        System.out.println("My Depth first search - pre order " + tree.depthFirstSearchPreOrder());
-        System.out.println("My Depth first search - post order " + tree.depthFirstSearchPostOrder());
+	    //System.out.println("My Depth first search - in order " + tree.depthFirstSearchInOrder());
+        //System.out.println("My Depth first search - pre order " + tree.depthFirstSearchPreOrder());
+        //System.out.println("My Depth first search - post order " + tree.depthFirstSearchPostOrder());
 	}
 
 	private MyBinaryNode root;
@@ -146,7 +152,13 @@ public class MyBinarySearchTree {
 	public List<Integer> depthFirstSearchInOrder(){
 		MyBinaryNode currentNode = root;
 		List<Integer> dfs = new ArrayList<Integer>();
-		return depthFirstSearchInOrder(currentNode, dfs);
+		//return depthFirstSearchInOrder(currentNode, dfs, level);
+		
+	    Level level =new Level();
+	    level.level = 0;
+		depthFirstSearchInOrder(currentNode, dfs, level);
+		System.out.println("Printing depthFirstSearchInOrde -------> "+ dfs);
+		return null;
 	}
 	
 	
@@ -165,20 +177,50 @@ public class MyBinarySearchTree {
 	
 	
 	
-	public List<Integer> depthFirstSearchInOrder(MyBinaryNode currentNode, List<Integer> dfs){
+//	public List<Integer> depthFirstSearchInOrder(MyBinaryNode currentNode, List<Integer> dfs){
+//		
+//		if(currentNode.getLeft() != null) {
+//			depthFirstSearchInOrder(currentNode.getLeft(), dfs);
+//		}
+//		
+//		dfs.add(currentNode.getValue());
+//		
+//		if(currentNode.getRight() != null) {
+//			depthFirstSearchInOrder(currentNode.getRight(), dfs);
+//		}
+//		
+//		return dfs;
+//	}
+	
+	@Getter
+	@Setter
+	class Level {
+		public int level;
+		
+		
+	}
+	
+	
+	public Integer depthFirstSearchInOrder(MyBinaryNode currentNode, List<Integer> dfs, Level level){
 		
 		if(currentNode.getLeft() != null) {
-			depthFirstSearchInOrder(currentNode.getLeft(), dfs);
+			System.out.println("level is -->" + level.level);
+			level.level = 	level.level+1;
+			depthFirstSearchInOrder(currentNode.getLeft(), dfs, level);
 		}
 		
 		dfs.add(currentNode.getValue());
 		
+		
 		if(currentNode.getRight() != null) {
-			depthFirstSearchInOrder(currentNode.getRight(), dfs);
+			System.out.println("level is -->" + level.level);
+			level.level = 	level.level+1;
+			depthFirstSearchInOrder(currentNode.getRight(), dfs, level);
 		}
 		
-		return dfs;
+		return --level.level;
 	}
+	
 	
 	
 	
@@ -188,7 +230,7 @@ public class MyBinarySearchTree {
 		}
 		
 		if(currentNode.getRight() != null) {
-			depthFirstSearchInOrder(currentNode.getRight(), dfs);
+			depthFirstSearchPostOrder(currentNode.getRight(), dfs);
 		}
 		
 		dfs.add(currentNode.getValue());
@@ -218,7 +260,7 @@ public class MyBinarySearchTree {
 //   To delete a node in BST there are 3 possible cases :
 //	   1. Its a leaf , then delete the same , without any issue
 //	   2. The node to be deleted has only child (either left or right), its also simple , just find the child and place it at the parent's place
-//	   3. If the node to be deleted has both the left and right child, then find the lowest value in the right subtree and place it at 
+//	   3. If the node to be deleted has both the left and right child, then find the lowest value(find minimum) in the right subtree and place it at 
 //	      parent's node (node to be deleted) place.
 // --------------------------------------------------------------------------------------------------------------------------------------------
     
@@ -307,6 +349,21 @@ public class MyBinarySearchTree {
 		//minimumInRightSubtreeParent.setLeft(null);
 		return currentNode;
 	}
+	
+	
+	
+	public boolean searchElement(int valueToSearch, MyBinaryNode root) {
+		if(root!=null && root.getValue()==valueToSearch) {
+			return true;
+		}else if(valueToSearch<root.getValue() && root.getLeft()!=null) {
+			return searchElement(valueToSearch, root.getLeft());
+		}else if(valueToSearch>root.getValue() && root.getRight()!=null) {
+			return searchElement(valueToSearch, root.getRight());
+		}
+		return false;
+	}
+	
+	
 	
 	
 	

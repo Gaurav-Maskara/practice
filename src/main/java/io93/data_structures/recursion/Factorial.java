@@ -5,7 +5,9 @@ public class Factorial {
 	
 	public static void main(String args[]) {
 		System.out.println("Iteratively --->"+calculateFactorialIeratively(4));
-		System.out.println("Recursively --->"+calculateFactorialByRecursion(4));
+		
+		calculateFactorialByRecursion(4);
+		//System.out.println("Recursively --->"+calculateFactorialByRecursion(4));
 	}
 	
 	
@@ -25,5 +27,7 @@ public class Factorial {
          return n * calculateFactorialByRecursion(n-1);		
 	}
 	
+	
+
 	
 }
