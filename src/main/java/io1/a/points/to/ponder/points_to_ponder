@@ -39,7 +39,18 @@
 22. Character.toString('4'); Integer.parseInt("567"); bigint = bigint.add(new BigInteger("2"))
 23. BigDecimal bd = new BigDecimal("1.0");
 24. Think of bucketing, Collections.fill(list, obj) ; Arrays.fill(a, val);
+25. When doing anytype of mathematical calculations , try to use long instead of int.
+26. Character.isLetterOrDigit('1'); Character.toLowerCase('A');
+27. If in question if you are doing int addition or multiplication always take long to be on safer side
+28. Character.getNumericValue(ch) -----> for converting char to int in java : Note: (int)c ---> will give the ASCII value 
+    which will be incorrect
+29.Very Very Very Very Important :
+In one of question you first used String and your solution timed out , but when you used StringBuilder , it easily passed the time constraint .
+LEARNING: You have read before, time taken by String is much more as compared to StringBuilder when the string are very Large
 
+30. For reverse order sorting : Collections.sort(A, Collections.reverseOrder());
+31.     hm.containsKey(key);
+		hm.containsValue(value);
 
 
 
