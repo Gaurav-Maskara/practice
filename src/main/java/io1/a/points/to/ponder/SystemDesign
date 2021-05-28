@@ -1,0 +1,74 @@
+
+1.Differences between Horizontal & Vertical Scaling :
+  Horizontal: 
+         	Load Balancing Required
+         	Resilient
+         	Network Calls (RPC) (to different services)
+         	Data Inconsistency
+         	Scales Well as new users are added
+  Vertical:
+  		   Load Balancing Not Required
+  		   Single Point of Failure
+  		   Inter process communication no RPC required
+  		   Consistent
+  		   Hardware Limit
+  		   
+ 2.Distributed System:
+ 		   Micro Service architecture
+ 		   Distributed systems (Partitions)
+ 		   Load Balancer
+ 		   Decoupling
+ 		   Logging and Analytics
+ 		   Extensible
+ 
+ 3.Load balancing : is how the load is being distributed among different servers:One of the ways for distributing the load 
+   could be using the hasing techniques in which , depending on a particular field , say ID , and a particular hash function 
+   and the no of servers ,server is decided where the request would land. (eg. hashFunction(ID) % no Of servers)
+   
+   This was an example of inconsistent hashing , bcs any addition of a new server , would make the request go to some other
+   server ,because the value of generated hash would be different , this would result in dumping of all the caches 
+   which were already stored on a particular server since for the same ID we would have the same hash value and hence the
+   same server.
+   
+   To the Rescuse of above issue is consistent Hashing : 
+   
+4. Monolith : 
+   1. Suitable for small team
+   2. Less Complex
+   3. Integration testing is easier
+   4. Faster since no network calls are made
+   DisAdvantage:
+   1. New developer needs more context to go through everything and understand everything
+   2. Deployment is complex as whole code is deployed again
+   3. Too much responsibility on each server
+
+5. Microservices :
+   1.Easier to scale (as anything which is used more can be scaled easily)
+   2.Easier for new team members
+   3.Parallel development is easy because of loose coupling
+   Disadvantages:
+   1.Tough to design
+
+6. Sharding: (Other things : Horizontal Sharding , Vertical Sharding, Database partitioning )
+   Problems:
+   1. Joins across shards could be very expensive because the data will be pulled out from two db and then will travel over network
+      for a join
+   2. In sharded database there should always be master slave model. so that if master fails , slaves could take over
+      there could be multiple slaves which will be copying the master. Whenever there is a write request , its always 
+      on the master(the master is the most updated copy). While the slaves continously poll the master and read from it.
+      If there is a read request it can distributed across slaves , while if there is write request, it always 
+      goes to the master.In case the master fails, the slaves choose one master among themselves.
+      (So, basically it provides single point of failure tolerance)
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
