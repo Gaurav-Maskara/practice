@@ -1,7 +1,52 @@
 
 1. Only Lists and Sets support new methods stream() and parallelStream()
 2. Parallel streams are capable of operating on multiple threads
-3. hm.forEach((i, j) ->System.out.println(i+" "+j)); ---> hm is hash map
+3. hm.forEach((i, j) -> System.out.println(i+" "+j)); ---> hm is hash map
+4. A functional interface in Java is an interface that contains only a single abstract (unimplemented) method
+5. Since in java8 interfaces can have default and static methods , to avoid diamond problem, its necessary 
+   that the implementing class should override the method , if two interfaces have the same name default methods
+
+6. Since functional interfaces have only one method, lambda expressions can easily provide the method implementation. 
+   We just need to provide method arguments and business logic
+   
+   Runnable r = new Runnable(){
+            @Override
+            public void run() {
+                System.out.println("My Runnable");
+            }};
+
+    Runnable r1 = () -> {
+            System.out.println("My Runnable");
+    };
+    
+7. Lambda expressions are a means to create anonymous classes of functional interfaces easily.
+
+8. Improvements in the java Date and Time Api :
+   Why was it needed :
+   --> earlier Date classes are mutable, so they are not thread-safe.
+   --> earlier Date class doesn’t provide internationalization, there is no time zone support. 
+      
+   Improvements :
+   -->Immutability
+   --> Separation of Concerns: 
+       The new API separates clearly between human-readable date time and machine time (Unix timestamp).
+   --> Utility operations: All the new Date-Time API classes come with methods to perform common tasks, 
+       such as plus, minus, format, parsing, getting the separate part in date/time, etc.
+   --> LocalDate ld = LocalDate.now(); --> example
+   --> LocalDate todayKolkata = LocalDate.now(ZoneId.of("Asia/Kolkata"));
+   --> LocalTime is an immutable class whose instance represents a time in the human readable format. 
+       It’s default format is hh:mm:ss.zzz. Just like LocalDate, this class provides time zone support 
+       and creating instance by passing hour, minute and second as input arguments.
+   --> LocalDateTime today = LocalDateTime.now(); // 
+   --> Instant class is used to work with machine readable time format. Instant stores date time in unix timestamp.
+       Instant timestamp = Instant.now();
+
+
+
+
+
+
+
 
 
 
