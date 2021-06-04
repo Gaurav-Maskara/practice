@@ -40,6 +40,13 @@
    --> LocalDateTime today = LocalDateTime.now(); // 
    --> Instant class is used to work with machine readable time format. Instant stores date time in unix timestamp.
        Instant timestamp = Instant.now();
+       
+9. If the interface is annotated with @FunctionalInterface annotation and 
+   we try to have more than one abstract method, it throws compiler error.
+   
+10.Java 8 Collections API has been rewritten and new Stream API is introduced that uses a lot of functional interfaces. 
+   Java 8 has defined a lot of functional interfaces in java.util.function package. 
+   Some of the useful java 8 functional interfaces are Consumer, Supplier, Function and Predicate
 
 
 
