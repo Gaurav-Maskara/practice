@@ -55,20 +55,116 @@
       for a join
    2. In sharded database there should always be master slave model. so that if master fails , slaves could take over
       there could be multiple slaves which will be copying the master. Whenever there is a write request , its always 
-      on the master(the master is the most updated copy). While the slaves continously poll the master and read from it.
+      on the master(the master is the most updated copy). While the slaves continuously poll the master and read from it.
       If there is a read request it can distributed across slaves , while if there is write request, it always 
       goes to the master.In case the master fails, the slaves choose one master among themselves.
       (So, basically it provides single point of failure tolerance)
+      
+7. HTTP : client server protocol
+   XMPP : Peer to peer protocol, this is can used to send the messages from the server to the clients , like we receive 
+   		notifications from the tinder when we get a match
+8.Web socket: these connections remain persistent, if you dont want to use this you can use http with long polling
+
+9.Benefits of NoSql: Joins are expensive in relational databases. Schema is flexible in NoSql as all we care about is 
+  json. Inbuilt horizontal partitioning in nosql DBs.
+  DisAdvantages:
+  1. Not good for loads of updates as consistency is problem since ACID is not guaranteed.
+  2. Read is comparatively slower to RDBMS bcs its has to read the whole json to find and return particular sets
+  3. Joins are hard bcs it will read all the json like manually and then will try to join the values
+ So , Nosql is better for write optimized databases
+ 
+ 10. MultiLevel sharding. Indexing in relational database internally uses B+ tree which gives O(log(n)) insertion and search operation
+ 11. Slave can pull data from master either synchronously or aync
+ 
+ 12. Relational Database Design :
+ 
+ 13. Apache Kafka is: //Producer api push data to kafka using "spring boot kafka templates" using the topics. Consumer Api consume data from kafka topics
+	    Scalable
+	    Fault tolerant
+	    A great publish-subscribe messaging system (using kafka topics)
+	    Capable of higher throughput compared with most messaging systems
+	    Highly durable
+	    Highly reliable
+	    High performant
+ 
+14. @Value("${spring.redis.host}")
+    private String REDIS_HOSTNAME;
    
+    @Value("${spring.redis.port}")
+    private int REDIS_PORT;                  // Setting up hostname and port for redis. Redis template in spring boot provides many methods
    
+
+15.Caching: (Redis and Memcache can be used)
+    Cache Invalidation : (i.e. when we want to update any value , how caching works)
+   . Write through cache : Data is written in cache and database at the same time
+   . Write -around cache : Data is written in Db only . Cache is marked as invalid .It is written later in cache
+   . Write- back cache : Data is written in cache only. It is written in Db later
+   Read heavy system : can use caching
+   Cache Eviction : LRU is the most used technique, next is LFU
    
+16. Consistent Hashing: read something about it
+
+17. Storage: 
+    Object storage : example amazon s3 for storing images
+    RAID : Redundant array of independent disks, is a way of storing data on multiple hard disks or sdd to protect in case of failures.RAID 5 is most used
    
+18. 3 Guarantees of distributed systems which are required: Consistency, Availability, Partition tolerant   
+
+19. CAP theorem (Its quite a common question related to compromises around Relational and NoSql Databases) : Cap stands for -->consistency, availability and
+    partition tolerant. As per this theorem --> When network partition occurs , system cannot be both consistent and highly available    
+    Conflict Resolution after network is back to normal on CAP theorem :
+    --> Majority Based
+    --> Time stamp based
    
-   
-   
-   
-   
-   
+20. ACID : Atomicity, Consistency, Isolation , Durability : A transaction is a single logical unit of work consisting of one or more instructions which accesses
+    and possibly modifies the contents of a database.To maintain the integrity of the database each transaction should be ACID compliant.
+
+    Atomicity : Either all the instructions will succeed or all will fail .
+    Consisteny: DB should be in consistent state before and after the transaction , there should not be any corruption of data
+    Isolation : If multiple transactions are running concurrently , then they should not be affected by each other
+    Durability : Changes once committed should persist, even after hardware or software failure
+    All financila transactions should follow ACID.
+    
+21. Nosql db --> are more scable and provides higher performance with flexible datamodel unlike fixed tables in relational databases.
+    4 main types : key-value (redis, voldemort), Column oriented(Cassandra), Document based (MongoDb), Graph Based (Neo4j)
+
+22. Architectural patterns : Monolithic, SOA, Microservice
+    Difference between SOA and Microservice : Read ??
+
+23. Communication Protocols :
+    --> HTTP
+    --> Long Polling
+    --> Web Sockets
+    
+24. Back of the Envelope Calculations :Estimate how many servers we need to serve read requests considering each server is capable of handling 
+    7 requests per second. We have to serve a total traffic of 46 Million per day.
+    Answer: 
+    7 requests per second
+    7*60 = 420 requests per minute
+    420*60 requests per hour = 400 * 60 = 24000 per hour = 24K per hour
+    24K * 24 requests per day ≈ 30K*20 = 600K requests per day per server
+    We want to handle 46 Million requests per day which means 46M/600K = approx 45M/500K = 45M/0.5M = 45*2 = 90 servers.
+    
+25. Note : Highly Available systems : Follow the no single point of failure principle
+    Note : Systems with high performance : Follow the no bottleneck principle
+
+26. Cache : For deciding the cache : Remember the 80 to 20 rule. That is every day 20% of the data is used for 80% of the time
+
+27. Purging: Purging is the process of freeing up space in the database or of deleting obsolete data that is not required by the system
+    A server which runs the purging job can be used to purge the Database
+
+28.
+
+
+
+
+
+
+
+
+
+
+
    
    
    

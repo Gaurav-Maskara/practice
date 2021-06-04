@@ -1,0 +1,8 @@
+
+1. Only Lists and Sets support new methods stream() and parallelStream()
+2. Parallel streams are capable of operating on multiple threads
+3. hm.forEach((i, j) ->System.out.println(i+" "+j)); ---> hm is hash map
+
+
+
+
