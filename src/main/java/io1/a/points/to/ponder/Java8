@@ -52,11 +52,53 @@
    return number > 1 && IntStream.range(2, number).noneMatch(index -> number % index == 0);
    Refer : https://www.journaldev.com/2763/java-8-functional-interfaces
 
+12. For Lamda and streams : For one line method bodies you can skip both the braces {} and the return keyword
+
+13. Functional interface must contain exactly one abstract method declaration. 
+    Since default methods are not abstract you're free to add default methods to your functional interface.
+    
+14.The JDK 1.8 API contains many built-in functional interfaces. Some of them are well known from
+   older versions of Java like Comparator or Runnable. 
+   Those existing interfaces are extended to enable Lambda support via the @FunctionalInterface annotation
+
+15.Predicate ## ==> Predicates are boolean-valued functions of one argument
+   eg:  Predicate<String> predicate = (s) -> s.length() > 0;
+		predicate.test("foo");              // true
+		predicate.negate().test("foo");     // false
+
+   eg:  Predicate<String> pr = (s) -> {
+			if(s!=null && s.length() > 3) {
+				return s.contains("a");
+			}
+			return false;
+		};
+		
+	    System.out.println(pr.test("pa"));
+	    System.out.println(pr.test("pppa"));
 
 
+16. Functions# Functions accept one argument and produce a result.
+    eg: 	Function<String, Integer> f = s -> Integer.valueOf(s);
+	        System.out.println(f.apply("123"));
+	        
+17. Comparator<Person> comparator = (p1, p2) -> p1.firstName.compareTo(p2.firstName);
 
+18. Optionals are not functional interfaces, instead it's a nifty utility to prevent NullPointerException. 
+    Optional is a simple container for a value which may be null or non-null. 
+    Think of a method which may return a non-null result but sometimes return nothing. 
+    Instead of returning null you return an Optional in Java 8.
+    Optional<String> optional = Optional.of("bam");
 
-
+	optional.isPresent();           // true
+	optional.get();                 // "bam"
+	optional.orElse("fallback");    // "bam"
+	
+	optional.ifPresent((s) -> System.out.println(s.charAt(0)));     // "b"
+	
+19. Streams : java.util.Stream represents a sequence of elements on which one or more operations can be performed.
+    Stream operations are either intermediate or terminal.
+    Note : MAPS are NOT supported
+    
 
 
 
