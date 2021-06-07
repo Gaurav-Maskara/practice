@@ -48,7 +48,9 @@
    Java 8 has defined a lot of functional interfaces in java.util.function package. 
    Some of the useful java 8 functional interfaces are Consumer, Supplier, Function and Predicate
 
-
+11.To check if a number is prime using Java 8
+   return number > 1 && IntStream.range(2, number).noneMatch(index -> number % index == 0);
+   Refer : https://www.journaldev.com/2763/java-8-functional-interfaces
 
 
 
