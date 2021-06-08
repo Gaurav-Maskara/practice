@@ -1,0 +1,480 @@
+
+Commands :
+
+https://www.mediacollege.com/linux/command/linux-command.html
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Basics: 
+
+1.sudo su  ----gives super user  / hepful in going to @root also
+1.sudo wget URL to download
+3.sudo wget --user username -- password password URL
+4.rm -r mydir ---remove a directory
+5.telnet localhost 8080 ---to telnet an IP
+6.tar -xvzf filenmae.with extension ---- to unzip a file
+7.sudo apt-get install softwareName -- for installing the software
+8.cp -v wso2am-2.0.0.zip /home/umang/gaurav/wso2
+9.chmod +x ./postgresql-9.5.5-1-linux-x64.run   --- This command is used to give access to a file so that it can run as executable
+10. elinks --dump "http://10.247.74.69:8081/epfoApi/PropReload.jsp"
+11. cd -       ---- takes you to the previous working directory
+12. ls -R ---- recursively lists all files in the sub folders as well 
+13. ls -ltrai --- long list time reverse all files inode numbers
+14 .hidden ---- a file name that starts with a . is a hidden file
+15. cp -R dir1 dir2 ---- to copy the contents of the directory
+16. cp -i file1 file2 dir1 ---- interactive mode 
+17. mv ---- command can be used to cut paste and also to rename
+18. less --- while using less you can press 'h' to get the help menu
+19. type cd ---- describes the type of the file
+20. cp * dir1 ---- copies everything into the directory dir1
+22. cp file* dir1 ,    cp *.txt dir1,    cp file?.txt dir1, cp [abc]* dir1, cp [!abc]* dir1
+23. alias todo= "cd /home" --- create your own command
+24.	history -c (and then this command , both at starting and end of session) unset HISTFILE
+25 wget downloadUrl
+26 touch -d "2020-08-11 18:41:12.000000000 +0530" tgs.txt
+
+touch -d "2020-08-12 02:30:12.000000000 +0530" 
+touch -d "2020-08-04 02:30:12.000000000 +0530" 
+
+touch -d "2018-08-17 16:30:12.000000000 +0530" 
+
+rm CSMSApi.war
+rm -r CSMSApi
+cp goaApi/WEB-INF-view/CSMSApi.war /home/tomcat/commonappbase/
+touch -d "2020-08-17 16:50:12.000000000 +0530" 
+
+-------------------------
+>/var/log/wtmp
+>/var/log/btmp
+-------------------------
+
+/home/tomcat/commonappbase/goaApi/WEB-INF-view/
+touch -d "2019-03-04 18:56:12.000000000 +0530" 
+
+
+
+touch -d "2020-10-18 22:03:12.000000000 +0530" 
+
+
+
+
+--------16--------------------------------------------
+
+cd /home/tomcat/CADB5F6D/webapps/
+rm thimsApi.war
+rm -r thimsApi
+cp /tmp/temp2/thimsApi.war /home/tomcat/CADB5F6D/webapps/
+touch -d "2021-01-29 18:31:12.000000000 +0530" thimsApi
+touch -d "2021-01-29 18:31:12.000000000 +0530" thimsApi.war
+
+cd /home/tomcat/CBDB5F6D/webapps/
+rm thimsApi.war
+rm -r thimsApi
+cp /tmp/temp2/thimsApi.war /home/tomcat/CBDB5F6D/webapps/
+touch -d "2021-01-29 18:31:12.000000000 +0530" thimsApi
+touch -d "2021-01-29 18:31:12.000000000 +0530" thimsApi.war
+
+cd /home/tomcat/CCDB5F6D/webapps/
+rm thimsApi.war
+rm -r thimsApi
+cp /tmp/temp2/thimsApi.war /home/tomcat/CCDB5F6D/webapps/
+touch -d "2021-01-29 18:31:12.000000000 +0530" thimsApi
+touch -d "2021-01-29 18:31:12.000000000 +0530" thimsApi.war
+--------16--------------------------------------------
+
+-------------36-----------------------------------------
+cp /tmp/temp2/thimsApi.war /home/tomcat/CBDB5F6D/webapps/
+cp /tmp/temp2/thimsApi.war /home/tomcat/CCDB5F6D/webapps/
+cp /tmp/temp2/thimsApi.war /home/tomcat/CADB5F6D/webapps
+-------------36-----------------------------------------
+
+
+>/var/log/wtmp
+>/var/log/btmp
+
+touch -d "2020-11-29 18:20:12.000000000 +0530"            
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. ls -l : files with description
+1. ls ch*.doc : to see all the files with name starting with ch
+2. rm -i filename: deletes the file
+3. cp filename filenameNew : copies to new file
+4. mv oldfilename newfilename : renames a file / this command can also be used to rename a directory
+5. pwd: to print current working directory
+6. rmdir directoryname: removes a directory
+7. lm -l hello.txt : see the permission given to (owner group others) on the file hello.txt
+8. chmod o+wx hello.txt : changing the permission(others)(change mode) on a file
+9. chmod u-x hello.txt: changing permission (user(owner))
+10. chmod g = rx hello.txt : changing permission (group)
+11. chown username filename: changes the owner of a file
+12. ls -l |grep "cron": searches for cron in output of (ls -l where | is the pipeline character)
+13. kill -9 6738 :forceful kill with pid
+14. ps aux | grep -i processName -- finds the pid of process
+15. Note: /usr/lib -- is the default folder where programs are generally installed
+16. cd ../../../  --- to go two directory back
+17. NOTE: to find the location at which JAVA is placed on system : update-alternatives --list java
+18. To access windows files from Linux Subsystem : cd /mnt/c/Users/<ubuntu.username>/Pictures
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+VIM Basics:
+
+  :q!  --- Quits vim without saving anything to the file
+   i   --- Lets you enter into the Insert mode
+   esc --- used to enter the command line mode from any mode like insert
+  :x!  --- to save the file
+  :set number --- to give line numbers to any file
+  :4   --- to go to line no four
+  :$ --- to go to last line
+   $ --- to move to end of line
+   
+   dd -- to delete a line
+   u  -- to recover a deleted line
+   v --- to highlight a text
+   y ---- This is called yank mode, and it will copy the text to the clipboard
+   p --- after you have copied anything using y(Yank mode) use this to paste the same
+   :/<SEARCH_KEYWORD>  -- for searching a keyword  
+   n ---to go to the next word that you had searched
+   :set paste  -- for pasting the contenst onto the vim editor with identations enabled / (Alternatively you can use F2 after getting into Insert Mode)
+   :set nopaste  ---After pasting is done, type
+   
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Postgresql:
+1. sudo apt-get install postgresl
+2. apt-get install postgresql postgresql-contrib
+3. su postgres -- switch to default created postgres user
+4. psql -- to enter into Postgres prompt
+5. \q -- to exit from Postgres promt
+6. \list -- to see all the available databases
+7. \connect database_name -- to connect to the database you received from above command
+8. \dt -- to list all the table int the database
+9. \conninfo -- tells which user is connected to which database
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Crontab (cron table) :
+1. crontab -l -- lists all the availabe cron tabs for the specified user
+2. crontab -e --opens crontab for scheduling jobs, this process creates a cron file at /var/spool/cron directory
+3. minute hour dayOfMonth month DayOfWeek(like thu)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Curl :
+curl -X POST -H "Content-Type:application/json" --data '{"serviceName": "city_forecast"}' http://localhost:8080/imd/cityForecast
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Basics:
+
+1. drwxrwxr-x --- d tells if this a directory,  owner's permission on the file, group permission on the file, other's permission on the file
+2. ls -la --- shows the permission given to users
+3. df --- shows the remaining blocks 
+4. less +F filename -- to read the logs(only) in backward, "q" to quit the same
+5. history --- see recent bash history
+6. diff test.txt test1.txt --- to see the difference between files
+7. who --- shows all logged in users
+8. tail -1000 debug_12.txt |grep 'homescreen'|more
+9. ps -ef | grep logging --- to check tomcat running 
+10. curl https://ipinfo.io/ip --- to find the computers's public ip(i.e. the IP exposed to the outer world)
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+C:\Users\gaurav.maskara\AppData\Local\Packages\KaliLinux.54290C8133FEE_ey8k8hqnwqnmg\LocalState\rootfs\var\cache\apt\archives
+
+Kali :
+1. apt-get install softwareName
+2. apt-get remove softwareName
+3. service ssh start and service ssh stop
+4. id --- to see one's name group
+5. sudo -l  --- to check all the commands a user can run as root
+6. ps -efu  --- useful command to list down all processes
+7. ping www.google.com & --- to run any process in background , so that it runs and is not killed
+8. fg [PID of the process to bring to the foreground]
+9. ping www.google.com > google.txt --- outputs the command output to a file named google
+10. ping www.google.com >> google.txt --- appends the output , rather than overwriting the file
+11. < --- directs content of file to command
+12. cat users* --- displays contaneted content of all files users1, users2, users3
+13. cat users1 users2 > all-users.txt  ---- directs the output to the file
+14. netstat -antp --- to see the list of all the running services 
+15. file name_of_the_file ---- to get the detailed information about the file
+16. apropos bzip2 --- this command basically tell you about the possible operations that can be formed with bzip2
+17. vim --help --- to get deatiled help
+18 nano --- another command to open file and edit
+19 jobs --- to see the jobs
+20.  last -50 -i  --- shows last logged in users
+21. taskkill /F /PID pid_number -- windows
+22 .tasklist --- windows netstat -antp (linux)
+23 pgsql -h 127.0.0.1 -U postgres
+24 locate filename.txt {if thsi doesnt work updatedb command before locate}
+25 uname -a --- shows version of linux
+26  find /etc -name hosts
+27. /etc/hosts
+28. /etc/avahi/hosts
+	  find /etc -name ”hosts*”
+	 /etc/hosts
+	 /etc/hosts.allow
+	 /etc/hosts.deny
+	 /etc/avahi/hosts
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Networking Basics
+
+File System Basics:
+• /bin/: basic programs
+• /boot/: Kali Linux kernel and other files required for its early boot process
+• /dev/: device files
+• /etc/: configuration files
+• /home/: user’s personal files
+• /lib/: basic libraries
+• /media/*: mount points for removable devices (CD-ROM, USB keys, and so on)
+• /mnt/: temporary mount point
+• /opt/: extra applications provided by third parties
+• /root/: administrator’s (root’s) personal files
+• /run/: volatile runtime data that does not persist across reboots (not yet included in the FHS)
+• /sbin/: system programs
+• /srv/: data used by servers hosted on this system
+• /tmp/: temporary files (this directory is often emptied at boot)
+• /usr/: applications (this directory is further subdivided into bin, sbin, lib according to
+the same logic as in the root directory) Furthermore, /usr/share/ contains architecture-
+independent data. The /usr/local/ directory is meant to be used by the administrator for
+installing applications manually without overwriting files handled by the packaging system
+(dpkg).
+• /var/: variable data handled by daemons. This includes log files, queues, spools, and caches.
+• /proc/ and /sys/ are specific to the Linux kernel (and not part of the FHS). They are used by the kernel for exporting data to user space.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ Penetration Testing :
+ 
+1. Use shodan to hack cameras (zsecurity video on youtube)
+2. taskkill /pid 2400 /f --- to kill a process in windows
+3. 
+
+
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Python :
+
+1. shebang (#!/usr/bin/env python ) is the line of code added at the header , that helps os to identify the file if it is python file or not
+2. To comapre if the values are equal or not we use == 
+3. print(mylist[-1]) --- to get the last item in a python list
+4. Pythex --- for online regex
+5. ctrl+L --- is the shortcut to clear screen in bash
+6. important points for python coding : indentation is used , methods don't require return type so do the variables, semicoln is not required to end the statement
+7. Here try and except is used for exception handling
+8. ping -c 1 www.google.com --- to ping with only one packet of data, this can be useful if you want to analyze the DNS response
+9. netsh wlan show profile DiGi-GOVT-Guest key=clear ---- to see wifi passwords
+10.killall python --- kill all python processes
+11.  SOAP :WeB Services 
+        in <wsdl:types> --> whole xsd defined by you is present there
+		<wsdl:message> ---> tells us about the different request and response 
+		<wsdl:portType> ---> defines the operations that can be performed on the above request and response formats like eg. get all course details, get course details
+		                     <wsdl:operation>-- > first of all this is subpart of above, in this the request and response is mapped
+	   <wsdl:binding>--> it defines how to call the webservice (how the webservice is exposed)eg. we dine that we are using soap over http for it
+	   <wsdl:service>--> <soap:address>defines the location of the service (i.e. the endpoint eg. http://localhost:8080/ws)
+
+
+12  If you spend daily 28 minutes something new, you will be in top 5% of any profession
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+JPA: 
+
+1.. Example : Many to one relationship eg table :
+                          Table POST --> (Fields) :ID, DESCRIPTION, USER_ID 
+						  Table USER --> (Fields) : ID, BIRTH_DATE, NAME
+						  
+2.  Many to many : (Think of only one entitiy only to visualize) :  "A" Course can have many students and "A" Student can enroll in many courses
+     One to One : 'A' passport can be owned by only one Student, and 'A' Student can own only one Passport
+	 Many to One : 'A' Course can have many reviews but 'A' Review can be associated to only one course
+	 
+3. Important Concepts :
+     * Entities and Annotations
+	 * @ManyToMany, @ManyToOne, @OneToOne
+	 * Inheritance and Hierarchies
+	 * Entity Manager and Persistence Context
+	 * JPQL, Native and Criteria Queries
+	 * Transaction Management & Performance
+	 * Caching with First and Second Level Caches
+
+4. em.persist(course); ----> To save a new value   , em=Entity Manager
+     em.merge(course); ----> to update the course  ; where em is the entity manager object of JPA and course is the object 
+	 em.detach(course) ----> Now the entity manager doesn't track any changes in course oject and any changes made into this will not be merged
+	 em.flush() ----> Saved the data into the database
+	 em.refresh(course) ---> fetches the latest copy of course from the database
+	 @Transactional ---Annonation 
+	
+	Note : keep this in mind Hibernate is lazy, it will wait as long as it can before inserting the Passport in.
+	Note : If on foreign object in a class (say passport in student) is set to Lazy initialization , passport is not fetched while retrieving the student only (ie. using em.find(Student.class, 1))
+	 this happens if you have not defined @transactional for that method.
+	 (The above things is handled by persistence context of hibernate which keeps track of all the changes)
+	 
+
+	 
+5. Jdbc--> spring boot jdbc ---> JPA (interface) ---> Hibernate (JPA implementation) --->   in this we can use 3 types of queries :
+                                                                                                                                                               Direct hibernate objects to get objects and insert eg.  em.persist(course), em.merge(course)
+    Spring DATA Jpa brings some boiler plate code removal 									    			   JPQL --->eg. select c from Course c (in this course is the object not the table) and this is directly used in DAO
+	which is otherwise required in Hibernate                                                                    			   NamedQuery / NamedQueries ---> JPQL queries are written over classes for convience
+																																							   NativeQuery : SQL queries are written here
+	 
+
+6. If course table contains passport_id then course table is said to be owning the relationship , otherwise
+     if passport table conatins the student_if then passport table is called to be owning the relationship
+	 So we use the above thing when we decide to write the 'oneToOne' in object classes
+	 
+	 Here in above scenario, if only student is owning  the relationship then we won't be able to fetch the passport details directly unless we fetch the stuudent. So to solve this we need to define birectional one to one mapping but if we define that then there will be duplicate data in second table . 
+	 So for above two problems we define in passport a field to map student with it
+	 
+	 ie. in Student : 
+				 @OneToOne(fetch=FetchType.LAZY)
+				 private Passport passport;
+	 
+	 and in Passport : 
+				 @OneToOne(fetch =FetchType.Lazy, mappedBy="passport")
+				 private Student student;
+	 Note : if you haven't written mappedBy="passport" in passport class , both of the tables would have become owning table resulting in duplicate data
+	 Note : In short mappedBy is used on the non owning Table class
+	  
+7. Entity manager and persistence context are JPA speification so obviously it will be present in Hibernate too
+     Session and session factory is related to Hibernate (i.e. extra added functionality from Hibernate)
+	 
+8. @DirtiesContext --- JUnit to rollback the data to the state it was before we started
+9. When its FetchType.Eager hibernate directly fetches the attaches tables using left outer join, but when its FetchType.Lazy hiberntae fetches it when it is required 
+10. In @ManyToMay it doesn't matter whichever table is made the owning side of the relationship , since we will be using join tables to fetch the result
+
+11. select * from (select * from Fulltime employee union all select * from PartTimeEmployee)
+
+12.     SELECT O.OrderNumber, CONVERT(date,O.OrderDate) AS Date, 
+                      P.ProductName, I.Quantity, I.UnitPrice 
+		  FROM [Order] O 
+					  JOIN OrderItem I ON O.Id = I.OrderId 
+					  JOIN Product P ON P.Id = I.ProductId
+	      ORDER BY O.OrderNumber
+		  
+13. select * from course   
+             where (
+			           select count(student.course)
+				 	   from 
+					       student_course
+					   where 
+					        course.id=student.courseid
+			 ) >=2;
+14. ctrl+1 ----> assign the result to a new local variable , eclipse shortcut , very useful
+15. Types of Queries : JPQL , NamedQuery/ NamedQueries, NativeQuery, CriteriaQuery
+16. Serializable for Transactions  (places a table lock on those fields of table 0----> eg. select *from person where age between 5 and 55)  ---> so lock will be placed on: where age between 5 and 55
+		on these columns of table
+		Another eg. if you do :select * from person : Here entire table will be locked for you  till the transaction completes
+		
+17. @Transactional(isolation= SERIALIZABLE) ---> Spring transaction
+18. Two types of caching in hibernate : First level and Second level
+		First Level : Is enabled when we write @Transactional , this is enabled by default and is applicable for the specific transaction
+		Second Level Cache: You need to enable this , a sample framewrok for caching in hibernate is ehCache, and this is done by writing @Cacheable(javax framework ) over the bean we want to cache
+
+19. Session is a hibernate-specific API, EntityManager is a standardized API for JPA
+20 . Native Queries : https://stackoverflow.com/questions/21562442/how-to-fetch-data-from-multiple-table-query-by-hibernate
+
+21. ----------------------For @ManyToMany --------------------------------------------
+		case 1: 
+					@ManyToMany
+	                private List<Student> students = new ArrayList<Student>();				
+					@ManyToMany
+					private List<Course> courses = new ArrayList<Course>();   ------->  A new table is created named 'course_student' with columns --> course_id and student_id
+					
+					
+		case 2: 
+		          See the code: you have already commented out various cases
+
+		----------------------For @ManyToMany --------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+MVC 
+
+1. Logging Levels in Descending Order:
+       #TRACE
+	   #DEBUG
+	   #INFO
+	   #WARN
+	   #ERROR
+	   
+2. Model 1 Architecture : 
+     Everything was JSP, it used to receive the requests through the declaration in web.xml, and used to forward the request to other Jsps as well
+	 No Servlets, no controllers
+	 
+	 Model 2 Architecture or the MVC
+	 Model View Controller
+	 
+	 Modification of Model 2 architecture - Front Controller (eg. Dispatcher Servlest in Spring)
+	 
+2.1 @Pathvariable String name;  ---> @GetMapping("/users/{name}")
+	 
+3. public void doGet(HttpServletRequest request, HttpServletResponse response) extends HttpServlet throws Exception
+			 String name= request.getParamater("name");
+			 request.setAttribute("name", name);  ----> To access the same from JSP ---> ${name}
+			 or   session.setAttribute("name", name) ---> same as above to fetch in JSP
+	 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+3.1	 public String someMethod(@RequestParam String name) ---_ in Spring MVC to get the field 
+	     public String someMethod(@ModelAttribute("ShoppingCart") ShoppingCart shoppingCart)
+	  
+	    public String anyMethod(ModelMap model )
+	            model.add("name", name) ---->  To access the same from JSP ---> ${name}
+		or you can create a bean and embed that bean into the modemap
+				eg. model.add("person", person) ----> After adding jsp tags use this to fetch the particular bean ----> ${person.name}
+		Note: Now to bind the objects "FROM" jsp to controller we need spring bean tags in jsp ----> commandName="person" ---> is used to bind the person in jsp  and path="name"
+		
+4. In Spring MVC there can be two methods to redirect :
+			1. return "redirect:list-todos"; which results in HTTP 302 i.e. response.sendRedirect(); internally
+			2. return "forward:/forwardURL"; results in RequestDispatcher.forward() internally
+			
+4.1 If method Type is not specifically defined in the spring controller , then it accepts all requests i.e. GET , POST , PUT etc.
+			
+5. Must read : https://stackoverflow.com/questions/18791645/how-to-use-session-attributes-in-spring-mvc
+    jsp fragment: https://stackoverflow.com/questions/2081005/what-is-jspf-file-extension-how-to-compile-it
+	
+6. How to prevent a user from accessing a jsp page : https://stackoverflow.com/questions/22530073/how-can-i-prevent-a-user-from-directly-accessing-a-pages-if-not-authenticated
+7. For JSP/HTML pages, there're many ways to prevent user from accessing directly. The simplest one is to move all those pages to WEB-INF folder where user can't access from the URL. It also       		means  you only allow user to access servlet action and completely forbid user to access JSP pages. 
+
+8. You can go to serviceplus website and learn the form validation functions from there (By inspecting the elements)
+
+9. Its important to note that @ControllerAdvice is very good at handling the exceptions occurred in the model/controller/ service layer.
+    But if some exception happens in our jsp ; then add the below in web.xml file to handle such kind of scenarios as well :
+      <error-page>
+	         <location>/WEB-INF/views/jsp/error.jsp</location>
+	  </error-page>
+	  
+10. Try React.Js ....its quite easy to learn since based on javascript 
+11. Recursion is when a function calls itself, until it doesn’t.
+12 . to visualize recursion , first see this factorial function :
+        int factorial (int n) {                                            	or 					let countDownFrom = (num )=>{
+		      if (n==0)	//base case																  	if(num ==0 ) return  //base case
+			      return 1;																							console.log(num)
+			  else 																								}
+			  return n* factorial(n-1)															 countDownFrom(10)
+		}
+			  
+	block *(smallBlock*(furtherSmallerBlock*(.......* endConditionResult)))		  
+		
+13. @SessionAttributes("name") and how it works?
+14. XSDs are like xml validators , can be compared with like js for form validation
+15. In rest services we have different endpoint urls and the Http methods that define our services endpoints, but in case of SOAP webservices , we define the port(or the local port) where actually
+       our requests hit 
+16. In short wsdl ---> schema (contains the xsd)
+       messgae defines the of request and responses available
+	   portType and operation --> defines the operations available for the webservice
+	   binding --> defines the protocol eg. soap over http
+	   service and location --> tells where the webservice is available
+        
+		
+		
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------Cloud :
+Azure :
+1. wso2 acted as application gateway , whoes task is to distribute load between different applications
+	 
+
+
+
+
+
+
+
+
+

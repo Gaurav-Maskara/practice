@@ -1,0 +1,52 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Branch Merging 
+$ git checkout master
+$ git branch new-branch
+$ git checkout new-branch
+
+# ...develop some code...
+
+$ git add –A
+$ git commit –m "Some commit message"
+$ git checkout master
+$ git merge new-branch
+
+git push origin master
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+git status
+git status -vv
+git add . 
+git commit -m "message"
+git push origin staging
+
+
+if you are getting conflicts while merging :
+resolve the conflicts , by seeing which code you need to keep and which not
+after that mark them as resolved (or go to options and choose merge from it ---- then it gets merged --- now u can push the changes) , these files are now ready to be commit and push
+now when you commit the above chnages in any branch , they will be merged
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+First Commit : 
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin youruser@yourserver.com:/path/to/my_project.git
+git push origin master
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+For LMIA
+Go for those provinces which has a shortage of labour , they might give job offer easily
+Shortage of labour provinces -----> They started AIPP ...it doesn't require LMIA
+Dont marry a profile ---- while looking for LMIA --- apply for other software or related jobs in linkedin which is java free or Think of upskilling in blockchain
+
+
