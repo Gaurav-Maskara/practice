@@ -24,7 +24,7 @@
 8. Improvements in the java Date and Time Api :
    Why was it needed :
    --> earlier Date classes are mutable, so they are not thread-safe.
-   --> earlier Date class doesn’t provide internationalization, there is no time zone support. 
+   --> earlier Date class doesn't provide internationalization, there is no time zone support. 
       
    Improvements :
    -->Immutability
@@ -35,7 +35,7 @@
    --> LocalDate ld = LocalDate.now(); --> example
    --> LocalDate todayKolkata = LocalDate.now(ZoneId.of("Asia/Kolkata"));
    --> LocalTime is an immutable class whose instance represents a time in the human readable format. 
-       It’s default format is hh:mm:ss.zzz. Just like LocalDate, this class provides time zone support 
+       Its default format is hh:mm:ss.zzz. Just like LocalDate, this class provides time zone support 
        and creating instance by passing hour, minute and second as input arguments.
    --> LocalDateTime today = LocalDateTime.now(); // 
    --> Instant class is used to work with machine readable time format. Instant stores date time in unix timestamp.
@@ -51,6 +51,7 @@
 11.To check if a number is prime using Java 8
    return number > 1 && IntStream.range(2, number).noneMatch(index -> number % index == 0);
    Refer : https://www.journaldev.com/2763/java-8-functional-interfaces
+
 
 
 
