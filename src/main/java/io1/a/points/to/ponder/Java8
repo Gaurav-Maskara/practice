@@ -89,7 +89,7 @@
     Instead of returning null you return an Optional in Java 8.
     Optional<String> optional = Optional.of("bam");
 
-	optional.isPresent();           // true
+	optional.isPresent();           //  true
 	optional.get();                 // "bam"
 	optional.orElse("fallback");    // "bam"
 	
