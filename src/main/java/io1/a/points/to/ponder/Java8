@@ -126,6 +126,61 @@
     
 -----------------------------------------------------------------------------------------------------------------
 SQL: 
+
+1. Self Join Syntax: 
+    SELECT column-names
+      FROM table-name T1 JOIN table-name T2
+    WHERE condition
+    
+Question : Match customers that are from
+           the same city and country 
+           
+           
+    SELECT B.FirstName AS FirstName1, B.LastName AS LastName1, 
+           A.FirstName AS FirstName2, A.LastName AS LastName2, 
+           B.City, B.Country
+      FROM Customer A JOIN Customer B
+        ON A.Id <> B.Id
+       AND A.City = B.City 
+       AND A.Country = B.Country
+     ORDER BY A.Country
+     
+     
+2. SQL Subquery Example :
+   
+   Problem: List products with order
+   quantities greater than 100. 
+    
+    SELECT ProductName
+    FROM Product 
+    WHERE Id IN (SELECT ProductId 
+                    FROM OrderItem
+                   WHERE Quantity > 100)
+    
+    
+    
+3. Question :List the top 10 most expensive products ordered by price 
+    
+    SELECT TOP 10 Id, ProductName, UnitPrice, Package
+    FROM Product
+    ORDER BY UnitPrice DESC
+    
+    
+4. SELECT COUNT (DISTINCT Country)
+   FROM Supplier;
+   
+5. 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 
 
