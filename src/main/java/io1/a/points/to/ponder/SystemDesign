@@ -153,8 +153,16 @@
 27. Purging: Purging is the process of freeing up space in the database or of deleting obsolete data that is not required by the system
     A server which runs the purging job can be used to purge the Database
 
-28.
+28. Kafka is a distributed service. Should be deployed in multiple boxes. Queue can process 1 million but we need to think of consumer scaling
 
+29. Having an index on a particular field makes searching easier in DB on the other hand writing expensive
+
+30. See the micro services design patterns and write something about it : Like Saga pattern ---> in this pattern
+    "so some cron jobs will fix those status inconsistencies" if there is a failure cron job will make sure to maintain consistencies
+
+31. There is threshold when you need to move to microservices vs monolith
+
+32. Read replicas for mongodb or postgreSQL
 
 
 

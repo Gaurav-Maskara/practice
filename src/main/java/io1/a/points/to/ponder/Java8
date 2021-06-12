@@ -169,8 +169,8 @@ Question : Match customers that are from
 4. SELECT COUNT (DISTINCT Country)
    FROM Supplier;
    
-5. 
-    
+5. 	hm.forEach((k, v) -> System.out.println(k +v)); //iterate over map in java 8 using lambdas
+    map.entrySet().stream().forEach(e -> System.out.println(e.getKey() + ":" + e.getValue()));
     
     
     
