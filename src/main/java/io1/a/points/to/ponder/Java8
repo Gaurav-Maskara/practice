@@ -52,7 +52,7 @@
    return number > 1 && IntStream.range(2, number).noneMatch(index -> number % index == 0);
    Refer : https://www.journaldev.com/2763/java-8-functional-interfaces
 
-12. For Lamda and streams : For one line method bodies you can skip both the braces {} and the return keyword
+12. For Lambda and streams : For one line method bodies you can skip both the braces {} and the return keyword
 
 13. Functional interface must contain exactly one abstract method declaration. 
     Since default methods are not abstract you're free to add default methods to your functional interface.
@@ -95,6 +95,22 @@
 	
 	optional.ifPresent((s) -> System.out.println(s.charAt(0)));     // "b"
 	
+	
+	//Above way can throw null pointer in case the value is null
+	//However the below method will not throw a Null Pointer , even if the value is null
+	    String test = "this can be null";
+		Optional<String> opt = Optional.ofNullable(test);
+		String finalValue = opt.isPresent() ? opt.get():opt.orElse("some other value");
+		
+	//Another way 
+	String name = Optional.ofNullable(nullName).orElse("john");
+	
+	//
+	Integer year = 2016;
+    Optional<Integer> yearOptional = Optional.of(year);
+    boolean is2016 = yearOptional.filter(y -> y == 2016).isPresent();
+	
+	
 19. Streams : java.util.Stream represents a sequence of elements on which one or more operations can be performed.
     Stream operations are either intermediate or terminal.
     Note : MAPS are NOT supported
@@ -127,7 +143,7 @@
 -----------------------------------------------------------------------------------------------------------------
 SQL: 
 
-1. Self Join Syntax: 
+1.  Self Join Syntax: 
     SELECT column-names
       FROM table-name T1 JOIN table-name T2
     WHERE condition
@@ -139,10 +155,10 @@ Question : Match customers that are from
     SELECT B.FirstName AS FirstName1, B.LastName AS LastName1, 
            A.FirstName AS FirstName2, A.LastName AS LastName2, 
            B.City, B.Country
-      FROM Customer A JOIN Customer B
+    FROM Customer A JOIN Customer B
         ON A.Id <> B.Id
-       AND A.City = B.City 
-       AND A.Country = B.Country
+        AND A.City = B.City 
+        AND A.Country = B.Country
      ORDER BY A.Country
      
      
