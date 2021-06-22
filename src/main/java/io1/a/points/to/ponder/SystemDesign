@@ -30,9 +30,9 @@
    which were already stored on a particular server since for the same ID we would have the same hash value and hence the
    same server.
    
-   To the Rescuse of above issue is consistent Hashing : 
+   To the Rescue of above issue is consistent Hashing : 
    
-4. Monolith : 
+4. Monolithic : 
    1. Suitable for small team
    2. Less Complex
    3. Integration testing is easier
