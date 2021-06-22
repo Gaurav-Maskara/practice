@@ -27,7 +27,7 @@
    --> earlier Date class doesn't provide internationalization, there is no time zone support. 
       
    Improvements :
-   -->Immutability
+   --> Immutability
    --> Separation of Concerns: 
        The new API separates clearly between human-readable date time and machine time (Unix timestamp).
    --> Utility operations: All the new Date-Time API classes come with methods to perform common tasks, 
@@ -130,7 +130,7 @@
                                     Young Generation is divided into --> Eden Memory & Survivor Memory
     
     Permanent Generation (Perm Gen) --> It is not a part of Heap Memory
-    “Perm Gen” : MetaData information of classes was stored in PremGen (Permanent-Generation) memory type before Java 8. 
+          ï¿½Perm Genï¿½ : MetaData information of classes was stored in PremGen (Permanent-Generation) memory type before Java 8. 
     Metadata is what is also known as annotations in Spring when a class or 
     method is declared and annotated it adds metadata (configuration data) to the class. Some Spring annotations are @Autowired, @Component, @Controller
     
@@ -161,18 +161,29 @@
     Class should be declared final . Perfrom deep cloning(eg. if there is hash map)
     Should a return a clone of the object whenever asked for. 
     
+23. Design patterns : Creational , Structural , Behavioral
+    
+    Creational--> Factory --> define an interface or abstract class for creating an object but let the subclasses decide which class to instantiate
+                  Abstract Factory -->
+                  Prototype --> cloning of an existing object instead of creating new one
+                                This pattern should be followed, if the cost of creating a new object is expensive and resource intensive
+                  Object Pool -->  Object pool is a container which contains a specified amount of objects
+    
+    Structural --> 
+    
+    Behavioral --> Chain of Responsibility Pattern : If one object cannot handle the request then it passes the same to the next receiver and so on.
+                   Template pattern --> just define the skeleton of a function in an operation, deferring some steps to its subclasses
+                                        It is very common technique for reusing the code.This is only the main benefit of it.
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+24.Map<String, Long> count =  al.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+                              al.stream().map(a -> a.toUpperCase()).collect(Collectors.toList());
+                              al.stream().filter(a -> a.startsWith("abc")).filter(a -> a.endsWith("cc")).collect(Collectors.toList());
+	                          al.stream().filter(a -> a.startsWith("r")).forEach(a -> System.out.println(a + " "));
+                              Map<Integer, Integer> map = al.stream().collect(Collectors.toMap(a -> a, a -> a*a));
+     
     
     
 -----------------------------------------------------------------------------------------------------------------
