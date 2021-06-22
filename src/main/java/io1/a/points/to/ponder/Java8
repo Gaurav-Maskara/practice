@@ -48,6 +48,14 @@
    Java 8 has defined a lot of functional interfaces in java.util.function package. 
    Some of the useful java 8 functional interfaces are Consumer, Supplier, Function and Predicate
 
+	Function: To transform arguments in returnable value.
+	Predicate: To perform a test and return a Boolean value.
+	Consumer: Accept arguments but do not return any values.
+	Supplier: Do not accept any arguments but return a value. 
+	Operator: Perform a reduction type operation that accepts the same input types.
+   
+   
+
 11.To check if a number is prime using Java 8
    return number > 1 && IntStream.range(2, number).noneMatch(index -> number % index == 0);
    Refer : https://www.journaldev.com/2763/java-8-functional-interfaces
@@ -117,14 +125,41 @@
     
 20. Regex -->
     
+20. Java Memory management ---> 
+    Heap Memory is divided into --> Young Generation and Old Generation
+                                    Young Generation is divided into --> Eden Memory & Survivor Memory
+    
+    Permanent Generation (Perm Gen) --> It is not a part of Heap Memory
+    “Perm Gen” : MetaData information of classes was stored in PremGen (Permanent-Generation) memory type before Java 8. 
+    Metadata is what is also known as annotations in Spring when a class or 
+    method is declared and annotated it adds metadata (configuration data) to the class. Some Spring annotations are @Autowired, @Component, @Controller
+    
+    ()-> According to the Merriam Webster dictionary, "metadata" means "data that provides information about other data".
+    In Java, class metadata provides information about a given class, such as:
+		    What annotations does it have?
+		    What constructors does it have?
+		    What methods does it have?
+		    What fields does it have?
+		    What interfaces does it implement?
+		    Is it public, private, or default (package) scoped?
+		    Is it abstract? Is it final? Is it static?
+		    What package does it belong to?
+		    
+    MetaSpace: Java 8 stores the MetaData of classes in native memory called 'MetaSpace'. 
+    It is not a contiguous Heap Memory and hence can be grown dynamically which helps to overcome the size constraints. 
+    This improves the garbage collection, auto-tuning, and de-allocation of metadata.
     
     
+21. Inner class --> Static and Normal Inner class . Their behavior is similar to static and normal methods.
+    The advantage is it could be either public , protected , default or private unlike outer class which could either be public 
+    or default.  In inner class we can hide data and expose the outer class.
+    Also , if particular fields are only asscatied with outer class, making inner class is preferable
     
+
     
-    
-    
-    
-    
+22. Immutable class --> Make all the fields as private and final. There should not be any setter methods.
+    Class should be declared final . Perfrom deep cloning(eg. if there is hash map)
+    Should a return a clone of the object whenever asked for. 
     
     
     
