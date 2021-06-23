@@ -1,4 +1,7 @@
 
+
+-----------------------Java 8 features ---------------------------------------------------------------------------------------------------------------------
+
 1. Only Lists and Sets support new methods stream() and parallelStream()
 2. Parallel streams are capable of operating on multiple threads
 3. hm.forEach((i, j) -> System.out.println(i+" "+j)); ---> hm is hash map
@@ -161,6 +164,9 @@
     Class should be declared final . Perfrom deep cloning(eg. if there is hash map)
     Should a return a clone of the object whenever asked for. 
     
+    
+-------Design Patterns---------------------------------------------------------------------------------------------------------------------------------------
+    
 23. Design patterns : Creational , Structural , Behavioral
     
     Creational--> Factory --> define an interface or abstract class for creating an object but let the subclasses decide which class to instantiate
@@ -175,16 +181,46 @@
                    Template pattern --> just define the skeleton of a function in an operation, deferring some steps to its subclasses
                                         It is very common technique for reusing the code.This is only the main benefit of it.
     
-    
-    
+-------Design Patterns---------------------------------------------------------------------------------------------------------------------------------------
+ 
+
+
+-------Streams-----------------------------------------------------------------------------------------------------------------------------------------------
 
 24.Map<String, Long> count =  al.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
                               al.stream().map(a -> a.toUpperCase()).collect(Collectors.toList());
                               al.stream().filter(a -> a.startsWith("abc")).filter(a -> a.endsWith("cc")).collect(Collectors.toList());
 	                          al.stream().filter(a -> a.startsWith("r")).forEach(a -> System.out.println(a + " "));
                               Map<Integer, Integer> map = al.stream().collect(Collectors.toMap(a -> a, a -> a*a));
-     
-    
+
+-------Streams-----------------------------------------------------------------------------------------------------------------------------------------------
+ 
+
+
+-------Concurrency ------------------------------------------------------------------------------------------------------------------------------------------
+
+
+25. Locks : 
+     private ReentrantReadWriteLock  lock = new ReentrantReadWriteLock();
+     lock.writeLock().lock();
+     lock.writeLock().unlock();
+       
+     private ReentrantLock lock = new ReentrantLock();
+     lock.lock();
+     lock.unlock();	
+       
+  ThreadLocal<Integer> threadLocalCounter = new ThreadLocal<Integer>();
+  threadLocalCounter.set(threadLocalCounter.get().intValue() + 1);     
+  
+     private static AtomicReference<String> atomicReference = new AtomicReference<String>("Hello Ji");
+       
+       
+-------Concurrency ------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+ 
     
 -----------------------------------------------------------------------------------------------------------------
 SQL: 
