@@ -197,6 +197,18 @@
                               al.stream().filter(a -> a.startsWith("abc")).filter(a -> a.endsWith("cc")).collect(Collectors.toList());
 	                          al.stream().filter(a -> a.startsWith("r")).forEach(a -> System.out.println(a + " "));
                               Map<Integer, Integer> map = al.stream().collect(Collectors.toMap(a -> a, a -> a*a));
+                              
+                              
+                              
+26. Iterating Over Map In Java 8 :
+	    --> for(Entry<String, String> entry : map.entrySet()) {
+	        	System.out.println(entry.getKey() + " " + entry.getValue());
+	        }
+	        
+	    --> map.forEach((k, v) -> System.out.println(k + " " + v));
+	    
+	    --> map.entrySet().stream().forEach( e -> System.out.println(e.getKey() + " " + e.getValue()));
+	    
 
                               
 26. Iterating Over Map In Java 8 :
