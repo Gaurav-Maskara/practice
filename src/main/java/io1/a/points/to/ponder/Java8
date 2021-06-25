@@ -211,16 +211,6 @@
 	    
 
                               
-26. Iterating Over Map In Java 8 :
-	    --> for(Entry<String, String> entry : map.entrySet()) {
-	        	System.out.println(entry.getKey() + " " + entry.getValue());
-	        }
-	        
-	    --> map.forEach((k, v) -> System.out.println(k + " " + v));
-	    
-	    --> map.entrySet().stream().forEach( e -> System.out.println(e.getKey() + " " + e.getValue()));
-	    
-
 -------Streams-----------------------------------------------------------------------------------------------------------------------------------------------
  
 
