@@ -133,9 +133,14 @@
                                     Young Generation is divided into --> Eden Memory & Survivor Memory
     
     Permanent Generation (Perm Gen) --> It is not a part of Heap Memory
-          �Perm Gen� : MetaData information of classes was stored in PremGen (Permanent-Generation) memory type before Java 8. 
+          !! Perm Gen !! : MetaData information of classes was stored in PremGen (Permanent-Generation) memory type before Java 8. 
     Metadata is what is also known as annotations in Spring when a class or 
     method is declared and annotated it adds metadata (configuration data) to the class. Some Spring annotations are @Autowired, @Component, @Controller
+    Since Java 8 PermGen has been removed with MetaSpace due to its inefficiency of having a fixed size resulting in OutOfMemory Error
+    MetaSpace grows automatically by default
+    
+    
+    
     
     ()-> According to the Merriam Webster dictionary, "metadata" means "data that provides information about other data".
     In Java, class metadata provides information about a given class, such as:
@@ -156,7 +161,7 @@
 21. Inner class --> Static and Normal Inner class . Their behavior is similar to static and normal methods.
     The advantage is it could be either public , protected , default or private unlike outer class which could either be public 
     or default.  In inner class we can hide data and expose the outer class.
-    Also , if particular fields are only asscatied with outer class, making inner class is preferable
+    Also , if particular fields are only associated with outer class, making inner class is preferable
     
 
     
@@ -192,6 +197,18 @@
                               al.stream().filter(a -> a.startsWith("abc")).filter(a -> a.endsWith("cc")).collect(Collectors.toList());
 	                          al.stream().filter(a -> a.startsWith("r")).forEach(a -> System.out.println(a + " "));
                               Map<Integer, Integer> map = al.stream().collect(Collectors.toMap(a -> a, a -> a*a));
+                              
+                              
+                              
+26. Iterating Over Map In Java 8 :
+	    --> for(Entry<String, String> entry : map.entrySet()) {
+	        	System.out.println(entry.getKey() + " " + entry.getValue());
+	        }
+	        
+	    --> map.forEach((k, v) -> System.out.println(k + " " + v));
+	    
+	    --> map.entrySet().stream().forEach( e -> System.out.println(e.getKey() + " " + e.getValue()));
+	    
 
 -------Streams-----------------------------------------------------------------------------------------------------------------------------------------------
  
