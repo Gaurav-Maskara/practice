@@ -281,7 +281,7 @@ JPA:
                           Table POST --> (Fields) :ID, DESCRIPTION, USER_ID 
 						  Table USER --> (Fields) : ID, BIRTH_DATE, NAME
 						  
-2.  Many to many : (Think of only one entitiy only to visualize) :  "A" Course can have many students and "A" Student can enroll in many courses
+2.   Many to many : (Think of only one entity only to visualize) :  "A" Course can have many students and "A" Student can enroll in many courses
      One to One : 'A' passport can be owned by only one Student, and 'A' Student can own only one Passport
 	 Many to One : 'A' Course can have many reviews but 'A' Review can be associated to only one course
 	 
@@ -294,35 +294,44 @@ JPA:
 	 * Transaction Management & Performance
 	 * Caching with First and Second Level Caches
 
-4. em.persist(course); ----> To save a new value   , em=Entity Manager
+4.   em.persist(course); ----> To save a new value   , em=Entity Manager
      em.merge(course); ----> to update the course  ; where em is the entity manager object of JPA and course is the object 
 	 em.detach(course) ----> Now the entity manager doesn't track any changes in course oject and any changes made into this will not be merged
 	 em.flush() ----> Saved the data into the database
 	 em.refresh(course) ---> fetches the latest copy of course from the database
-	 @Transactional ---Annonation 
+	 @Transactional ---Annotation 
 	
 	Note : keep this in mind Hibernate is lazy, it will wait as long as it can before inserting the Passport in.
 	Note : If on foreign object in a class (say passport in student) is set to Lazy initialization , passport is not fetched while retrieving the student only (ie. using em.find(Student.class, 1))
 	 this happens if you have not defined @transactional for that method.
 	 (The above things is handled by persistence context of hibernate which keeps track of all the changes)
 	 
+	
+4.1 
+
+	   --> A Cache is a copy of data, copy meaning pulled from but living outside the database.
+	   --> Flushing a Cache is the act of putting modified data back into the database.
+	   --> A PersistenceContext is essentially a Cache. It also tends to have it's own non-shared database connection.
+	   --> An EntityManager represents a PersistenceContext (and therefore a Cache)
+	   --> An EntityManagerFactory creates an EntityManager (and therefore a PersistenceContext/Cache)
+
 
 	 
 5. Jdbc--> spring boot jdbc ---> JPA (interface) ---> Hibernate (JPA implementation) --->   in this we can use 3 types of queries :
-                                                                                                                                                               Direct hibernate objects to get objects and insert eg.  em.persist(course), em.merge(course)
-    Spring DATA Jpa brings some boiler plate code removal 									    			   JPQL --->eg. select c from Course c (in this course is the object not the table) and this is directly used in DAO
-	which is otherwise required in Hibernate                                                                    			   NamedQuery / NamedQueries ---> JPQL queries are written over classes for convience
-																																							   NativeQuery : SQL queries are written here
+                                                                                    Direct hibernate objects to get objects and insert eg.  em.persist(course), em.merge(course)
+    Spring DATA Jpa brings some boiler plate code removal 									    	JPQL --->eg. select c from Course c (in this course is the object not the table) and this is directly used in DAO
+	which is otherwise required in Hibernate                                                        NamedQuery / NamedQueries ---> JPQL queries are written over classes for convience
+																								    NativeQuery : SQL queries are written here
 	 
 
 6. If course table contains passport_id then course table is said to be owning the relationship , otherwise
-     if passport table conatins the student_if then passport table is called to be owning the relationship
+     if passport table contains the student_if then passport table is called to be owning the relationship
 	 So we use the above thing when we decide to write the 'oneToOne' in object classes
 	 
-	 Here in above scenario, if only student is owning  the relationship then we won't be able to fetch the passport details directly unless we fetch the stuudent. So to solve this we need to define birectional one to one mapping but if we define that then there will be duplicate data in second table . 
+	 Here in above scenario, if only student is owning  the relationship then we won't be able to fetch the passport details directly unless we fetch the student. So to solve this we need to define bidirectional one to one mapping but if we define that then there will be duplicate data in second table . 
 	 So for above two problems we define in passport a field to map student with it
 	 
-	 ie. in Student : 
+	 i.e. in Student : 
 				 @OneToOne(fetch=FetchType.LAZY)
 				 private Passport passport;
 	 
@@ -330,10 +339,10 @@ JPA:
 				 @OneToOne(fetch =FetchType.Lazy, mappedBy="passport")
 				 private Student student;
 	 Note : if you haven't written mappedBy="passport" in passport class , both of the tables would have become owning table resulting in duplicate data
-	 Note : In short mappedBy is used on the non owning Table class
+	 Note : In short mappedBy is used on the non owning Table class i.e. Other table will have the id column in their table
 	  
 7. Entity manager and persistence context are JPA speification so obviously it will be present in Hibernate too
-     Session and session factory is related to Hibernate (i.e. extra added functionality from Hibernate)
+   Session and session factory is related to Hibernate (i.e. extra added functionality from Hibernate)
 	 
 8. @DirtiesContext --- JUnit to rollback the data to the state it was before we started
 9. When its FetchType.Eager hibernate directly fetches the attaches tables using left outer join, but when its FetchType.Lazy hiberntae fetches it when it is required 
@@ -467,7 +476,7 @@ MVC
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------Cloud :
 Azure :
-1. wso2 acted as application gateway , whoes task is to distribute load between different applications
+1. wso2 acted as application gateway , whos task is to distribute load between different applications
 	 
 
 

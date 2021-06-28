@@ -1,3 +1,191 @@
+ -----------------------------------------------------------------------------------------------------------------------------------------------------
+ ------Load Balancer ---------------------------------------------------------------------------------------------------------------------------------
+ 
+ 1.Load balancing : is how the load is being distributed among different servers:One of the ways for distributing the load 
+   could be using the hashing techniques in which , depending on a particular field , say ID , and a particular hash function 
+   and the no of servers ,server is decided where the request would land. (eg. hashFunction(ID) % no Of servers)
+   
+   This was an example of inconsistent hashing , bcs any addition of a new server , would make the request go to some other
+   server ,because the value of generated hash would be different , this would result in dumping of all the caches 
+   which were already stored on a particular server since for the same ID we would have the same hash value and hence the
+   same server.
+   
+   To the Rescue of above issue is consistent Hashing : 
+   
+   Load balancing techniques --> Round Robin , Least Connection , Random
+   Two Types of Load balancers :
+      Layer 4 : Works on Transport Layer and has access to TCP, UDP, IP, Port 
+      Layer 7 : Application Layer , has access to everything layer 4 has. Additionally has access to HTTP headers, cookies, payload
+      
+      Note: Load balancer is a machine that acts as a reverse proxy , for each request it picks up a server based on its strategy.
+            Load balancers make the system more scalable and resilient .
+   
+  ------Load Balancer ---------------------------------------------------------------------------------------------------------------------------------
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  ------CDN -------------------------------------------------------------------------------------------------------------------------------------------
+
+  1. CDN is comparatively very cheaper compared to keeping servers everywhere
+  2. Used for keeping static content like --> 	images, html, css, javascript
+  3. Types of CDN :
+     Push : We need to push
+     Pull : It pulls when a request arrives from a user but it doesn't have it and then sync itself
+  4. In short --> it decreases costs, decreases latency, increases complexity of system
+
+  -----CDN --------------------------------------------------------------------------------------------------------------------------------------------
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  ----- CACHING ---------------------------------------------------------------------------------------------------------------------------------------
+	1. Pros : improves read performance, reduce the load
+	2. Cons : increases complexity , consumes resources
+	
+	3. Caching Strategies : 
+	                      Cache Aside: App (is it in cache) if no then get data from DB(app will get the data and then stores it in cache for next time)
+	                      Read through: App (asks cache is it in there) if Not cache will get the data, store it for next time and then send back the data
+	                      Write Through: App (updates the cache) and then DB is updated
+	                      Write behind:
+    4. Eviction Policies : LRU and LFU
+    5. LRU is faster and cheaper in terms of memory than LFU 
+    6. Redis :(key value Store) supports around 100k+ requests per second on a single node
+    7. Redis : Supports : string, list , set , hash
+               No support for JSON or nested Data
+               
+    8.Caching: (Redis and Memcache can be used)
+	    Cache Invalidation : (i.e. when we want to update any value , how caching works)
+	   . Write through cache : Data is written in cache and database at the same time
+	   . Write -around cache : Data is written in Db only . Cache is marked as invalid .It is written later in cache
+	   . Write- back cache : Data is written in cache only. It is written in Db later
+	   Read heavy system : can use caching
+	   Cache Eviction : LRU is the most used technique, next is LFU
+	   
+   9. @Value("${spring.redis.host}")
+    private String REDIS_HOSTNAME;
+   
+    @Value("${spring.redis.port}")
+    private int REDIS_PORT;                  // Setting up hostname and port for redis. Redis template in spring boot provides many methods
+
+  ----- CACHING -------------------------------------------------------------------------------------------------------------------------------------
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+
+  ----------------------------------------------------------------------------------------------------------------------------------------------------
+  ----- QUEUEs --------------------------------------------------------------------------------------------------------------------------------------
+ 1. There are producers and consumers
+ 2. Common Queues: Kafka, Rabbit MQ, Amaxon SqS, Apache Active MQ
+ 3. Pros: Request Spikes smoothing, buffering
+    Cons: Increases latency, increases system complexity
+ 4. Kafka is a distributed service. Should be deployed in multiple boxes. Queue can process 1 million but we need to think of consumer scaling
+ 
+ 5. Apache Kafka is: //Producer api push data to kafka using "spring boot kafka templates" using the topics. Consumer Api consume data from kafka topics
+	    Scalable
+	    Fault tolerant
+	    A great publish-subscribe messaging system (using kafka topics)
+	    Capable of higher throughput compared with most messaging systems
+	    Highly durable
+	    Highly reliable
+	    High performant
+ 
+ 
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  ----- QUEUEs ----------------------------------------------------------------------------------------------------------------------------------------
+
+
+  --------------------------------------------------------------------------------------------------------------------------------------------------
+  ----- TCP ----------------------------------------------------------------------------------------------------------------------------------------
+  1. Some protocols that work under the hood of tcp : websockets, HTTP
+     TCP : is reliable and error checked but slower . It adds a checksum for each packet sent
+  2. UDP : Mostly used for : Monitoring metrics (like stocks where real time data is a priority), 
+           Video streaming, Gamimg (where a small loss of data packet is not going to effect anything)
+  3. Websockets : Connection is established only once. Real time message delivery to the client. Persistent connection.
+                  More efficient than polling with HTTP. Two way protocol
+  4. gRPC : Remote procedure call : Invoke another service as if it is a local function
+
+  ----- TCP ----------------------------------------------------------------------------------------------------------------------------------------
+  --------------------------------------------------------------------------------------------------------------------------------------------------
+
+  --------------------------------------------------------------------------------------------------------------------------------------------------
+  ----- Concurrency Vs Parallelism -----------------------------------------------------------------------------------------------------------------
+  1. Parallelism : Doing more than one thing at a time
+  2. Concurrency : Providing an illusion of doing more than one thing at a time
+  3. What type of data structure Index is (in SQL table) : B Tree Plus 
+
+  ----- Concurrency Vs Parallelism ----------------------------------------------------------------------------------------------------------------
+  --------------------------------------------------------------------------------------------------------------------------------------------------
+
+  --------------------------------------------------------------------------------------------------------------------------------------------------
+  ----- Sharding -----------------------------------------------------------------------------------------------------------------------------------
+  1. What type of data structure Index is (in SQL table) : B Tree Plus 
+  2. Tenanat based sahrding : data is not evenly distributed . For example india can have huge data as compared to israel(low population)
+  3. Hash based sharding: 
+  4. There can be locater service (shard router) between a app and sharded DB . whose task could be determine the DB in which data will go :
+                   but the shard router may act as single point of failure. So this is not preferred
+  5. Solution for Above Sharding issue : Consistent Hashing
+  
+  6. Sharding: (Other things : Horizontal Sharding , Vertical Sharding, Database partitioning )
+	   Problems:
+	   1. Joins across shards could be very expensive because the data will be pulled out from two db and then will travel over network
+	      for a join
+	   2. In sharded database there should always be master slave model. so that if master fails , slaves could take over
+	      there could be multiple slaves which will be copying the master. Whenever there is a write request , its always 
+	      on the master(the master is the most updated copy). While the slaves continuously poll the master and read from it.
+	      If there is a read request it can distributed across slaves , while if there is write request, it always 
+	      goes to the master.In case the master fails, the slaves choose one master among themselves.
+	      (So, basically it provides single point of failure tolerance)
+
+  7. MultiLevel sharding. Indexing in relational database internally uses B+ tree which gives O(log(n)) insertion and search operation
+  8. Master Slave : Slave can pull data from master either synchronously or aync
+
+  ----- Sharding --------------------------------------------------------------------------------------------------------------------------------------
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+
+  ------------------------------------------------------------------------------------------------------------------------------------------------------
+  ----- Partitioning -----------------------------------------------------------------------------------------------------------------------------------
+
+  1. Sharding : is breaking a big DB into smaller DBs
+  2. Partitioning : is breaking a Large table into smaller tables . So smaller tables means faster queries
+                    smaller indexes can fit into memory
+                    Cons : Joins may be required to fetch data
+  3. Partition : can be achieved by depending on a key
+
+  ----- Partitioning -----------------------------------------------------------------------------------------------------------------------------------
+  ------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+  ----- CAP theorem -----------------------------------------------------------------------------------------------------------------------------------
+
+	1. CAP theorem (Its quite a common question related to compromises around Relational and NoSql Databases) : Cap stands for -->consistency, availability and
+	   partition tolerant. As per this theorem --> When network partition occurs , system cannot be both consistent and highly available    
+	   Conflict Resolution after network is back to normal on CAP theorem :
+	    --> Majority Based
+	    --> Time stamp based
+
+  ----- CAP theorem -----------------------------------------------------------------------------------------------------------------------------------
+  -----------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------ACID---------------------------------------------------------------------------------------------------------------------------------------
+
+1.  ACID : Atomicity, Consistency, Isolation , Durability : A transaction is a single logical unit of work consisting of one or more instructions which accesses
+    and possibly modifies the contents of a database.To maintain the integrity of the database each transaction should be ACID compliant.
+
+    Atomicity : Either all the instructions will succeed or all will fail .
+    Consisteny: DB should be in consistent state before and after the transaction , there should not be any corruption of data, or duplicates 
+                shouldn't be allowed to be committed
+    Isolation : If multiple transactions are running concurrently , then they should not be affected by each other
+    Durability : Changes once committed should persist, even after hardware or software failure
+    All financial transactions should follow ACID.
+    
+    Note : The main reason hash maps are not used for index and BTree is used bcs they have worse performance when finding a range of
+           entries as compared to BTree
+-----------ACID---------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------Difference between Horizontal and Vertical Scaling-----------------------------------------------------------------------------------------
 
 1.Differences between Horizontal & Vertical Scaling :
   Horizontal: 
@@ -12,129 +200,141 @@
   		   Inter process communication no RPC required
   		   Consistent
   		   Hardware Limit
-  		   
- 2.Distributed System:
+-----------Difference between Horizontal and Vertical Scaling-----------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+-----Monoliths and MicroServices ------------------------------------------------------------------------------------------------------------------------
+
+ 1.Distributed System:
  		   Micro Service architecture
  		   Distributed systems (Partitions)
  		   Load Balancer
  		   Decoupling
  		   Logging and Analytics
  		   Extensible
- 
- 3.Load balancing : is how the load is being distributed among different servers:One of the ways for distributing the load 
-   could be using the hasing techniques in which , depending on a particular field , say ID , and a particular hash function 
-   and the no of servers ,server is decided where the request would land. (eg. hashFunction(ID) % no Of servers)
-   
-   This was an example of inconsistent hashing , bcs any addition of a new server , would make the request go to some other
-   server ,because the value of generated hash would be different , this would result in dumping of all the caches 
-   which were already stored on a particular server since for the same ID we would have the same hash value and hence the
-   same server.
-   
-   To the Rescue of above issue is consistent Hashing : 
-   
-4. Monolithic : 
+ 		   
+ 		   
+ 2. Monolithic : 
    1. Suitable for small team
    2. Less Complex
    3. Integration testing is easier
    4. Faster since no network calls are made
    DisAdvantage:
-   1. New developer needs more context to go through everything and understand everything
-   2. Deployment is complex as whole code is deployed again
-   3. Too much responsibility on each server
+	   1. New developer needs more context to go through everything and understand everything
+	   2. Deployment is complex as whole code is deployed again
+	   3. Too much responsibility on each server
+   
+   
+	3. Microservices :
+	   1.Easier to scale (as anything which is used more can be scaled easily)
+	   2.Easier for new team members
+	   3.Parallel development is easy because of loose coupling
+	   Disadvantages:
+         1.Tough to design
 
-5. Microservices :
-   1.Easier to scale (as anything which is used more can be scaled easily)
-   2.Easier for new team members
-   3.Parallel development is easy because of loose coupling
-   Disadvantages:
-   1.Tough to design
+ 4. 3 Guarantees of distributed systems which are required: Consistency, Availability, Partition tolerant   
+ 
 
-6. Sharding: (Other things : Horizontal Sharding , Vertical Sharding, Database partitioning )
-   Problems:
-   1. Joins across shards could be very expensive because the data will be pulled out from two db and then will travel over network
-      for a join
-   2. In sharded database there should always be master slave model. so that if master fails , slaves could take over
-      there could be multiple slaves which will be copying the master. Whenever there is a write request , its always 
-      on the master(the master is the most updated copy). While the slaves continuously poll the master and read from it.
-      If there is a read request it can distributed across slaves , while if there is write request, it always 
-      goes to the master.In case the master fails, the slaves choose one master among themselves.
-      (So, basically it provides single point of failure tolerance)
-      
-7. HTTP : client server protocol
-   XMPP : Peer to peer protocol, this is can used to send the messages from the server to the clients , like we receive 
-   		notifications from the tinder when we get a match
-8.Web socket: these connections remain persistent, if you dont want to use this you can use http with long polling
+-----Monoliths and MicroServices --------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-9.Benefits of NoSql: Joins are expensive in relational databases. Schema is flexible in NoSql as all we care about is 
+
+
+
+-----Database ---------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1.Benefits of NoSql: Joins are expensive in relational databases. Schema is flexible in NoSql as all we care about is 
   json. Inbuilt horizontal partitioning in nosql DBs.
   DisAdvantages:
   1. Not good for loads of updates as consistency is problem since ACID is not guaranteed.
   2. Read is comparatively slower to RDBMS bcs its has to read the whole json to find and return particular sets
   3. Joins are hard bcs it will read all the json like manually and then will try to join the values
  So , Nosql is better for write optimized databases
+
+2. Storage: 
+    Object storage : example amazon s3 for storing images
+    RAID : Redundant array of independent disks, is a way of storing data on multiple hard disks or sdd to protect in case of failures.RAID 5 is most used
+
+
+3. Nosql db --> are more scable and provides higher performance with flexible datamodel unlike fixed tables in relational databases.
+    4 main types : key-value (redis, voldemort), Column oriented(Cassandra), Document based (MongoDb), Graph Based (Neo4j)
+
+4. SQL :When to consider: Lots of data management and BI tools rely on SQL. If you have a flat tabular data model that isn't going to change very often
+        and doesnt't need to scale out.
+        Those with a large ecosystem of SQL skills and tools and numerous existing applications may choose to continue using a relational data mode
+        Cons: Postgres can support replication but more advanced features such as automatic failover must be supported by third party products.
+              Whereas MongoDB’s has in-built self-healing capabilities.
+5. SQL : Can be prefeered where we many small tables and very small data is required sometimes in fragmanet , unlike nosql which stores all document
+         in json format at one place
+
+6. Read heavy : Reads are more efficient in MongoDB's storage engine
+7. Write heavy : Cassandra: It stores data in append only format, so serial writes are done very quickly.
+
+-----Database ---------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+-----SYSTEM Design ----------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. Trie data structure for Google search
+2. Map DS for url shortner
+
+
+
+-----SYSTEM Design ----------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+  		   
+
+ 		   
+ 		   
+
+   
  
- 10. MultiLevel sharding. Indexing in relational database internally uses B+ tree which gives O(log(n)) insertion and search operation
- 11. Slave can pull data from master either synchronously or aync
+
+
+
+   		
+
+
+ 
+ 
  
  12. Relational Database Design :
  
- 13. Apache Kafka is: //Producer api push data to kafka using "spring boot kafka templates" using the topics. Consumer Api consume data from kafka topics
-	    Scalable
-	    Fault tolerant
-	    A great publish-subscribe messaging system (using kafka topics)
-	    Capable of higher throughput compared with most messaging systems
-	    Highly durable
-	    Highly reliable
-	    High performant
+
  
-14. @Value("${spring.redis.host}")
-    private String REDIS_HOSTNAME;
-   
-    @Value("${spring.redis.port}")
-    private int REDIS_PORT;                  // Setting up hostname and port for redis. Redis template in spring boot provides many methods
+
    
 
-15.Caching: (Redis and Memcache can be used)
-    Cache Invalidation : (i.e. when we want to update any value , how caching works)
-   . Write through cache : Data is written in cache and database at the same time
-   . Write -around cache : Data is written in Db only . Cache is marked as invalid .It is written later in cache
-   . Write- back cache : Data is written in cache only. It is written in Db later
-   Read heavy system : can use caching
-   Cache Eviction : LRU is the most used technique, next is LFU
+
    
 16. Consistent Hashing: read something about it
 
-17. Storage: 
-    Object storage : example amazon s3 for storing images
-    RAID : Redundant array of independent disks, is a way of storing data on multiple hard disks or sdd to protect in case of failures.RAID 5 is most used
-   
-18. 3 Guarantees of distributed systems which are required: Consistency, Availability, Partition tolerant   
 
-19. CAP theorem (Its quite a common question related to compromises around Relational and NoSql Databases) : Cap stands for -->consistency, availability and
-    partition tolerant. As per this theorem --> When network partition occurs , system cannot be both consistent and highly available    
-    Conflict Resolution after network is back to normal on CAP theorem :
-    --> Majority Based
-    --> Time stamp based
    
-20. ACID : Atomicity, Consistency, Isolation , Durability : A transaction is a single logical unit of work consisting of one or more instructions which accesses
-    and possibly modifies the contents of a database.To maintain the integrity of the database each transaction should be ACID compliant.
 
-    Atomicity : Either all the instructions will succeed or all will fail .
-    Consisteny: DB should be in consistent state before and after the transaction , there should not be any corruption of data
-    Isolation : If multiple transactions are running concurrently , then they should not be affected by each other
-    Durability : Changes once committed should persist, even after hardware or software failure
-    All financila transactions should follow ACID.
+
+   
+
     
-21. Nosql db --> are more scable and provides higher performance with flexible datamodel unlike fixed tables in relational databases.
-    4 main types : key-value (redis, voldemort), Column oriented(Cassandra), Document based (MongoDb), Graph Based (Neo4j)
 
 22. Architectural patterns : Monolithic, SOA, Microservice
     Difference between SOA and Microservice : Read ??
 
-23. Communication Protocols :
-    --> HTTP
-    --> Long Polling
-    --> Web Sockets
     
 24. Back of the Envelope Calculations :Estimate how many servers we need to serve read requests considering each server is capable of handling 
     7 requests per second. We have to serve a total traffic of 46 Million per day.
@@ -148,19 +348,17 @@
 25. Note : Highly Available systems : Follow the no single point of failure principle
     Note : Systems with high performance : Follow the no bottleneck principle
 
-26. Cache : For deciding the cache : Remember the 80 to 20 rule. That is every day 20% of the data is used for 80% of the time
 
 27. Purging: Purging is the process of freeing up space in the database or of deleting obsolete data that is not required by the system
     A server which runs the purging job can be used to purge the Database
 
-28. Kafka is a distributed service. Should be deployed in multiple boxes. Queue can process 1 million but we need to think of consumer scaling
+
 
 29. Having an index on a particular field makes searching easier in DB on the other hand writing expensive
 
 30. See the micro services design patterns and write something about it : Like Saga pattern ---> in this pattern
     "so some cron jobs will fix those status inconsistencies" if there is a failure cron job will make sure to maintain consistencies
 
-31. There is threshold when you need to move to microservices vs monolith
 
 32. Read replicas for mongodb or postgreSQL
 
