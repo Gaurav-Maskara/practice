@@ -1,30 +1,9 @@
 
 
------------------------Java 8 features ---------------------------------------------------------------------------------------------------------------------
+-------Java 8 ------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
-1. Only Lists and Sets support new methods stream() and parallelStream()
-2. Parallel streams are capable of operating on multiple threads
-3. hm.forEach((i, j) -> System.out.println(i+" "+j)); ---> hm is hash map
-4. A functional interface in Java is an interface that contains only a single abstract (unimplemented) method
-5. Since in java8 interfaces can have default and static methods , to avoid diamond problem, its necessary 
-   that the implementing class should override the method , if two interfaces have the same name default methods
-
-6. Since functional interfaces have only one method, lambda expressions can easily provide the method implementation. 
-   We just need to provide method arguments and business logic
-   
-   Runnable r = new Runnable(){
-            @Override
-            public void run() {
-                System.out.println("My Runnable");
-            }};
-
-    Runnable r1 = () -> {
-            System.out.println("My Runnable");
-    };
-    
-7. Lambda expressions are a means to create anonymous classes of functional interfaces easily.
-
-8. Improvements in the java Date and Time Api :
+1. Improvements in the java Date and Time Api :
    Why was it needed :
    --> earlier Date classes are mutable, so they are not thread-safe.
    --> earlier Date class doesn't provide internationalization, there is no time zone support. 
@@ -44,8 +23,6 @@
    --> Instant class is used to work with machine readable time format. Instant stores date time in unix timestamp.
        Instant timestamp = Instant.now();
        
-9. If the interface is annotated with @FunctionalInterface annotation and 
-   we try to have more than one abstract method, it throws compiler error.
    
 10.Java 8 Collections API has been rewritten and new Stream API is introduced that uses a lot of functional interfaces. 
    Java 8 has defined a lot of functional interfaces in java.util.function package. 
@@ -170,9 +147,10 @@
     Should a return a clone of the object whenever asked for. 
     
     
--------Design Patterns---------------------------------------------------------------------------------------------------------------------------------------
+-------Design Patterns ----------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------- 
     
-23. Design patterns : Creational , Structural , Behavioral
+1. Design patterns : Creational , Structural , Behavioral
     
     Creational--> Factory --> define an interface or abstract class for creating an object but let the subclasses decide which class to instantiate
                   Abstract Factory -->
@@ -186,13 +164,14 @@
                    Template pattern --> just define the skeleton of a function in an operation, deferring some steps to its subclasses
                                         It is very common technique for reusing the code.This is only the main benefit of it.
     
--------Design Patterns---------------------------------------------------------------------------------------------------------------------------------------
- 
+-------Design Patterns ----------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------- 
 
 
--------Streams-----------------------------------------------------------------------------------------------------------------------------------------------
+-------Streams ------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------
 
-24.Map<String, Long> count =  al.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+1.Map<String, Long> count =  al.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
                               al.stream().map(a -> a.toUpperCase()).collect(Collectors.toList());
                               al.stream().filter(a -> a.startsWith("abc")).filter(a -> a.endsWith("cc")).collect(Collectors.toList());
 	                          al.stream().filter(a -> a.startsWith("r")).forEach(a -> System.out.println(a + " "));
@@ -200,7 +179,7 @@
                               
                               
                               
-26. Iterating Over Map In Java 8 :
+2. Iterating Over Map In Java 8 :
 	    --> for(Entry<String, String> entry : map.entrySet()) {
 	        	System.out.println(entry.getKey() + " " + entry.getValue());
 	        }
@@ -209,16 +188,37 @@
 	    
 	    --> map.entrySet().stream().forEach( e -> System.out.println(e.getKey() + " " + e.getValue()));
 	    
+3. Only Lists and Sets support new methods stream() and parallelStream()
+4. Parallel streams are capable of operating on multiple threads
+5. hm.forEach((i, j) -> System.out.println(i+" "+j)); ---> hm is hash map
+6. A functional interface in Java is an interface that contains only a single abstract (unimplemented) method
+7. Since in java8 interfaces can have default and static methods , to avoid diamond problem, its necessary 
+   that the implementing class should override the method , if two interfaces have the same name default methods
+8. Since functional interfaces have only one method, lambda expressions can easily provide the method implementation. 
+   We just need to provide method arguments and business logic
+   
+   Runnable r = new Runnable(){
+            @Override
+            public void run() {
+                System.out.println("My Runnable");
+            }};
 
+    Runnable r1 = () -> {
+            System.out.println("My Runnable");
+    };
+    
+7. Lambda expressions are a means to create anonymous classes of functional interfaces easily.
+8. If the interface is annotated with @FunctionalInterface annotation and if we try to have more than one abstract method, it throws compiler error.
                               
--------Streams-----------------------------------------------------------------------------------------------------------------------------------------------
- 
+-------Streams ------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
--------Concurrency ------------------------------------------------------------------------------------------------------------------------------------------
+-----Concurrency ----------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-25. Locks : 
+1. Locks : 
      private ReentrantReadWriteLock  lock = new ReentrantReadWriteLock();
      lock.writeLock().lock();
      lock.writeLock().unlock();
@@ -236,16 +236,39 @@
        
        
        
-26. ConcurrentHashMap --> Multiple threads basically 32 in nature (since its divided into 32 buckets at start) can work on it concurrently.
+2. ConcurrentHashMap --> Multiple threads basically 32 in nature (since its divided into 32 buckets at start) can work on it concurrently.
                           A particular section out of the 32 buckets is locked during a read write operation
                           
     CopyOnWriteArrayList --> For each update operation a cloned copy of the same is created which is later synchronized by the JVM.
                              Since cloning is costly , its preferred mostly on read heavy
                              Its iterator (eithe iterator or listiterator) cannot perform a remove operation and will throw UnsupportedOperationException
                              It won't throw however , ConcurrentModificationException
+                             
+                             
+3. Yield : A yield() method is a static method of Thread class and it can stop the currently executing thread and will give a chance 
+   to other waiting threads of the same priority. If in case there are no waiting threads or if all the waiting 
+   threads have low priority then the same thread will continue its execution
        
--------Concurrency ------------------------------------------------------------------------------------------------------------------------------------------
+-----Concurrency ------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
+       
+-----SOLID Design Principles ------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. Single Responsibility
+2. Open for Extension Closed for Modification
+3. Liskov Substitution
+4. Interface Segregation
+5. Dependency Inversion
+
+
+
+https://www.baeldung.com/solid-principles
+       
+-----SOLID Design Principles ------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -255,8 +278,8 @@
 
  
     
------------------------------------------------------------------------------------------------------------------
-SQL: 
+-----SQL -------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 1.  Self Join Syntax: 
     SELECT column-names
@@ -307,8 +330,8 @@ Question : Match customers that are from
     
     
     
-    
-    
+-----SQL -----------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------
     
     
     
