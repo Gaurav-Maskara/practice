@@ -281,6 +281,38 @@ https://www.baeldung.com/solid-principles
 -----SQL -------------------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+1. Char Varchar2 --> both can store char and strings but varchar2 can store variable length string
+   eg: char(10) can only store 10 only not even less or more. whereas varchar2(10) can store 6,8,2 any of these.
+
+2. Delete(DML) --> you can roll back data after delete on the other hand you cannot roll-back in case of Truncate(DDL)
+3. Delete is slower than Truncate
+4. Unique constraint --> Null can be there
+5. Primary --> null not allowed
+
+6. Indexes--> # One table can only have one clustered index whereas it can have many non clustered index.
+              # Clustered index is used for easy retrieval of data from the database and its faster whereas reading from non clustered index is relatively 
+                slower. 
+              # Clustered indexes only sort tables (based on the column which is set as clustered index). Therefore, they do not consume extra storage. 
+                Non-clustered indexes are stored in a separate place from the actual table claiming more storage space. 
+	             
+   Clustered Index --> A clustered index defines the order in which data is physically stored in a table. 
+                       Table data can be sorted in only way, therefore, there can be only one clustered index per table.
+                       (An index that is created on more than one column is called “composite index”. )
+   Non Clustered Index --> A non-clustered index doesn’t sort the physical data inside the table. 
+                           In fact, a non-clustered index is stored at one place and table data is stored in another place.
+                           (  When a query is issued against a column on which the index is created, the database will 
+                              first go to the index and look for the address of the corresponding row in the table. 
+                              It will then go to that row address and fetch other column values. 
+                              It is due to this additional step that non-clustered indexes are slower than clustered indexes. )
+                           
+                           
+
+Note # --> to see all the indexes on a table
+           USE schooldb  --- database name
+           EXECUTE sp_helpindex student --- table name
+
+
+
 1.  Self Join Syntax: 
     SELECT column-names
       FROM table-name T1 JOIN table-name T2
