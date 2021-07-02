@@ -209,6 +209,8 @@
     
 7. Lambda expressions are a means to create anonymous classes of functional interfaces easily.
 8. If the interface is annotated with @FunctionalInterface annotation and if we try to have more than one abstract method, it throws compiler error.
+9. 	hm.forEach((k, v) -> System.out.println(k +v)); //iterate over map in java 8 using lambdas
+    map.entrySet().stream().forEach(e -> System.out.println(e.getKey() + ":" + e.getValue()));
                               
 -------Streams ------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -323,6 +325,31 @@ Note # --> to see all the indexes on a table
            USE schooldb  --- database name
            EXECUTE sp_helpindex student --- table name
 
+7. Triggers --> The Trigger (its a procedure) allows us to execute a batch of SQL code when table event occurs 
+                (INSERT, UPDATE or DELETE commands are executed against a specific table).
+
+8. Order of SQL Select -->  SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY
+9. A table can have multiple unique keys but only a single primary key 
+   A unique key can be null nut not a primary key
+10.Composite Primary Key : A primary key created on more than one column
+
+11. Write an SQL query to fetch all the Employees who are also managers from the EmployeeDetails table.
+Hint : we need to use self join here by using aliases 'E' and 'M'
+       select distinct E.fullname from employeedetails e inner join employeedetails m on e.empid = m.managerid;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 1.  Self Join Syntax: 
@@ -367,8 +394,7 @@ Question : Match customers that are from
 4. SELECT COUNT (DISTINCT Country)
    FROM Supplier;
    
-5. 	hm.forEach((k, v) -> System.out.println(k +v)); //iterate over map in java 8 using lambdas
-    map.entrySet().stream().forEach(e -> System.out.println(e.getKey() + ":" + e.getValue()));
+
     
 6. 
     
