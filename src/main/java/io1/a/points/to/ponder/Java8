@@ -314,7 +314,7 @@ https://www.baeldung.com/solid-principles
                        (An index that is created on more than one column is called “composite index”. )
    Non Clustered Index --> A non-clustered index doesn’t sort the physical data inside the table. 
                            In fact, a non-clustered index is stored at one place and table data is stored in another place.
-                           (  When a query is issued against a column on which the index is created, the database will 
+                           (When a query is issued against a column on which the index is created, the database will 
                               first go to the index and look for the address of the corresponding row in the table. 
                               It will then go to that row address and fetch other column values. 
                               It is due to this additional step that non-clustered indexes are slower than clustered indexes. )
@@ -337,66 +337,31 @@ Note # --> to see all the indexes on a table
 Hint : we need to use self join here by using aliases 'E' and 'M'
        select distinct E.fullname from employeedetails e inner join employeedetails m on e.empid = m.managerid;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1.  Self Join Syntax: 
-    SELECT column-names
-      FROM table-name T1 JOIN table-name T2
-    WHERE condition
-    
-Question : Match customers that are from
-           the same city and country 
-           
-           
-    SELECT B.FirstName AS FirstName1, B.LastName AS LastName1, 
-           A.FirstName AS FirstName2, A.LastName AS LastName2, 
-           B.City, B.Country
-    FROM Customer A JOIN Customer B
-        ON A.Id <> B.Id
-        AND A.City = B.City 
-        AND A.Country = B.Country
-     ORDER BY A.Country
+12.  Write an SQL query to fetch duplicate records from EmployeeDetails 
+     select fullname, managerid, dateofjoining , city , count(*)
+     from employee details group by 
+     fullname, managerid, dateofjoining, city having count(*) > 1;
+     (Note: In group by its necessary to have all the colums for group by)
      
-     
-2. SQL Subquery Example :
-   
-   Problem: List products with order
-   quantities greater than 100. 
+13. Write an SQL query to create an empty table with the same structure as some other table.
+    create table newtable select * from employeesalary where 1 = 0;
     
-    SELECT ProductName
-    FROM Product 
-    WHERE Id IN (SELECT ProductId 
-                    FROM OrderItem
-                   WHERE Quantity > 100)
+14. Write an SQL query to find the nth highest salary from table.
+    select top 1 from (select top n salary from employeesalary order by salary desc) order by salary asc; 
     
     
-    
-3. Question :List the top 10 most expensive products ordered by price 
-    
-    SELECT TOP 10 Id, ProductName, UnitPrice, Package
-    FROM Product
-    ORDER BY UnitPrice DESC
-    
-    
-4. SELECT COUNT (DISTINCT Country)
-   FROM Supplier;
-   
+15. Write an SQL query to fetch the departments that have less than five people in it.
+    select department , count(worker_id) as 'No of Workers' from worker group by department having count(worker_id) < 5; 
 
-    
-6. 
+
+
+
+
+
+
+
+
+
     
     
     
