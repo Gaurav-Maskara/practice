@@ -272,7 +272,11 @@
          in json format at one place
 
 6. Read heavy : Reads are more efficient in MongoDB's storage engine
-7. Write heavy : Cassandra: It stores data in append only format, so serial writes are done very quickly.
+7. Write heavy : Cassandra (column oriented): It stores data in append only format, so serial writes are done very quickly.
+                 Good for : heavy write workloads
+                 Data distribution across multiple data centres and cloud availability zones i.e. is the users are far separated
+                 Bad for : ACID. To achieve high availability cassandra sacrifices strong consistency. Bad for update(as stale data might get read up till it gets deleted)
+                 Example : Analytics, Messaging Systems, Ecommerce
 
 -----Database ---------------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
