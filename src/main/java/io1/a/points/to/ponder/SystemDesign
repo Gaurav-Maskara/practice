@@ -1,6 +1,6 @@
  
- -----------------------------------------------------------------------------------------------------------------------------------------------------
- ------Load Balancer ---------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+------Load Balancer ---------------------------------------------------------------------------------------------------------------------------------
  
  1.Load balancing : is how the load is being distributed among different servers:One of the ways for distributing the load 
    could be using the hashing techniques in which , depending on a particular field , say ID , and a particular hash function 
@@ -21,11 +21,11 @@
       Note: Load balancer is a machine that acts as a reverse proxy , for each request it picks up a server based on its strategy.
             Load balancers make the system more scalable and resilient .
    
-  ------Load Balancer ---------------------------------------------------------------------------------------------------------------------------------
-  -----------------------------------------------------------------------------------------------------------------------------------------------------
+------Load Balancer ---------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------
 
-  -----------------------------------------------------------------------------------------------------------------------------------------------------
-  ------CDN -------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+------CDN -------------------------------------------------------------------------------------------------------------------------------------------
 
   1. CDN is comparatively very cheaper compared to keeping servers everywhere
   2. Used for keeping static content like --> 	images, html, css, javascript
@@ -34,11 +34,11 @@
      Pull : It pulls when a request arrives from a user but it doesn't have it and then sync itself
   4. In short --> it decreases costs, decreases latency, increases complexity of system
 
-  -----CDN --------------------------------------------------------------------------------------------------------------------------------------------
-  -----------------------------------------------------------------------------------------------------------------------------------------------------
+-----CDN --------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------
 
-  -----------------------------------------------------------------------------------------------------------------------------------------------------
-  ----- CACHING ---------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+----- CACHING ---------------------------------------------------------------------------------------------------------------------------------------
 	1. Pros : improves read performance, reduce the load
 	2. Cons : increases complexity , consumes resources
 	
@@ -67,11 +67,11 @@
     @Value("${spring.redis.port}")
     private int REDIS_PORT;                  // Setting up hostname and port for redis. Redis template in spring boot provides many methods
 
-  ----- CACHING -------------------------------------------------------------------------------------------------------------------------------------
-  ---------------------------------------------------------------------------------------------------------------------------------------------------
+----- CACHING -------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------
 
-  ---------------------------------------------------------------------------------------------------------------------------------------------------
-  ----- QUEUEs --------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------
+----- QUEUEs --------------------------------------------------------------------------------------------------------------------------------------
  1. There are producers and consumers
  2. Common Queues: Kafka, Rabbit MQ, Amaxon SqS, Apache Active MQ
  3. Pros: Request Spikes smoothing, buffering
@@ -88,12 +88,12 @@
 	    High performant
  
  
-  --------------------------------------------------------------------------------------------------------------------------------------------------
-  ----- QUEUEs -------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------
+----- QUEUEs -------------------------------------------------------------------------------------------------------------------------------------
 
 
-  --------------------------------------------------------------------------------------------------------------------------------------------------
-  ----- TCP ----------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------
+----- TCP ----------------------------------------------------------------------------------------------------------------------------------------
   1. Some protocols that work under the hood of tcp : websockets, HTTP
      TCP : is reliable and error checked but slower . It adds a checksum for each packet sent
   2. UDP : Mostly used for : Monitoring metrics (like stocks where real time data is a priority), 
@@ -102,20 +102,20 @@
                   More efficient than polling with HTTP. Two way protocol
   4. gRPC : Remote procedure call : Invoke another service as if it is a local function
 
-  ----- TCP ----------------------------------------------------------------------------------------------------------------------------------------
-  --------------------------------------------------------------------------------------------------------------------------------------------------
+----- TCP ----------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------
 
-  --------------------------------------------------------------------------------------------------------------------------------------------------
-  ----- Concurrency Vs Parallelism -----------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------
+----- Concurrency Vs Parallelism -----------------------------------------------------------------------------------------------------------------
   1. Parallelism : Doing more than one thing at a time
   2. Concurrency : Providing an illusion of doing more than one thing at a time
   3. What type of data structure Index is (in SQL table) : B Tree Plus 
 
-  ----- Concurrency Vs Parallelism ----------------------------------------------------------------------------------------------------------------
-  -------------------------------------------------------------------------------------------------------------------------------------------------
+----- Concurrency Vs Parallelism ----------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
-  -------------------------------------------------------------------------------------------------------------------------------------------------
-  ----- Sharding ----------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------
+----- Sharding ----------------------------------------------------------------------------------------------------------------------------------
   1. What type of data structure Index is (in SQL table) : B Tree Plus 
   2. Tenanat based sahrding : data is not evenly distributed . For example india can have huge data as compared to israel(low population)
   3. Hash based sharding: 
@@ -137,11 +137,11 @@
   7. MultiLevel sharding. Indexing in relational database internally uses B+ tree which gives O(log(n)) insertion and search operation
   8. Master Slave : Slave can pull data from master either synchronously or aync
 
-  ----- Sharding -------------------------------------------------------------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------------------------------------------------------------------------
+----- Sharding -------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------
 
-  ----------------------------------------------------------------------------------------------------------------------------------------------------
-  ----- Partitioning ---------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------
+----- Partitioning ---------------------------------------------------------------------------------------------------------------------------------
 
   1. Sharding : is breaking a big DB into smaller DBs
   2. Partitioning : is breaking a Large table into smaller tables . So smaller tables means faster queries
@@ -149,20 +149,29 @@
                     Cons : Joins may be required to fetch data
   3. Partition : can be achieved by depending on a key
 
-  ----- Partitioning -----------------------------------------------------------------------------------------------------------------------------------
-  ------------------------------------------------------------------------------------------------------------------------------------------------------
+----- Partitioning -----------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------
 
-  ------------------------------------------------------------------------------------------------------------------------------------------------------
-  ----- CAP theorem ------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------
+----- CAP theorem ------------------------------------------------------------------------------------------------------------------------------------
 
 	1. CAP theorem (Its quite a common question related to compromises around Relational and NoSql Databases) : Cap stands for -->consistency, availability and
 	   partition tolerant. As per this theorem --> When network partition occurs , system cannot be both consistent and highly available    
 	   Conflict Resolution after network is back to normal on CAP theorem :
 	    --> Majority Based
 	    --> Time stamp based
+	    
+	2. Consistency: All nodes in the cluster have consistent data and a read request returns the most recent write from any node.
+	
+	Note : Note that the consistency definitions in CAP Theorem and ACID Transactions are different. 
+	       ACID consistency is about data integrity (data is consistent w.r.t. relations and constraints after every transaction). 
+	       CAP is about the state of all nodes being consistent with each other at any given time.
+	       
+	       CAP Tradeoffs: SQL DBs prioritize consistency over everything else. 
+	       But NoSQL datastores typically prioritize availability and partition tolerance (horizontal scale) and offer eventual consistency.
 
-  ----- CAP theorem ----------------------------------------------------------------------------------------------------------------------------------
-  ----------------------------------------------------------------------------------------------------------------------------------------------------
+----- CAP theorem ----------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 -----------ACID---------------------------------------------------------------------------------------------------------------------------------------
@@ -277,6 +286,59 @@
                  Data distribution across multiple data centres and cloud availability zones i.e. is the users are far separated
                  Bad for : ACID. To achieve high availability cassandra sacrifices strong consistency. Bad for update(as stale data might get read up till it gets deleted)
                  Example : Analytics, Messaging Systems, Ecommerce
+                 
+   How to choose A Database :          
+8. BASE : Like ACID in RDBMS: BASE is for Nosql : 
+	          Basic Availability :Data is available for most of the times
+	          Soft State : Replicas are not consistent all the time
+	          Eventual Consistency : Data will become consistent in future , but no guarantee when
+          The BASE system allow horizontal scaling , fault tolerance , and high availability at the cost of Consistency
+          (So if the app requires high availability and scability , a NoSql DB built on Base properties would be suitable)
+          
+          
+   NoSql : Semi Structured or Unstructured data/ Flexible schema
+           No complex queries or stored procedures or views
+           High velocity transactions
+           Large volume of data (in Tb ranges)
+           Requires distributed computing and storage
+           No data warehouse , analytics or BI use case
+           
+   RDBMS : ACID transactions
+           Complex queries or stored procedures or views
+           Migration to another Db without change into application logic
+           Data analytics , warehouse or BI use case
+
+
+9. CA : Choose RDBMS
+   CP : Redis (K:V), MongoDb (Doc store), HBase(Col Orineted)
+   AP : Cassandra (Col oriented), Couchbase (Doc store)
+   
+   
+   Choose K:V Stores if:
+	    Simple schema
+	    High velocity read/write with no frequent updates
+	    High performance and scalability
+	    No complex queries involving multiple keys or joins
+
+   Choose Document Stores if:
+	    Flexible schema with complex querying
+	    JSON/BSON or XML data formats
+	    Leverage complex Indexes (multikey, geospatial, full text search etc)
+	    High performance and balanced R:W ratio
+
+   Choose Column-Oriented Database if: (its a 2D versioned key value)
+	    High volume of data
+	    Extreme write speeds with relatively less velocity reads
+	    Data extractions by columns using row keys
+	    No ad-hoc query patterns, complex indices or high level of aggregations
+	    
+   Choose Graph Database if:
+	    Applications requiring traversal between data points
+	    Ability to store properties of each data point as well as relationship between them
+	    Complex queries to determine relationships between data points
+	    Need to detect patterns between data points
+	    
+ 10. Link : https://towardsdatascience.com/datastore-choices-sql-vs-nosql-database-ebec24d56106 (see the cheat sheet at the end)
 
 -----Database ---------------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
