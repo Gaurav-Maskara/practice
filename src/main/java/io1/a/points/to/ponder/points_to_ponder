@@ -54,7 +54,10 @@ LEARNING: You have read before, time taken by String is much more as compared to
 
 32. Arrays.toString(arr) ----> to print the contents of an array
 
-33. inner class, static inner class, anonymous inner class
+33. In recursion if you have to call again , use ++i or i+1 and NEVER EVER i++ bcs the later 
+    sends the value and increments it later.
+    
+34. BitSet in java can be used if there is memory constraint instead of using boolean[] arr = new boolean[n];
 
 
 
