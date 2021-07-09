@@ -345,16 +345,46 @@
 
 
 
------SYSTEM Design ----------------------------------------------------------------------------------------------------------------------------------------
+-----Architecture Patterns and Questionns -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1.Single Tier Application -- Presentation, Business, Data Access Layer in a single software package. Eg. MP3 player, MS Office
+2.Two Tier Application -- Client Application & Database (client system sends the request and the server system processes the request and sends back to client)
+3.Three Tier Application (Aka web based app) --
+4.N-Tier -- Distributed Application
+5. Trade offs in Microservice Architecture :
+   # Availability
+   # Performance
+   # Consistency
+   # Speed
+   # Composability
+   # Compute
+   # Scability
+   # Marginality
+   # Partition Tolerance
+   
+6. Ajax Polling : It means it sends a request to the server in a defined interval of time. The problem with this approach is it would cause a lot of useless
+                  requests since there would not be response for every request
+7. Ajax Long Polling : It means that the client sends a request to the server and the server waits for the new data to be available before it responds
+
+
+
+
+
+
+
+
 
 1. Trie data structure for Google search
 2. Map DS for url shortner
 
 
 
------SYSTEM Design ----------------------------------------------------------------------------------------------------------------------------------------
+-----Architecture Patterns and Questionns -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 
 
