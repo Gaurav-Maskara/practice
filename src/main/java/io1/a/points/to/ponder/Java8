@@ -229,8 +229,8 @@
      lock.lock();
      lock.unlock();	
        
-  ThreadLocal<Integer> threadLocalCounter = new ThreadLocal<Integer>();
-  threadLocalCounter.set(threadLocalCounter.get().intValue() + 1);     
+    ThreadLocal<Integer> threadLocalCounter = new ThreadLocal<Integer>();
+    threadLocalCounter.set(threadLocalCounter.get().intValue() + 1);     
   
      private static AtomicReference<String> atomicReference = new AtomicReference<String>("Hello Ji");
      
@@ -353,17 +353,6 @@ Hint : we need to use self join here by using aliases 'E' and 'M'
 15. Write an SQL query to fetch the departments that have less than five people in it.
     select department , count(worker_id) as 'No of Workers' from worker group by department having count(worker_id) < 5; 
 
-
-
-
-
-
-
-
-
-
-    
-    
     
 -----SQL -----------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------
