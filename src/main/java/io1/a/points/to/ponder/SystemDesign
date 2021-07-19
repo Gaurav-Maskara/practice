@@ -372,11 +372,42 @@
 7. Ajax Long Polling : It means that the client sends a request to the server and the server waits for the new data to be available before it responds
 
 
+8. How can the server keep track of all the opened connection to redirect messages to the users efficiently? 
+	    The server can maintain a hash table, where “key” would be the UserID and “value” would
+		be the connection object. So whenever the server receives a message for a user, it looks up that user in
+		the hash table to find the connection object and sends the message on the open request.
+		
+9. How many chat servers we need? 
+	Let’s plan for 500 million connections at any time. 
+	Assuming a modern server can handle 50K concurrent connections at any time, we would need 10K such servers.
+	
+10. How the chat server can maintain an ordering of the message ?
+    # there could be two ways possible for it ..first to use the time stamp but it can have issues
+    # second we can use the sequence numbers to determine the ordering of the messages
 
 
-
-
-
+11. FB Messenger --> HBase (CP is required with huge data and small updates)
+    url shortening --> Cassandra
+    PasteBin --> Metadata (sql), S3(for object storage)
+    Instagram --> SQL(Metadata), S3 (for images/objects)
+    Twitter --> memcache(since it can store the whole tweet object)
+    Youtube/Netflix --> Each uploaded video will be pushed to a processing queue to be de-queued later for encoding, thumbnail generation and storage
+                        Video Metadata --> MySql
+                        Popular videso can be moved to CDN
+    TypeHead Suggestion --> Since we have to suggest in minimun latency ..we cannot store data in some database . We need to store our indexes in memory
+                            in a highly efficient data structure
+                            Data Structure --> Trie
+    
+    
+    
+    
+12. Read Requests 
+    Write Requests
+    Read Data 
+    Write Data
+    Caching / PerDay
+    Data / 5 years
+    DB Type & Object Storage
 
 
 1. Trie data structure for Google search
