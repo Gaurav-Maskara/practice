@@ -324,8 +324,8 @@ JPA:
 																								    NativeQuery : SQL queries are written here
 	 
 
-6. If course table contains passport_id then course table is said to be owning the relationship , otherwise
-     if passport table contains the student_if then passport table is called to be owning the relationship
+6. If student table contains passport_id then student table is said to be owning the relationship , otherwise
+     if passport table contains the student_id then passport table is called to be owning the relationship
 	 So we use the above thing when we decide to write the 'oneToOne' in object classes
 	 
 	 Here in above scenario, if only student is owning  the relationship then we won't be able to fetch the passport details directly unless we fetch the student. So to solve this we need to define bidirectional one to one mapping but if we define that then there will be duplicate data in second table . 
@@ -341,7 +341,7 @@ JPA:
 	 Note : if you haven't written mappedBy="passport" in passport class , both of the tables would have become owning table resulting in duplicate data
 	 Note : In short mappedBy is used on the non owning Table class i.e. Other table will have the id column in their table
 	  
-7. Entity manager and persistence context are JPA speification so obviously it will be present in Hibernate too
+7. Entity manager and persistence context are JPA specification so obviously it will be present in Hibernate too
    Session and session factory is related to Hibernate (i.e. extra added functionality from Hibernate)
 	 
 8. @DirtiesContext --- JUnit to rollback the data to the state it was before we started
