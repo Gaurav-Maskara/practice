@@ -161,8 +161,8 @@
     
     
     
--------Memory Management -------------------------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------------------------------------------------------
+-------Memory Management --------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------
     
     
 -------Design Patterns ----------------------------------------------------------------------------------------------------------------------------------
@@ -256,8 +256,8 @@
      lock.lock();
      lock.unlock();	
        
-  ThreadLocal<Integer> threadLocalCounter = new ThreadLocal<Integer>();
-  threadLocalCounter.set(threadLocalCounter.get().intValue() + 1);     
+    ThreadLocal<Integer> threadLocalCounter = new ThreadLocal<Integer>();
+    threadLocalCounter.set(threadLocalCounter.get().intValue() + 1);     
   
      private static AtomicReference<String> atomicReference = new AtomicReference<String>("Hello Ji");
      
@@ -296,8 +296,8 @@
 
 https://www.baeldung.com/solid-principles
        
------SOLID Design Principles ------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----SOLID Design Principles -----------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -319,8 +319,8 @@ https://www.baeldung.com/solid-principles
 
  
     
------SQL -------------------------------------------------------------------------------------------------------------------------------------------------
-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----SQL ------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 1. Char Varchar2 --> both can store char and strings but varchar2 can store variable length string
    eg: char(10) can only store 10 only not even less or more. whereas varchar2(10) can store 6,8,2 any of these.
@@ -342,9 +342,9 @@ https://www.baeldung.com/solid-principles
    Non Clustered Index --> A non-clustered index doesn’t sort the physical data inside the table. 
                            In fact, a non-clustered index is stored at one place and table data is stored in another place.
                            (When a query is issued against a column on which the index is created, the database will 
-                              first go to the index and look for the address of the corresponding row in the table. 
-                              It will then go to that row address and fetch other column values. 
-                              It is due to this additional step that non-clustered indexes are slower than clustered indexes. )
+                           first go to the index and look for the address of the corresponding row in the table. 
+                           It will then go to that row address and fetch other column values. 
+                           It is due to this additional step that non-clustered indexes are slower than clustered indexes. )
                            
                            
 
@@ -379,6 +379,7 @@ Hint : we need to use self join here by using aliases 'E' and 'M'
     
 15. Write an SQL query to fetch the departments that have less than five people in it.
     select department , count(worker_id) as 'No of Workers' from worker group by department having count(worker_id) < 5; 
+<<<<<<< HEAD
 
 
 16. Find the lowest salary in each department from employees table
@@ -390,8 +391,68 @@ Hint : we need to use self join here by using aliases 'E' and 'M'
 
 
 
+=======
+>>>>>>> branch 'master' of https://github.com/Gaurav-Maskara/practice.git
     
     
+16. Write an sql query to display departments that have more than 2 employees?
+    Select dept_name, count(emp_id) from employees group by dept_name having count(emp_id) > 2;
+    
+    
+17. Employees joined before april 2010 and after may 2005 
+    select * from employees where doj > '2005-05-31' and doj < '2010-03-31';
+    
+18. Find employee with the third highest salary 
+    select * from (select * from employees order by salary desc limit 3) order by salary asc limit 1;
+    
+19. Print all the alternate records in a table
+    select * from employees where emp_id % 2 = 0;
+    
+20. Write an SQl query to fetch all the duplicate rows in a table 
+    select * , count(*) from employees group by emp_id having count(*) > 1;
+    select e_id, name, age, count(*) as dup_count from employees group by e_id, name, age, having count(e_id) >1 and count(name) > 1 and count(age) >1;
+    
+21. How Self join works 
+    (Write SQL to return the name of the manager for each employee in the same row)
+    select e.emp_id, e.emp_name, e.manager_id, m.emp_name, as manager_name from emp_manager as e join emp_manager as m ON e.manager_id = m.emp_id;
+    
+    
+22. Write Sql to fetch list of employees with same salary 
+    Select distinct e.emp_id, e.emp_name, e.salary from employees e, employees e1 where e.salary = e1.salary and e.empid != e1.emp_id;
+
+
+23. Given a num1 table, write a query to find the sum of all positive values and the negative values .
+    select sum(case when num_int > 0 then num_int else 0 ) as sum_pos, sum(case when num_int < 0 then num_int else 0 ) as sum_neg from num1;
+    
+    
+24. Difference between Primary and Foreign Key
+    Primary key --> Uniquely identify a record in a table, can't accept null, only one primary key in a table
+    Foreign key --> Field in a table that is primary key in another table, can't accept null, more than one foreign key in a table
+    
+    
+25. Given two tables A and B , write a query to fetch values in table B that are not present in A.
+    select id from B LEFT Join A on B.id = A.id where A.id is Null;
+    
+    
+26. Northwind : Give all the customers who don't have any order.
+    select customerid from customers where customerid not in (select customerid from orders);
+    
+27. Northwind: using the orders table , find all the month-end orders
+    select employeeid , orderid, orderdate from orders where orderdate = EOMONTH(OrderDate) order by EmployeeId, OrderId;
+    
+28. Northwind : Find the top 5 countries with the highest freight charges in the year
+    select top 5 shipcountry, avg(freight) as average_freight from orders where year(orderdate) = 1997
+    group by shipcountry order by average freight desc;
+    
+    
+29. Northwind: Find how many no of products each category has
+    Select categoryname, count(*) as total_products from products as p inner join Categories as c on p.CategoryId = c.CategoryId group by CategoryName
+    order by count(*) desc;
+    
+30. Northwind: Find the list of late orders for all the employees
+    select e.employeeid, firstname, count(*) as late_orders from orders as o inner join Employees as e 
+    on e.employeeid = o.employeeid where requireddate <= ShippedDate
+    group by e.employeeid , e.firstname order by late_orders desc;
     
 -----SQL -----------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------
