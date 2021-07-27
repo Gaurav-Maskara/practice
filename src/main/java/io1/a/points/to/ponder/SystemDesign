@@ -20,6 +20,10 @@
       
       Note: Load balancer is a machine that acts as a reverse proxy , for each request it picks up a server based on its strategy.
             Load balancers make the system more scalable and resilient .
+            
+
+2. Reverse Proxy --> a reverse proxy is a type of proxy server where the servers return resources to the client 
+                     where it would appear to the network that it originated from the reverse proxy server itself.
    
 ------Load Balancer ---------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -278,7 +282,7 @@
         and doesnt't need to scale out.
         Those with a large ecosystem of SQL skills and tools and numerous existing applications may choose to continue using a relational data mode
         Cons: Postgres can support replication but more advanced features such as automatic failover must be supported by third party products.
-              Whereas MongoDB’s has in-built self-healing capabilities.
+              Whereas MongoDBâ€™s has in-built self-healing capabilities.
 5. SQL : Can be prefeered where we many small tables and very small data is required sometimes in fragmanet , unlike nosql which stores all document
          in json format at one place
 
@@ -373,12 +377,12 @@
 
 
 8. How can the server keep track of all the opened connection to redirect messages to the users efficiently? 
-	    The server can maintain a hash table, where “key” would be the UserID and “value” would
+	    The server can maintain a hash table, where â€œkeyâ€� would be the UserID and â€œvalueâ€� would
 		be the connection object. So whenever the server receives a message for a user, it looks up that user in
 		the hash table to find the connection object and sends the message on the open request.
 		
 9. How many chat servers we need? 
-	Let’s plan for 500 million connections at any time. 
+	Letâ€™s plan for 500 million connections at any time. 
 	Assuming a modern server can handle 50K concurrent connections at any time, we would need 10K such servers.
 	
 10. How the chat server can maintain an ordering of the message ?
@@ -412,6 +416,19 @@
 
 1. Trie data structure for Google search
 2. Map DS for url shortner
+
+
+
+
+
+
+
+# Amazon: 
+FR --> Search , cart/wish list / checkout / view orders
+NFR --> Low latency, High Availability, High Consistency
+
+
+
 
 
 
@@ -474,7 +491,7 @@
     7 requests per second
     7*60 = 420 requests per minute
     420*60 requests per hour = 400 * 60 = 24000 per hour = 24K per hour
-    24K * 24 requests per day ≈ 30K*20 = 600K requests per day per server
+    24K * 24 requests per day â‰ˆ 30K*20 = 600K requests per day per server
     We want to handle 46 Million requests per day which means 46M/600K = approx 45M/500K = 45M/0.5M = 45*2 = 90 servers.
     
 25. Note : Highly Available systems : Follow the no single point of failure principle
