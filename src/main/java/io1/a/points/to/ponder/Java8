@@ -181,6 +181,15 @@
     Behavioral --> Chain of Responsibility Pattern : If one object cannot handle the request then it passes the same to the next receiver and so on.
                    Template pattern --> just define the skeleton of a function in an operation, deferring some steps to its subclasses
                                         It is very common technique for reusing the code.This is only the main benefit of it.
+                                        
+                                        
+                                        
+2. Patterns Used : DAO -- for accessing the data layer
+                   Singleton -- mostly for creating some utility classes
+                   Prototype -- when we use like some framework
+                   DI /IOC -- pattern when we work with spring
+                   MVC -- pattern used
+                   Factory --If you are using utility classes and using factories to create instances of those
     
 -------Design Patterns ----------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------- 
@@ -280,7 +289,7 @@
 1. Single Responsibility
 2. Open for Extension Closed for Modification
 3. Liskov Substitution
-4. Interface Segregation
+4. Interface Segregation Principle
 5. Dependency Inversion
 
 
@@ -370,7 +379,11 @@ Hint : we need to use self join here by using aliases 'E' and 'M'
     
 15. Write an SQL query to fetch the departments that have less than five people in it.
     select department , count(worker_id) as 'No of Workers' from worker group by department having count(worker_id) < 5; 
-    
+
+
+16. Find the lowest salary in each department from employees table
+    select dept, min(salary) as lowest salary from employees group by dept;
+
     
 16. Write an sql query to display departments that have more than 2 employees?
     Select dept_name, count(emp_id) from employees group by dept_name having count(emp_id) > 2;
@@ -436,8 +449,14 @@ Hint : we need to use self join here by using aliases 'E' and 'M'
     
     
     
-    
+-----REST ----------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------    
+
+1.The PUT method is idempotent. An idempotent method means that the result of a successful performed request is independent of the number of times 
+  it is executed.
 
 
 
 
+-----REST ----------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------   
