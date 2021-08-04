@@ -283,7 +283,7 @@
         Those with a large ecosystem of SQL skills and tools and numerous existing applications may choose to continue using a relational data mode
         Cons: Postgres can support replication but more advanced features such as automatic failover must be supported by third party products.
               Whereas MongoDBâ€™s has in-built self-healing capabilities.
-5. SQL : Can be prefeered where we many small tables and very small data is required sometimes in fragmanet , unlike nosql which stores all document
+5. SQL : Can be preferred where we many small tables and very small data is required sometimes in fragment , unlike NoSql which stores all document
          in json format at one place
 
 6. Read heavy : Reads are more efficient in MongoDB's storage engine

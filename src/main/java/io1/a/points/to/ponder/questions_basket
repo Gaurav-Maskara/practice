@@ -1,4 +1,29 @@
 
+1. Second Level caching in JPA
+A: https://www.java67.com/2017/10/difference-between-first-level-and-second-level-cache-in-Hibernate.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 1. Implement a comparator
 2. Use executor service for creating thread pool
 3. Third party garbage collectors
