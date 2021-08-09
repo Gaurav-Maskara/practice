@@ -377,12 +377,12 @@
 
 
 8. How can the server keep track of all the opened connection to redirect messages to the users efficiently? 
-	    The server can maintain a hash table, where â€œkeyâ€� would be the UserID and â€œvalueâ€� would
+	    The server can maintain a hash table, where key would be the UserID and the value would      
 		be the connection object. So whenever the server receives a message for a user, it looks up that user in
 		the hash table to find the connection object and sends the message on the open request.
 		
 9. How many chat servers we need? 
-	Letâ€™s plan for 500 million connections at any time. 
+   Lets plan for 500 million connections at any time. 
 	Assuming a modern server can handle 50K concurrent connections at any time, we would need 10K such servers.
 	
 10. How the chat server can maintain an ordering of the message ?
@@ -426,6 +426,12 @@
 # Amazon: 
 FR --> Search , cart/wish list / checkout / view orders
 NFR --> Low latency, High Availability, High Consistency
+
+
+# Twitter :
+FR --> Post tweets, see timeline, follow other users , Tweet can contain photos and videos
+NFR --> Highly available , low latency(200 ms is accepted for timeline generation), consistency can take a hit if user doesn't see a tweet for some time
+Extended Requirements --> Searching tweets, Replying tweets, trending topics, tweet notification, Who to follow suggestion
 
 
 
