@@ -59,8 +59,10 @@ LEARNING: You have read before, time taken by String is much more as compared to
     
 34. BitSet in java can be used if there is memory constraint instead of using boolean[] arr = new boolean[n];
 
+35. if you just want to iterate through the stack or the queue and doesn't want to remove the values , you can use the iterator
+    eg:  Iterator itr = pQueue.iterator();  stack.iterator();
 
-
+36. The basic Priority Queue, without any comparator in java, works as min heap
 
 
 
