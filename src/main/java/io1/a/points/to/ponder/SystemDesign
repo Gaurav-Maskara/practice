@@ -14,6 +14,14 @@
    To the Rescue of above issue is consistent Hashing : 
    
    Load balancing techniques --> Round Robin , Least Connection , Random
+                                 # Least Connection method
+                                 # Least response Time
+                                 # Least Bandwidth Method: this method selects the server that is serving the least amount of traffic in terms of Mbps
+                                 # Round Robin
+                                 # Weighted Round Robin
+                                 # ip Hash
+   
+   
    Two Types of Load balancers :
       Layer 4 : Works on Transport Layer and has access to TCP, UDP, IP, Port 
       Layer 7 : Application Layer , has access to everything layer 4 has. Additionally has access to HTTP headers, cookies, payload
@@ -37,6 +45,8 @@
      Push : We need to push
      Pull : It pulls when a request arrives from a user but it doesn't have it and then sync itself
   4. In short --> it decreases costs, decreases latency, increases complexity of system
+  5. If the system we are building isn't large enough to have its own CDN , we can ease a future transition by serving the static media off a separate 
+     sub-domain(e.g. static.yourservice.com) using a lightweight HTTP server like NGINX , and cut-over the DNS from your servers to a CDN later.
 
 -----CDN --------------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------

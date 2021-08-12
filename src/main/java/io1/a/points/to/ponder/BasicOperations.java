@@ -2,10 +2,10 @@ package io1.a.points.to.ponder;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Hashtable;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -105,6 +105,9 @@ public class BasicOperations {
 		   Collection<String> values = hm.values();
 		   
 		   values.contains(values);
+		   
+		   
+		   PriorityQueue<Integer> pq = new PriorityQueue<Integer>(Collections.reverseOrder());
 		
 		
 		//---------------------------------------------------------------------------------------------------------------
