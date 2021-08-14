@@ -496,7 +496,7 @@ Ans : primary key helps to uniquely identify a record in the table. Foreign key 
 
 
 7. Schema design 
-Ans : List out all the fatures . then identify the entities supporting the features
+Ans : List out all the features . then identify the entities supporting the features
 
 
 8. How to scale the Databases ?
