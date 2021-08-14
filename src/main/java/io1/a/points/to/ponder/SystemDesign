@@ -494,6 +494,30 @@ Ans : primary key helps to uniquely identify a record in the table. Foreign key 
       primary --> by default clustered index . Foreign --> Nothing by default . But index can be created
       primary --> there could be only a single primary key. Foreign --> there could be multiple foreign keys
 
+
+7. Schema design 
+Ans : List out all the fatures . then identify the entities supporting the features
+
+
+8. How to scale the Databases ?
+Ans : #First identify the bottleneck using metrics at what time or cause caused this issue.
+      #Check logs that take longer time to load or there could be third party apis or the DB server could be introducing the delays
+      #You identify that your database is probably heavily normalized, so you introduce some redundant columns (these columns frequently appear in WHERE
+            or JOIN ON clause in queries) in highly used tables for the sake of denormalization.
+            
+      #Increasing the connection pool , as opening a new connection takes time (application server creates the connection pool)
+      #Database indexing: it improves the speed of data retrieval operation from the table
+      #Caching the DB queries (usually an application will have a handful of queries that make up the majority of the requests)
+           : This helps as load is distributed to cache and and DB is free. also it increases the availability 
+      #Vertical scaling   
+      #Master-Slave : writing to master(cloned to slave). Reading from slave DB
+      #Partitioning : by functionality so that a particular system can be scaled and the result can be aggregated in the backend application
+                      (i.e. microservices architecture)
+      #Horizontal Scaling: All machines have the same set of tables (sharding) , and have their own replicas which can be used in case of failure.
+      #There is still slowness in some of the countries : distributing traffic in different data centres around the globe(also helps in disaster recovery)
+     
+      #Moving session data to some cache instead of stroing them into table
+       (https://www.keycdn.com/blog/database-performance)
  		   
  		   
 
