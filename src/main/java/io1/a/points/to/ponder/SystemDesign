@@ -226,6 +226,7 @@
   		   Inter process communication no RPC required
   		   Consistent
   		   Hardware Limit
+  		   
 -----------Difference between Horizontal and Vertical Scaling-----------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -453,16 +454,44 @@ Extended Requirements --> Searching tweets, Replying tweets, trending topics, tw
 
 
 
+1. Can you name some metrics for measuring system performance?
+Ans : The three most common metrics used to measure a system's performance are availability, latency and throughput. These metrics help 
+      system designers measure the speed of a user's experience while interacting with a system. Availability 
+      shows us how often a system responds to a user in a ratio of Uptime vs. Downtime. Latency refers to the speed at which a message is 
+      delivered in milliseconds. Finally, throughput measures the amount of data that successfully travels through a system to a user in a 
+      specified time period. Throughput is typically calculated in bits per second.
+      
+      
+2. how can you improve the performance of a DB 
+Ans : By dividing the table into multiple tables as using a common table to have loads of data . Which causes problems since our table gonna have huge 
+      amount of data that could make read/write operations pretty slow bs MySql generally does linear search if data is not indexed.
+      
+      By minimising if there are so many tables bcs it could make the queries a little faster , but not in every case bcs we are having lots of 
+      table which means have to apply joins while retrieving data that could make the queries a little slower and complex too , not to forget
+      the management issues.
+      
+3. Let’s decide how many table your database should roughly have
+Ans : There is very simple approach to roughly decide, how many tables you should have is to total number of unique entity your application gonna have
+      Number of tables could be more than that too while normalizing the database schema  
+      # of table = # of unique entities your application have
+      
+4. When to divide the table into multiple tables and why?
+Ans : Whenever you feel that you’re gonna have redundant values in any of your column that directly indicates that your design is 
+      not good enough and you should separate that column from the current table so that it won’t have redundant values.
 
+      Whenever you feel that you’re gonna have null in some any of your column then again it directly indicates that your database schema is not good 
+      enough because any column should not contain null values whatever may happen, but based on your use case if you 
+      are getting null values in some your rows then you should separate that column to a new table.
+      (https://medium.com/swlh/basic-guide-to-design-a-better-database-schema-83fda45aba1c)
+      
+5. What are the different types of constraints ?
+Ans : Unique, null values, foreign keys, composite key or check constraint
 
-
-
-
-
-
-
-
-  		   
+6. Difference between primary and foreign key ?
+Ans : primary key helps to uniquely identify a record in the table. Foreign key is the primary key of another table
+      primary --> cannot be null. Foreign Key --> can be null
+      primary --> by default clustered index . Foreign --> Nothing by default . But index can be created
+      primary --> there could be only a single primary key. Foreign --> there could be multiple foreign keys
 
  		   
  		   
