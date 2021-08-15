@@ -547,10 +547,20 @@ ans : #Prper indexing
       #Avoid too many columns
 
 
+11. Normalization :
+Ans: https://www.w3schools.in/dbms/database-normalization/    --> Read first and second from here
+     https://www.javatpoint.com/dbms-third-normal-form        --> read third from here
+     
+
+
+12. Note : Highly Available systems : Follow the no single point of failure principle
+    Note : Systems with high performance : Follow the no bottleneck principle
+    Note : Read replicas for mongodb or postgreSQL
+    Note : Purging: Purging is the process of freeing up space in the database or of deleting obsolete data that is not required by the system
+           A server which runs the purging job can be used to purge the Database
  
  
- 
- 12. Relational Database Design :
+
  
 
  
@@ -582,22 +592,12 @@ ans : #Prper indexing
     24K * 24 requests per day â‰ˆ 30K*20 = 600K requests per day per server
     We want to handle 46 Million requests per day which means 46M/600K = approx 45M/500K = 45M/0.5M = 45*2 = 90 servers.
     
-25. Note : Highly Available systems : Follow the no single point of failure principle
-    Note : Systems with high performance : Follow the no bottleneck principle
 
-
-27. Purging: Purging is the process of freeing up space in the database or of deleting obsolete data that is not required by the system
-    A server which runs the purging job can be used to purge the Database
-
-
-
-29. Having an index on a particular field makes searching easier in DB on the other hand writing expensive
 
 30. See the micro services design patterns and write something about it : Like Saga pattern ---> in this pattern
     "so some cron jobs will fix those status inconsistencies" if there is a failure cron job will make sure to maintain consistencies
 
 
-32. Read replicas for mongodb or postgreSQL
 
 
 
