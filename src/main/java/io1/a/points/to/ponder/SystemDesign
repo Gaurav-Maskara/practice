@@ -90,7 +90,7 @@
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 ----- QUEUEs --------------------------------------------------------------------------------------------------------------------------------------
  1. There are producers and consumers
- 2. Common Queues: Kafka, Rabbit MQ, Amaxon SqS, Apache Active MQ
+ 2. Common Queues: Kafka, Rabbit MQ, Amazon SqS, Apache Active MQ
  3. Pros: Request Spikes smoothing, buffering
     Cons: Increases latency, increases system complexity
  4. Kafka is a distributed service. Should be deployed in multiple boxes. Queue can process 1 million but we need to think of consumer scaling
@@ -134,7 +134,7 @@
 -------------------------------------------------------------------------------------------------------------------------------------------------
 ----- Sharding ----------------------------------------------------------------------------------------------------------------------------------
   1. What type of data structure Index is (in SQL table) : B Tree Plus 
-  2. Tenanat based sahrding : data is not evenly distributed . For example india can have huge data as compared to israel(low population)
+  2. Tenanat based sharding : data is not evenly distributed . For example India can have huge data as compared to Israel (low population)
   3. Hash based sharding: 
   4. There can be locater service (shard router) between a app and sharded DB . whose task could be determine the DB in which data will go :
                    but the shard router may act as single point of failure. So this is not preferred
@@ -294,7 +294,7 @@
         and doesnt't need to scale out.
         Those with a large ecosystem of SQL skills and tools and numerous existing applications may choose to continue using a relational data mode
         Cons: Postgres can support replication but more advanced features such as automatic failover must be supported by third party products.
-              Whereas MongoDBâ€™s has in-built self-healing capabilities.
+              Whereas MongoDB has in-built self-healing capabilities.
 5. SQL : Can be preferred where we many small tables and very small data is required sometimes in fragment , unlike NoSql which stores all document
          in json format at one place
 
@@ -463,7 +463,7 @@ Ans : The three most common metrics used to measure a system's performance are a
       specified time period. Throughput is typically calculated in bits per second.
       
       
-2. how can you improve the performance of a DB 
+2. How can you improve the performance of a DB 
 Ans : By dividing the table into multiple tables as using a common table to have loads of data . Which causes problems since our table gonna have huge 
       amount of data that could make read/write operations pretty slow bs MySql generally does linear search if data is not indexed.
       
@@ -471,16 +471,16 @@ Ans : By dividing the table into multiple tables as using a common table to have
       table which means have to apply joins while retrieving data that could make the queries a little slower and complex too , not to forget
       the management issues.
       
-3. Let’s decide how many table your database should roughly have
+3. Let's decide how many table your database should roughly have
 Ans : There is very simple approach to roughly decide, how many tables you should have is to total number of unique entity your application gonna have
       Number of tables could be more than that too while normalizing the database schema  
       # of table = # of unique entities your application have
       
 4. When to divide the table into multiple tables and why?
-Ans : Whenever you feel that you’re gonna have redundant values in any of your column that directly indicates that your design is 
-      not good enough and you should separate that column from the current table so that it won’t have redundant values.
+Ans : Whenever you feel that you're gonna have redundant values in any of your column that directly indicates that your design is 
+      not good enough and you should separate that column from the current table so that it won't have redundant values.
 
-      Whenever you feel that you’re gonna have null in some any of your column then again it directly indicates that your database schema is not good 
+      Whenever you feel that you're gonna have null in some any of your column then again it directly indicates that your database schema is not good 
       enough because any column should not contain null values whatever may happen, but based on your use case if you 
       are getting null values in some your rows then you should separate that column to a new table.
       (https://medium.com/swlh/basic-guide-to-design-a-better-database-schema-83fda45aba1c)
@@ -516,7 +516,7 @@ Ans : #First identify the bottleneck using metrics at what time or cause caused 
       #Horizontal Scaling: All machines have the same set of tables (sharding) , and have their own replicas which can be used in case of failure.
       #There is still slowness in some of the countries : distributing traffic in different data centres around the globe(also helps in disaster recovery)
      
-      #Moving session data to some cache instead of stroing them into table
+      #Moving session data to some cache instead of storing them into table
        (https://www.keycdn.com/blog/database-performance)
        (https://medium.com/swlh/basic-guide-to-design-a-better-database-schema-83fda45aba1c)
        (https://kousiknath.medium.com/understanding-database-scaling-patterns-ac24e5223522)
