@@ -536,7 +536,7 @@ Ans: #Physical Db security
 
    
 10. DB optimization 
-ans : #Prper indexing 
+ans : #Proper indexing 
       #retrieve the relevant data only
       #getting rid of subqueries
       #avoid using loops
@@ -560,30 +560,26 @@ Ans: https://www.w3schools.in/dbms/database-normalization/    --> Read first and
            A server which runs the purging job can be used to purge the Database
  
  
+13. Saga Pattern ?
+Ans: https://www.vinsguru.com/choreography-saga-pattern-with-spring-boot/
+Note: "so some cron jobs will fix those status inconsistencies" if there is a failure cron job will make sure to maintain consistencies"
 
+14. Difference between SOA and Microservices ?\
+Ans: SOA --> uses ESB for communication between themselves
+         --> shared databases
+         --> follows share as much as possible approach
+         --> coarse grained as they include much more business functionality
+     
+     Microservices --> communicate among themselves mostly by using http or simple messaging systems
+                   --> each microservice(functionality) have their own databases
+                   --> follows share as less as possible approach
+                   --> size --micro grained that is only one functionality
  
-
- 
-
    
-
-
-   
-16. Consistent Hashing: read something about it
-
-
-   
-
-
-   
+15. Consistent Hashing: read something about it
 
     
-
-22. Architectural patterns : Monolithic, SOA, Microservice
-    Difference between SOA and Microservice : Read ??
-
-    
-24. Back of the Envelope Calculations :Estimate how many servers we need to serve read requests considering each server is capable of handling 
+16. Back of the Envelope Calculations :Estimate how many servers we need to serve read requests considering each server is capable of handling 
     7 requests per second. We have to serve a total traffic of 46 Million per day.
     Answer: 
     7 requests per second
@@ -594,8 +590,7 @@ Ans: https://www.w3schools.in/dbms/database-normalization/    --> Read first and
     
 
 
-30. See the micro services design patterns and write something about it : Like Saga pattern ---> in this pattern
-    "so some cron jobs will fix those status inconsistencies" if there is a failure cron job will make sure to maintain consistencies
+    
 
 
 
