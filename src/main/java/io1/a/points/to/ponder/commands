@@ -4,17 +4,17 @@ Commands :
 https://www.mediacollege.com/linux/command/linux-command.html
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Basics: 
+Linux Basics: 
 
-1.sudo su  ----gives super user  / hepful in going to @root also
-1.sudo wget URL to download
-3.sudo wget --user username -- password password URL
-4.rm -r mydir ---remove a directory
-5.telnet localhost 8080 ---to telnet an IP
-6.tar -xvzf filenmae.with extension ---- to unzip a file
-7.sudo apt-get install softwareName -- for installing the software
-8.cp -v wso2am-2.0.0.zip /home/umang/gaurav/wso2
-9.chmod +x ./postgresql-9.5.5-1-linux-x64.run   --- This command is used to give access to a file so that it can run as executable
+1. sudo su  ----gives super user  / hepful in going to @root also
+1. sudo wget URL to download
+3. sudo wget --user username -- password password URL
+4. rm -r mydir ---remove a directory
+5. telnet localhost 8080 ---to telnet an IP
+6. tar -xvzf filenmae.with extension ---- to unzip a file
+7. sudo apt-get install softwareName -- for installing the software
+8. cp -v wso2am-2.0.0.zip /home/umang/gaurav/wso2
+9. chmod +x ./postgresql-9.5.5-1-linux-x64.run   --- This command is used to give access to a file so that it can run as executable
 10. elinks --dump "http://10.247.74.69:8081/epfoApi/PropReload.jsp"
 11. cd -       ---- takes you to the previous working directory
 12. ls -R ---- recursively lists all files in the sub folders as well 
@@ -168,7 +168,7 @@ Basics:
 7. who --- shows all logged in users
 8. tail -1000 debug_12.txt |grep 'homescreen'|more
 9. ps -ef | grep logging --- to check tomcat running 
-10. curl https://ipinfo.io/ip --- to find the computers's public ip(i.e. the IP exposed to the outer world)
+10. curl https://ipinfo.io/ip --- to find the computers's public ip (i.e. the IP exposed to the outer world)
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -194,16 +194,16 @@ Kali :
 17. vim --help --- to get deatiled help
 18 nano --- another command to open file and edit
 19 jobs --- to see the jobs
-20.  last -50 -i  --- shows last logged in users
+20. last -50 -i  --- shows last logged in users
 21. taskkill /F /PID pid_number -- windows
-22 .tasklist --- windows netstat -antp (linux)
+22. tasklist --- windows netstat -antp (linux)
 23 pgsql -h 127.0.0.1 -U postgres
 24 locate filename.txt {if thsi doesnt work updatedb command before locate}
 25 uname -a --- shows version of linux
 26  find /etc -name hosts
 27. /etc/hosts
 28. /etc/avahi/hosts
-	  find /etc -name ”hosts*”
+	  find /etc -name â€�hosts*â€�
 	 /etc/hosts
 	 /etc/hosts.allow
 	 /etc/hosts.deny
@@ -213,27 +213,27 @@ Kali :
 Networking Basics
 
 File System Basics:
-• /bin/: basic programs
-• /boot/: Kali Linux kernel and other files required for its early boot process
-• /dev/: device files
-• /etc/: configuration files
-• /home/: user’s personal files
-• /lib/: basic libraries
-• /media/*: mount points for removable devices (CD-ROM, USB keys, and so on)
-• /mnt/: temporary mount point
-• /opt/: extra applications provided by third parties
-• /root/: administrator’s (root’s) personal files
-• /run/: volatile runtime data that does not persist across reboots (not yet included in the FHS)
-• /sbin/: system programs
-• /srv/: data used by servers hosted on this system
-• /tmp/: temporary files (this directory is often emptied at boot)
-• /usr/: applications (this directory is further subdivided into bin, sbin, lib according to
-the same logic as in the root directory) Furthermore, /usr/share/ contains architecture-
-independent data. The /usr/local/ directory is meant to be used by the administrator for
-installing applications manually without overwriting files handled by the packaging system
-(dpkg).
-• /var/: variable data handled by daemons. This includes log files, queues, spools, and caches.
-• /proc/ and /sys/ are specific to the Linux kernel (and not part of the FHS). They are used by the kernel for exporting data to user space.
+1. /bin/: basic programs
+2. /boot/: Kali Linux kernel and other files required for its early boot process
+3. /dev/: device files
+4. /etc/: configuration files
+5. /home/: userâ€™s personal files
+6. /lib/: basic libraries
+7. /media/*: mount points for removable devices (CD-ROM, USB keys, and so on)
+8. /mnt/: temporary mount point
+9. /opt/: extra applications provided by third parties
+10. /root/: administratorâ€™s (rootâ€™s) personal files
+11. /run/: volatile runtime data that does not persist across reboots (not yet included in the FHS)
+12. /sbin/: system programs
+13. /srv/: data used by servers hosted on this system
+14. /tmp/: temporary files (this directory is often emptied at boot)
+15. /usr/: applications (this directory is further subdivided into bin, sbin, lib according to
+           the same logic as in the root directory) Furthermore, /usr/share/ contains architecture-
+           independent data. The /usr/local/ directory is meant to be used by the administrator for
+           installing applications manually without overwriting files handled by the packaging system
+           (dpkg).
+16. /var/: variable data handled by daemons. This includes log files, queues, spools, and caches.
+17. /proc/ and /sys/ are specific to the Linux kernel (and not part of the FHS). They are used by the kernel for exporting data to user space.
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  Penetration Testing :
@@ -450,7 +450,7 @@ MVC
 	  </error-page>
 	  
 10. Try React.Js ....its quite easy to learn since based on javascript 
-11. Recursion is when a function calls itself, until it doesn’t.
+11. Recursion is when a function calls itself, until it doesnâ€™t.
 12 . to visualize recursion , first see this factorial function :
         int factorial (int n) {                                            	or 					let countDownFrom = (num )=>{
 		      if (n==0)	//base case																  	if(num ==0 ) return  //base case

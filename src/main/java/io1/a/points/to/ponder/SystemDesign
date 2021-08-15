@@ -518,15 +518,33 @@ Ans : #First identify the bottleneck using metrics at what time or cause caused 
      
       #Moving session data to some cache instead of stroing them into table
        (https://www.keycdn.com/blog/database-performance)
+       (https://medium.com/swlh/basic-guide-to-design-a-better-database-schema-83fda45aba1c)
+       (https://kousiknath.medium.com/understanding-database-scaling-patterns-ac24e5223522)
  		   
- 		   
+ 	
+ 	
+9. How to ensure safety and security of the Databases ?
+Ans: #Physical Db security
+     #Separating db servers from the application servers which are more prone to cyber attacks
+     #Avoid using default network ports
+     #Log all actions taken on db server and alert in case of any breach. Regular audits and cyber security penetration tests
+     #Firewalls : Like --> packet filter firewall , stateful packet inspection	, proxy sever firewall
+     #Encryption and keeping regular backups
+     #Regularly updation
+     #Access privileges
+     Attack types: ddos, privilege escalation
 
    
- 
-
-
-
-   		
+10. DB optimization 
+ans : #Prper indexing 
+      #retrieve the relevant data only
+      #getting rid of subqueries
+      #avoid using loops
+      # Index all the columns used in where , order by and group by
+      #Normalize tables
+      #use optimal data types (like tiny int)
+      #Avoid null values and make a table for it instead 
+      #Avoid too many columns
 
 
  
@@ -580,6 +598,7 @@ Ans : #First identify the bottleneck using metrics at what time or cause caused 
 
 
 32. Read replicas for mongodb or postgreSQL
+
 
 
 
