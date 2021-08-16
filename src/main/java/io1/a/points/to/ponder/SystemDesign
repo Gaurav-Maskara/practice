@@ -564,7 +564,7 @@ Ans: https://www.w3schools.in/dbms/database-normalization/    --> Read first and
 Ans: https://www.vinsguru.com/choreography-saga-pattern-with-spring-boot/
 Note: "so some cron jobs will fix those status inconsistencies" if there is a failure cron job will make sure to maintain consistencies"
 
-14. Difference between SOA and Microservices ?\
+14. Difference between SOA and Microservices ?
 Ans: SOA --> uses ESB for communication between themselves
          --> shared databases
          --> follows share as much as possible approach
