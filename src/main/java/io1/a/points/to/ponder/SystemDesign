@@ -89,6 +89,7 @@
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 ----- QUEUEs --------------------------------------------------------------------------------------------------------------------------------------
+ 
  1. There are producers and consumers
  2. Common Queues: Kafka, Rabbit MQ, Amazon SqS, Apache Active MQ
  3. Pros: Request Spikes smoothing, buffering
@@ -105,8 +106,8 @@
 	    High performant
  
  
+--------QUEUEs------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------
------ QUEUEs -------------------------------------------------------------------------------------------------------------------------------------
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------
@@ -133,6 +134,7 @@
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 ----- Sharding ----------------------------------------------------------------------------------------------------------------------------------
+ 
   1. What type of data structure Index is (in SQL table) : B Tree Plus 
   2. Tenanat based sharding : data is not evenly distributed . For example India can have huge data as compared to Israel (low population)
   3. Hash based sharding: 
@@ -564,7 +566,7 @@ Ans: https://www.w3schools.in/dbms/database-normalization/    --> Read first and
 Ans: https://www.vinsguru.com/choreography-saga-pattern-with-spring-boot/
 Note: "so some cron jobs will fix those status inconsistencies" if there is a failure cron job will make sure to maintain consistencies"
 
-14. Difference between SOA and Microservices ?
+14. Difference between SOA and Microservices ? 
 Ans: SOA --> uses ESB for communication between themselves
          --> shared databases
          --> follows share as much as possible approach
@@ -577,6 +579,53 @@ Ans: SOA --> uses ESB for communication between themselves
  
    
 15. Consistent Hashing: read something about it
+
+16. What are the systematic steps that you would follow for any system design question's answer ?
+Ans:       *Requirement Gathering* --> (Functional + Non Functional + Extended (eg. Analytics))
+                                       + What all the faetures that we want
+                                       + what would be the platform (web/mobile) ?
+                                       + who would be the end users ?
+                                       + what would be the region/area of the end users ?
+                                       + will there be integration of payment platforms ?
+                                       + [if : how the delivery guys will interact with the system ?]
+                                       + Budget
+                                       + SAR methodology : [Situation -> Action -> Result]
+                                       + Finally confirm the requirements with the interviewer again before proceeding ahead 
+                                             that -> this is our final requiremnt ?
+                                       +Action: In this try to show that for this situation of yours I am taking this particular action 
+                                       
+           *API design*
+           *Back of the envelope estimation*
+           *Defining Data model / Schema*
+           *High Level Design*
+           *Detailed Design*
+           *Identifying and resolving bottlenecks*
+           
+           *Summary* (Result) : Summarise that all your situations got covered by the actions that I took
+           
+
+17. Back of the envelope calculations : 
+    @Tiny Url@ :(Read heavy system) Assume 100: 1 (Read: write ratio)
+                1. 500 M urls shortenings/ per month
+                2. 50 B urls redirections / per month 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     
 16. Back of the Envelope Calculations :Estimate how many servers we need to serve read requests considering each server is capable of handling 
