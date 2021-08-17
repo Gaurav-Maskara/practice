@@ -608,8 +608,28 @@ Ans:       *Requirement Gathering* --> (Functional + Non Functional + Extended (
     @Tiny Url@ :(Read heavy system) Assume 100: 1 (Read: write ratio)
                 1. 500 M urls shortenings/ per month
                 2. 50 B urls redirections / per month 
-
-
+                3. Queries/per second :
+                          url shortenings(write): 500M(30*24*3600) = 200 url/s
+                          url redirections(read): 100*200 = 20K/sec
+                4. Storage : Assume every url is 500 bytes -> 500M * 5(years)*12(months)*500bytes= 15TB
+                5. Bandwidth: Read:20K * 500 bytes = 10MB/sec
+                              Write:200 * 500 bytes = 100Kb/sec
+                6. Caching: (80:20 Rule -> that is 20 percent of the url generate 80% of the traffic)
+                          20K read requests per second -> 1.7B /per day
+                          20% * 1.7B *500 Bytes = 170GB
+                          
+   @Pastebin@ :(Read heavy system) (Assume 5:1 read: write ratio)
+               1. 1M paste/per day
+               2. 5M paste read /per day
+               3. Queries per second :
+                          paste: 1M / 24*60*60 = 10 Paste/sec
+                          read : 50 paste/sec
+               4. Storage: 18 Tb for 5 years
+               5. Bandwidth : 
+                          read: (5* 1M * 10 KB(each paste average))/(24*60*60) = 500 Kb/sec
+                          write: 100 Kb/sec  
+               6. Caching : (80:20 rule)
+                          5M read requests per day -> 20% 5M * 10KB / 1000*1000 = 10Gb caching required 
 
 
 
