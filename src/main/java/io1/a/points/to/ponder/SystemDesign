@@ -630,6 +630,25 @@ Ans:       *Requirement Gathering* --> (Functional + Non Functional + Extended (
                           write: 100 Kb/sec  
                6. Caching : (80:20 rule)
                           5M read requests per day -> 20% 5M * 10KB / 1000*1000 = 10Gb caching required 
+                          
+                          
+                          
+   @Instagram@ : (Read Heavy system)
+                1. 500M total users with 1M daily active users
+                2. 2M photos / per day
+                3. Photos per second :
+                                     (2M / 25*60*60) = 20 photos/sec
+                4. Storage : 2M * 200KB = 400GB per day
+                
+    @Dropbox@ : (Read heavy system)
+                1. 500M total users . 100M daily active users
+    
+    @Facebook Messenger@ :
+                1.500M daily active users and each send 40 messages on avg daily
+                2.Storage:
+                         500M * 40 * 100 bytes = 2 Tb/day
+                         
+                3.Bandwidth: (2Tb/ 86400) = 25Mb/sec 
 
 
 
