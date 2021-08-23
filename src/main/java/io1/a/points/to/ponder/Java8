@@ -190,6 +190,7 @@
                    DI /IOC -- pattern when we work with spring
                    MVC -- pattern used
                    Factory --If you are using utility classes and using factories to create instances of those
+                   Chain of responsibilty -- in exception handling, when the exception is thrown to calling class
     
 -------Design Patterns ----------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------- 
@@ -198,7 +199,7 @@
 -------Streams ------------------------------------------------------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
-1.Map<String, Long> count =  al.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+1.Map<String, Long> count =   al.stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
                               al.stream().map(a -> a.toUpperCase()).collect(Collectors.toList());
                               al.stream().filter(a -> a.startsWith("abc")).filter(a -> a.endsWith("cc")).collect(Collectors.toList());
 	                          al.stream().filter(a -> a.startsWith("r")).forEach(a -> System.out.println(a + " "));
@@ -286,7 +287,7 @@
 -----SOLID Design Principles ------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-1. Single Responsibility
+1. Single Responsibility : A class should have only one responsibility
 2. Open for Extension Closed for Modification
 3. Liskov Substitution
 4. Interface Segregation Principle
@@ -462,4 +463,21 @@ Hint : we need to use self join here by using aliases 'E' and 'M'
 
 
 -----REST ----------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+-----Spring --------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------   
+1. what is second level caching in spring ?
+Ans: https://www.baeldung.com/hibernate-second-level-cache
+
+2. how to configure swagger?
+Ans: https://dzone.com/articles/spring-boot-restful-api-documentation-with-swagger
+
+
+
+
+
+
+
+-----Spring --------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------   
