@@ -585,6 +585,7 @@ Ans: https://blog.hartleybrody.com/scale-load/
 
 
 
+
 16. What are the systematic steps that you would follow for any system design question's answer ?
 Ans:       *Requirement Gathering* --> (Functional + Non Functional + Extended (eg. Analytics))
                                        + What all the faetures that we want
