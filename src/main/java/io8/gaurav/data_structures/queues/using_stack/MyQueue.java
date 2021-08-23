@@ -53,7 +53,5 @@ public class MyQueue {
 			stack.push(auxiliaryStack.pop());
 		 }
 	 }
-	
-	 
 
 }
