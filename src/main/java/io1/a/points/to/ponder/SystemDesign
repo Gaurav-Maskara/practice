@@ -1,4 +1,30 @@
  
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+------Stateless and Stateful ------------------------------------------------------------------------------------------------------------------------
+
+1. Stateless System: 
+             *Easier to scale
+             *Resilient to failure
+             *Higher latency (as you will be storing some state in some storage layer which will involve network calls to fetch it thereby increasing latency)
+             
+2. Stateful System:
+              *Low latency
+              *Not resilient to server failure
+              *Harder to scale
+
+Note: if the use of the state is very short lived and no latency is accepted we can go for stateful system , since the state would be stored in the 
+      application itself thereby low latency. Example PubG game wherein you shoot another player
+
+
+
+
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+------Stateless and Stateful ------------------------------------------------------------------------------------------------------------------------
+ 
  
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 ------Load Balancer ---------------------------------------------------------------------------------------------------------------------------------
@@ -19,13 +45,15 @@
                                  # Least response Time
                                  # Least Bandwidth Method: this method selects the server that is serving the least amount of traffic in terms of Mbps
                                  # Round Robin
-                                 # Weighted Round Robin
+                                 # Weighted Round Robin : Best
                                  # ip Hash
    
    
-   Two Types of Load balancers :
-      Layer 4 : Works on Transport Layer and has access to TCP, UDP, IP, Port 
+   Two Types of Load balancers in case of Software Load Balancer :
+      Layer 4 : Works on Transport Layer and has access to TCP, UDP, IP, Port (this load balancer will be faster as there will be lesser computation as 
+                it have access to only ip and port)
       Layer 7 : Application Layer , has access to everything layer 4 has. Additionally has access to HTTP headers, cookies, payload
+                (This will be slower than layer 4 as it can do much more computations as it has access to much more things than layer 4)
       
       Note: Load balancer is a machine that acts as a reverse proxy , for each request it picks up a server based on its strategy.
             Load balancers make the system more scalable and resilient .
@@ -33,6 +61,12 @@
 
 2. Reverse Proxy --> a reverse proxy is a type of proxy server where the servers return resources to the client 
                      where it would appear to the network that it originated from the reverse proxy server itself.
+                     
+3. DNS : geo based ip is returned so that users in a particular region connect to local servers
+
+4. Machines below can be in a private network and they aren't directly conncted to the internet and if they have to they go through the 
+   load balancer , thereby providing an extra layer of security
+
    
 ------Load Balancer ---------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------
