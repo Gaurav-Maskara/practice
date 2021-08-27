@@ -447,6 +447,16 @@ Hint : we need to use self join here by using aliases 'E' and 'M'
     on e.employeeid = o.employeeid where requireddate <= ShippedDate
     group by e.employeeid , e.firstname order by late_orders desc;
     
+    
+31. Note : Very Very Important , to understand the order of execution of statements in sql use the below query in a northwind database
+    select *, count(*) as late_orders from orders as o inner join Employees as e 
+    on e.employeeid = o.employeeid where requireddate <= ShippedDate
+    group by e.employeeid , e.firstname order by late_orders desc;
+    
+    What I inferred is first --> data is fetched as per the from and where clause rules .Then second --> *, count(*) is created 
+    then third --> group by and order  by statements get executed
+
+
 -----SQL -----------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------
     

@@ -59,7 +59,7 @@ Note: if the use of the state is very short lived and no latency is accepted we 
                      
 3. DNS : geo based ip is returned so that users in a particular region connect to local servers
 
-4. Machines below can be in a private network and they aren't directly conncted to the internet and if they have to they go through the 
+4. Machines below loadbalancer can be in a private network and they aren't directly connected to the internet and if they have, they will go through the 
    load balancer , thereby providing an extra layer of security
 
    
@@ -106,7 +106,7 @@ Note: if the use of the state is very short lived and no latency is accepted we 
 	   Read heavy system : can use caching
 	   Cache Eviction : LRU is the most used technique, next is LFU
 	   
-	9. Prod level machines can have ram of around : 72GB or 144Gb
+	9. Prod level machines can have ram of around : 72GB or 144Gb or even more is possible nowadays
 	   
    9. @Value("${spring.redis.host}")
     private String REDIS_HOSTNAME;
@@ -169,7 +169,7 @@ Note: if the use of the state is very short lived and no latency is accepted we 
 ----- Sharding ----------------------------------------------------------------------------------------------------------------------------------
  
   1. What type of data structure Index is (in SQL table) : B Tree Plus 
-  2. Tenanat based sharding : data is not evenly distributed . For example India can have huge data as compared to Israel (low population)
+  2. Tenant based sharding : data is not evenly distributed . For example India can have huge data as compared to Israel (low population)
   3. Hash based sharding: 
   4. There can be locater service (shard router) between a app and sharded DB . whose task could be determine the DB in which data will go :
                    but the shard router may act as single point of failure. So this is not preferred
@@ -323,7 +323,7 @@ Note: if the use of the state is very short lived and no latency is accepted we 
     RAID : Redundant array of independent disks, is a way of storing data on multiple hard disks or sdd to protect in case of failures.RAID 5 is most used
 
 
-3. Nosql db --> are more scable and provides higher performance with flexible datamodel unlike fixed tables in relational databases.
+3. Nosql db --> are more scalable and provides higher performance with flexible datamodel unlike fixed tables in relational databases.
     4 main types : key-value (redis, voldemort), Column oriented(Cassandra), Document based (MongoDb), Graph Based (Neo4j)
 
 4. SQL :When to consider: Lots of data management and BI tools rely on SQL. If you have a flat tabular data model that isn't going to change very often
@@ -337,7 +337,7 @@ Note: if the use of the state is very short lived and no latency is accepted we 
 6. Read heavy : Reads are more efficient in MongoDB's storage engine
 7. Write heavy : Cassandra (column oriented): It stores data in append only format, so serial writes are done very quickly.
                  Good for : heavy write workloads
-                 Data distribution across multiple data centres and cloud availability zones i.e. is the users are far separated
+                 Data distribution across multiple data centres and cloud availability zones i.e. the users are far separated
                  Bad for : ACID. To achieve high availability cassandra sacrifices strong consistency. Bad for update(as stale data might get read up till it gets deleted)
                  Example : Analytics, Messaging Systems, Ecommerce
                  
@@ -347,7 +347,7 @@ Note: if the use of the state is very short lived and no latency is accepted we 
 	          Soft State : Replicas are not consistent all the time
 	          Eventual Consistency : Data will become consistent in future , but no guarantee when
           The BASE system allow horizontal scaling , fault tolerance , and high availability at the cost of Consistency
-          (So if the app requires high availability and scability , a NoSql DB built on Base properties would be suitable)
+          (So if the app requires high availability and scalability , a NoSql DB built on Base properties would be suitable)
           
           
    NoSql : Semi Structured or Unstructured data/ Flexible schema
@@ -653,7 +653,7 @@ Ans:       *Requirement Gathering* --> (Functional + Non Functional + Extended (
            *Defining Data model / Schema*
            *API design*
            *Business Logic : What the system will do and how it will do it
-           *First Design for a single server and don't start with a nosql DB always start with RDBMS
+           *First Design for a single server and don't start with a nosqlDB and always start with RDBMS
            *High Level Design*
            *Detailed Design*
            *Now we can scale the above one server system by adding more servers
