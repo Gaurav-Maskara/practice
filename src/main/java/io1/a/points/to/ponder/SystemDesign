@@ -485,11 +485,8 @@ Extended Requirements --> Searching tweets, Replying tweets, trending topics, tw
 
 
 
-
------Architecture Patterns and Questionns -----------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
+-----Architecture Patterns and Questionns -----------------------------------------------------------------------------------------------------------------
 
 1. Can you name some metrics for measuring system performance?
 Ans : The three most common metrics used to measure a system's performance are availability, latency and throughput. These metrics help 
@@ -516,7 +513,7 @@ Ans : There is very simple approach to roughly decide, how many tables you shoul
 Ans : Whenever you feel that you're gonna have redundant values in any of your column that directly indicates that your design is 
       not good enough and you should separate that column from the current table so that it won't have redundant values.
 
-      Whenever you feel that you're gonna have null in some any of your column then again it directly indicates that your database schema is not good 
+      Whenever you feel that you're gonna have null in some or any of your column then again it directly indicates that your database schema is not good 
       enough because any column should not contain null values whatever may happen, but based on your use case if you 
       are getting null values in some your rows then you should separate that column to a new table.
       (https://medium.com/swlh/basic-guide-to-design-a-better-database-schema-83fda45aba1c)
@@ -572,15 +569,15 @@ Ans: #Physical Db security
 
    
 10. DB optimization 
-ans : #Proper indexing 
-      #retrieve the relevant data only
-      #getting rid of subqueries
-      #avoid using loops
+ans : # Proper indexing 
+      # retrieve the relevant data only
+      # getting rid of subqueries
+      # avoid using loops
       # Index all the columns used in where , order by and group by
-      #Normalize tables
-      #use optimal data types (like tiny int)
-      #Avoid null values and make a table for it instead 
-      #Avoid too many columns
+      # Normalize tables
+      # use optimal data types (like tiny int)
+      # Avoid null values and make a table for it instead 
+      # Avoid too many columns
 
 
 11. Normalization :
@@ -712,23 +709,6 @@ Ans:       *Requirement Gathering* --> (Functional + Non Functional + Extended (
                 
                 
      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     
 16. Back of the Envelope Calculations :Estimate how many servers we need to serve read requests considering each server is capable of handling 
     7 requests per second. We have to serve a total traffic of 46 Million per day.
@@ -741,8 +721,48 @@ Ans:       *Requirement Gathering* --> (Functional + Non Functional + Extended (
     
 
 
-    
+-----Architecture Patterns and Questionns -----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+-----Schema Design-----------------------------------------------------------------------------------------------------------------------------------------
+
+1. Note : While designing the schema the nouns should generally form the table and the verbs should be the attributes of the table or the mapping between tables
+   Note : Try to gather the functionalities of the system , bcs the schema will contain the functionalities of the system
+   Note : if you haven't been given the functionalities then you can visualize what you have already seen in real life
+   
+LinkedIn Schema :
+#User profile :
+  -id (pk (primary key))
+  -profile_pic_url
+  -name
+  -email
+  -phoneNo
+  
+#Skills
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+-----Schema Design ----------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 

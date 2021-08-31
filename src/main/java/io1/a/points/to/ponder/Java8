@@ -455,7 +455,9 @@ Hint : we need to use self join here by using aliases 'E' and 'M'
     
     What I inferred is first --> data is fetched as per the from and where clause rules .Then second --> *, count(*) is created 
     then third --> group by and order  by statements get executed
-
+    Read: https://sqlbolt.com/lesson/select_queries_order_of_execution
+    Read : https://www.sisense.com/blog/sql-query-order-of-operations/ (Given in a table format)
+    Read : https://stackoverflow.com/questions/13478715/sql-join-using-a-mapping-table
 
 -----SQL -----------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -479,6 +481,7 @@ Hint : we need to use self join here by using aliases 'E' and 'M'
 --------------------------------------------------------------------------------------------------------------------------------------------------------   
 1. what is second level caching in spring ?
 Ans: https://www.baeldung.com/hibernate-second-level-cache
+     https://www.java67.com/2017/10/difference-between-first-level-and-second-level-cache-in-Hibernate.html
 
 2. how to configure swagger?
 Ans: https://dzone.com/articles/spring-boot-restful-api-documentation-with-swagger
@@ -489,6 +492,17 @@ Ans: https://dzone.com/articles/spring-boot-restful-api-documentation-with-swagg
 
 
 
-
 -----Spring --------------------------------------------------------------------------------------------------------------------------------------------
---------------------------------------------------------------------------------------------------------------------------------------------------------   
+-------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------- 
+-----Jenkins -------------------------------------------------------------------------------------------------------------------------------------------
+
+1. Steps of execution after the jenkins pipeline is created : 
+   checkout code --> Build --> Test cases execution --> Sonar Analysis -->Archive Artefacts --> Deployment --> Notification
+
+
+-----Jenkins -------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+  

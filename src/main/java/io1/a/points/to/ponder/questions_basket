@@ -1,6 +1,9 @@
 
-1. Second Level caching in JPA
-A: https://www.java67.com/2017/10/difference-between-first-level-and-second-level-cache-in-Hibernate.html
+1. How to sort data that can’t fit into main memory?
+Ans: User external sorting where data is sorted in chunks and merged back to get the sorted result (External merge sorted is used here)
+
+2. Name some garbage collection algos in java
+Ans : 
 
 
 
