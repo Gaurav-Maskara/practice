@@ -3,12 +3,70 @@
 Ans: User external sorting where data is sorted in chunks and merged back to get the sorted result (External merge sorted is used here)
 
 2. Name some garbage collection algos in java
-Ans : 
+Ans: 
 
 
+3. Define factory design pattern
+Ans: It says just define the interface or abstract class to decide the way of instantation and initiation
+
+4. Different approaches for creating a singleton clas 
+Ans : Eager initialization , static block initialization, lazy initialization, thread safe singleton, thread safe singleton using double check
+Note : in eager initialization there is wastage of cpu if object is not required moreover exception handling can't be done
+       but exception handling can be done in static block
+       
+5. How can the singleton pattern be destroyed ?
+Ans: 1. By Reflection
+     2. By Serialization
+     3. By Cloning
+     
+     1.Prevention from reflection : use enum singleton
+     2.From Serialization : override read resolve method in singleton class to return the same object
+                          eg. in method --> protected Object readResolve(){ return getInstance()};
+     3.From cloning : 
+                    When singleton class implements cloneable interface 
+                    Ans:Overide the clone method and either return the same object or throw clonenot supported exception
+                    When the singleton class doen't implement the cloneable interface but extends a class, which has implemented the cloneable interface
+                    Ans : The solution for this would be same as above
 
 
+6. Cloning ?
+Ans: The class should implement the cloneable interface , also it should override the clone method
+     #Shallow copy cloning : in clone method return : return super.clone();
+     #Deep copy cloning : In this the primitive values as well as object references are also copied to the clone object
+                          Do below in clone method:
+                               Employee cloned = (Employee)super.clone();
+                               cloned.setDepartment((Department)cloned.getDepartment().clone());   
+                               return cloned;
+                               
+                               
+7. What are the possible exception in serialization and deserialization ?
+Ans: IOException/ FileNotFound/ ClassNotFound/ InvalidClass
 
+8. What is serial version uid ?
+Ans: In serialization process , an Id is associated with each serilizable class to verify the object at both sender and receiver side, this id is serial ver uid
+
+9. Define or state effect of different keywords on serialization?
+Ans: Final variables: serialized
+     transient : not serialized 
+     static : not serialized and has the current value of static variable in class memory
+     Constructor of class is never called
+     If the parent class has implemented the serializable interface then child class can be serialized but vice versa is not true
+     
+     
+10. Enums can be used in place of public static final variables 
+    Its a class basically used to declare constants
+    
+11. What is the difference between get and load methods of hibernate ?
+Ans: Both of these methods are same as both are used to fetch the data from the DB
+     Differences:
+                Get: hits the Db and returns the object if the object is in DB 
+                     returns null if the object is not in DB
+                     loads the data as soon as method is called
+                Load : It throws object not found if the object is not in the DB
+     
+     
+     
+     
 
 
 
