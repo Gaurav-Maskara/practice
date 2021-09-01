@@ -65,8 +65,9 @@ Ans: Both of these methods are same as both are used to fetch the data from the 
                 Load : It throws object not found if the object is not in the DB
      
      
+12. What do you mean by persistence context ?
+Ans: Loading of object in persistnce context means that the object is 
      
-     
 
 
 
@@ -85,8 +86,7 @@ Ans: Both of these methods are same as both are used to fetch the data from the 
 
 
 
-1. Implement a comparator
-2. Use executor service for creating thread pool
+
 3. Third party garbage collectors
 4. PermGen space (where classes are stored) is 64MB on Sun JVMs.
 5. metaspace in java 8
@@ -101,7 +101,5 @@ Ans: Both of these methods are same as both are used to fetch the data from the 
 
    
 8. For spring boot profiling : During application start we define the environment
-9. Singleton design pattern
-10. 
 
 
