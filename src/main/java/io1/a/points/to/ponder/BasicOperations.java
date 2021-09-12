@@ -3,6 +3,7 @@ package io1.a.points.to.ponder;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -77,6 +78,7 @@ public class BasicOperations {
 		//To find the length of String
 		//"abc".length();
 		
+		
 		//---------------------------------------------------------------------------------------------------------------
 
 		
@@ -92,6 +94,8 @@ public class BasicOperations {
 		
 		//hash map
 		//hashMap.containsKey("key");
+		hashMap.containsValue("value");
+		
 		
 		
 		//String str = String.valueOf(arr);   //here arr is the character array
@@ -109,6 +113,8 @@ public class BasicOperations {
 		   
 		   PriorityQueue<Integer> pq = new PriorityQueue<Integer>(Collections.reverseOrder());
 		
+		   Comparator.reverseOrder();
+		   Comparator.naturalOrder();
 		
 		//---------------------------------------------------------------------------------------------------------------
 		

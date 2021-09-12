@@ -66,8 +66,47 @@ Ans: Both of these methods are same as both are used to fetch the data from the 
      
      
 12. What do you mean by persistence context ?
-Ans: Loading of object in persistnce context means that the object is 
+Ans: Loading of object in persistence context means that the object is 
      
+13. What is the difference between ClassNotFound and NoClassDefFound exception ?
+Ans : 1.ClassNotFound: Its a checked exception which is thrown when the JVM tries to load a class using Class.forName() or ClassLoader.className()
+                     method but could not find the class at the class path
+      2.NoClassDefFound: Its a Runtime exception which is thrown when JVM tries to load a class which was present at compile time & not found
+                       at run time. 
+      3.InvalidClassException: Its a Runtime exception thrown during deserilization when the serial ver uid of the class not matches with that of
+                              class descriptor read from the stream
+      4. UnsupportedClassVersionError: This occurs when a class is compiled using higher version JDK and is run on a lower version JDK
+
+
+14. How to enable second level cache in your project ?
+Ans: To configure the second level cache there are various cache providers such as EHCache
+     1. add the dependencies
+     2. enable second level caching in configuration file 
+     
+     
+15. JVM architecture ?
+Ans : 
+
+16. Memory areas allocated by JVM ?
+Ans: There are 5 memory areas allocated:
+     1. Class (Method) area: this memory area stores the class level data of each class file(.class)
+                             it contains data such as metadata, static variables
+                             Note: There is only one class area per JVM shared by all classes
+     2 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
