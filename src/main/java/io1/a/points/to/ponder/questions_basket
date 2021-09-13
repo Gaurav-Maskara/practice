@@ -94,11 +94,91 @@ Ans: There are 5 memory areas allocated:
                              Note: There is only one class area per JVM shared by all classes
      2 
 
+17. Memory areas allocated by JVM ?
+Ans: there are 5 memeory areas allocated by JVM -
+     1. Class (method) Area :this memory area stores the class level data of each class file(.class) . It contains data such as metadata, contant runtime pool
+                             static variables , code for methods 
+                             Note : There is only one class area per jvm shared by all the classes
+     2. Heap Space : Its the memoey space where all the objects are created 
+                     Note: there is only one heap space per jvm shared by all the threads
+     3. Stack Memroy : In this memroy area all the temp variables are created , stack frame per thread
+                       Once thread is executed, the stack frame is also destroyed
+                       Note: its thread safe since one stack frame is shared by only one thread
+    
+     4. PC(Program Counter) Register Area:This area holds the memory address of the JVM instructions which are currently being executed
+                       Note:Each thread has its own pc area
+     5. Native Method stack: Every method has its own native area where then native method data is stored
+     
+     
+     
+18. Class.for name can also be used for creating objects juts like new operator , refer the below example 
+Ans: Test obj = (Test)Class.forName("Test").newInstance();
 
+19. This keyword refers to the isnstance of the current class
 
+20. Aggregation : has-a-relationship : eg Admin has invenory manager
+21. Composition : has-a-relationship : Man has a car
 
+22. Return type of the overriding method should be the same or the subclass of the return type of the parent class method
+23. Interface can have private methods too since Java 9
+24. String class implements 3 intefaces --> Serializable, Comparable, CharSequence
 
+25. String constant pool is the memory area in heap memory where all the string literals are placed
+26. By default toString prints the hashcode value of the object
 
+27. Exception is thrown from the top of the stack for handling and then it percolates down till it is handled
+
+28. Exception in Inheritance -->
+    # When parent class method doesn't declare any exception then child class method cannot declare any checked exception
+        but can declare unchecked exception
+    #When parent class declares any exception then the child class method can declare same or sub class exception of parent class exception
+       or not declare any exception
+        
+
+29. Note : error can also be thrown but not caught as the catch block only caught exception
+
+30. Collection framework , collection is an interface, Collections is a utility class
+    Collection framework: provides an architecture to store and manipulate group of objects
+    collection interface declares then method that needs to be implemented
+    
+31. Iterator interface facilitates the functionality of iterating the elements in forward direction only
+32. LinkedList in java is internally doubly linked list. Also in hashmap the values in buckets are stored as a chain of doubly linked list
+
+33.HashSet internally uses HashMap for storing the values
+   LinkedHashSet internally uses LinkedHashMap for storing the values. LinkedhashSet contains tow keys i.e. before and after which are used to 
+                 maintain the insertion order
+                 
+34. Note**: TreeSet cannot contain null values as it is used by treemap to determine its location , which is not possible in case of null values
+            Also , priority queue and treemap cannot store null keys as they have to maintain the insertion order
+            
+            
+35. ArrayList is fail fast in nature which means concurrent operations are not allowed on it
+    Note : inside the add method of arraylist , there is a check (ensureCapacity()) which checks if the size of the arraylist list is lesser than the 
+           currently occupied , if its not it grows in size by 150% . the old data is copied (using clone) into a new array since the underlying data structure
+           in a arraylist is array only
+    
+36. Fail fast iterator: The iterators which does not allow modification while iterating over it are known as fail fast iterators
+    It throws concurrent modification exception     
+    Eg: Iterators returned by ArrayList, Vector, Hashmap, HashSet 
+    
+    Fail Safe iterator: the iterators which allow the modification of collection while iterating over it are called fail safe iterator
+    Eg: CopyOnWriteArrayList, ConcurrentHashMap
+
+    Difference between both of them:
+    Fail Fast :*Opposite of below
+               *Uses original collection for traversing
+               *Doesn't require extra memory
+               *Fast
+    
+    
+    Fail Safe: *Allows concurrent modification by other threads or process and doesn't throw concurrent modification exception
+               *A deep copy of the original collection is used to traverse over the elements
+               *It requires extra memory for cloning the collection
+               *Slower as compared to fail fast
+               
+37. How is it determined , if there is any modification in collection ?
+    Any modification is determined by comparing the modcount variable of the collection. Its a counter which gets incremented each time there is
+    some modification like addition or removal
 
 
 
