@@ -101,7 +101,7 @@ Ans: there are 5 memeory areas allocated by JVM -
                              Note : There is only one class area per jvm shared by all the classes
      2. Heap Space : Its the memoey space where all the objects are created 
                      Note: there is only one heap space per jvm shared by all the threads
-     3. Stack Memroy : In this memroy area all the temp variables are created , stack frame per thread
+     3. Stack Memroy : In this memroy area all the local variables , local primitive variable, references to objects are created , stack frame per thread
                        Once thread is executed, the stack frame is also destroyed
                        Note: its thread safe since one stack frame is shared by only one thread
     
@@ -181,14 +181,161 @@ Ans: Test obj = (Test)Class.forName("Test").newInstance();
     some modification like addition or removal
 
 
+38. Context switching in threads take lesser time as compared to multi processes
+    If any exception occurs in one thread , it doesn't affect other threads
+    
+39. Thread Scheduler is part of JVm which decides which thread should run
+    There is no guarantee that which thread will be choosen to run by thread scheduler among all the runnable threads
+    
+40. can we start a thread twice ?
+Ans: No. it will give Illegal Thread state exception
+
+41. Default threads in Java..what are they ?
+Ans: As java provides built in support for multithreading there are various threads which are created and started when a Java program startes
+     EG: main thread --> it has various other threads created or define by the user
+         daemon thread --> garbage collector, finalizer
+         
+42. How to create a deadlock in the main method ?
+Ans Use this statement --> Thread.currentThread().join();
 
 
+43. Daemon threads ?
+Ans: These are service provider threads with almost least priority . These threads provide service to the other user thread and their life depends
+     on mercy of user threads
+     
+44. Join method ?
+Ans: It causes the currently running task to stop executing until the thread it joins completes its task or timed out
 
+45. Yield Method ?
+Ans: yield method of thread class causes the currently executing thread object to pause temporarily and allow other threads to execute
+     Note : This method notifies the thread scheduler that this thread is not doing anything particularly important and if there are any 
+            other threads which needs to run then they should run
+     Note: If there are no other threads with a higher priority to run, then the current thread continues to run
+     
+46. Suspend method ?(Deprecated) As they may lead to deadlock
+Ans: This method puts the invoking thread to waiting state until the same thread is resumed using the resume method
 
+47. Resume method ? (Deprecated) As they may lead to deadlock
+Ans: This method resumes the execution of invoking thread which is in suspended state.
 
+48. Stop method ? (Deprecated) As they may lead to deadlock
+Ans: this method is used to stop the execution of the running thread
+     How deadlock can be caused: if a thread holds a lock on an object and thread is suspended . Now another thread will wait to hold the lock of that object 
+     until the previous thread is resumed. in case previous thread doesn't resume, it may lead to deadlock
+     
+     
+49. Thread Pool why ?
+Ans: In a web application , there are various requests made from multiple clients. There are two approaches to cater to this request. 
+     (i)- Create a thread for each request
+     (ii) - Create a pool of threads with some fix no of threads to cater few requests at a time and the remaining requests goes into a queue.
+     
+     In former approach , Server will spend more time and more resources to create a thread every time for a new request.
+     While, in the later approach a pool with a specific no of threads is created to cater to the requirement. If no thread is available
+     to take the task , then the task remains in queue and executes as soon as a thread become available.
 
+50. What is a thread pool ?
+Ans: A thread pool is a group of worker threads which are previously created and are available to execute the tasks and can be used 
+     multiple times till there is no thread leakage or thread pool is shutdown
+     
+     
+51. Garbage collection is done automatically in java by daemon thread
 
+52. What is unreachable or unreferenced object ?
+Ans: As we know that when a object is created, then it is assigned the memory in heap area. The call stack has just the reference to this object along with 
+     local variables. However when the object loses its reference , then in this case , object becomes unreachable .
+     
+53. Finalize method ?
+Ans: Every class has its own finalize method . When an object is destroyed by garbage collector then finalize method of that class is called.
 
+54. Difference between:
+  
+    Wait: Non static
+          of object class
+          release the lock 
+          called on object
+          resume by notify
+   
+   
+   Sleep: Static
+          of thread class
+          don't release the lock
+          called on current thread
+          
+          
+   Yield: Static method
+          of thread class
+          don't release the lock
+          
+          
+   Join: non static
+         of thread class
+         dont't release the lock
+         called by thread which needs to execute first
+         resume after task compeletes or timeout
+         
+   Suspend:non-static
+           of thread class
+           don't release the lock
+           called by thread which needs to stop
+           resume by resume method
+           
+           
+55. What is monolithic architecture ?
+Ans: The application architecture in which application has a single code base with multiple modules like product module, shipping module , user module
+     This architecture mostly uses a single database
+     
+56. Microservices Architecture ?
+Ans: In this various small services are made to work together to serve as a bigger or enterprise application
+     Different microservices communicate to each each other through light weight protocol like HTTP. 
+     It can be seen as decoupling of modules to work together
+     Modules are loosely coupled
+     
+     
+57. By default embedded tomcat or spring boot application doesn't support JSP. for adding jsp support we need to add jasper dependencies in pom.xml
+    then we add prefix and suffix in application.properties
+    spring.mvc.view.suffix=.jsp
+    spring.mvc.view.prefix=/pages/
+    
+58. How many types of respositories are there for DB operations ?
+Ans: CrudRespository : basic crud operations
+     PagingAndSortingRepository : it extends the CrudRespository and allows the user to sort and paginate the results
+     JpaRepository : It extends the PagingAndSortingRepository and adds JPA specific featues like flush();
+     
+     Example: Let student is the class which is mapped to student table and the roll no is the integer type which is the ID or primary key 
+     Basic crud operations would be availabe in the interface that extends CrudRespository etc.
+     
+     Note: Since in real application we might need some complex queries, other than basic queries , so it will be done by below two steps
+           (i): Create possible custom methods which are provided by spring .By default mostly operations are performed over id/primary key
+                but we can customize them by just declaring abstract methods in the dao interface.
+                eg. List<Student> findByStudentName(String name);
+           (ii):Using JPQL/HQL: in case there are not available methods as per your requirement,then we can write queries as well just above
+                our abstract method
+                eg. Query("From Student where name = ? order by rollNumber")
+                    List<Student> findByNameSorted(String name);
+     
+59. H2 database , add its dependency. localhost:8092/h2-console
+
+60. @RestController = @Controller + @ResponseBody
+
+61. @RequestMapping(path = "/addStudent", method = RequestMethod.POST)
+    
+    
+    
+    
+62. What is the difference between request param and path variable ?
+Ans: *request param --- values after ? in key value format--> /home/home.jsp?id=10&name= gaurav
+     url will work with or without the request params.
+     Receiving at server side by using @RequestParam annotation
+     eg: @Getmapping("/home/home.jsp")
+         public String getHome(@RequestParam ("id") int id)
+
+     *path varibale --- /home/10/gaurav/home.jsp
+      urls will not work as the path params form the path of the variable itself
+      Receiving at server side by using the @PathVariable annotation 
+      eg: @GetMapping("/home/{id}/{name}/home.jsp")
+          public String getHome(@PathVariable ("id") int id, @PathVariable ("name") String name)
+          
+63. 
 
 
 
