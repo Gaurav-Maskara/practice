@@ -335,7 +335,58 @@ Ans: *request param --- values after ? in key value format--> /home/home.jsp?id=
       eg: @GetMapping("/home/{id}/{name}/home.jsp")
           public String getHome(@PathVariable ("id") int id, @PathVariable ("name") String name)
           
-63. 
+63. Difference between SOAP and REST
+Ans: SOAP: XML only
+           Its a protocol
+           SOAP cannot use rest because its a protocol
+           SOAP defines standards to be strictly followed
+           SOAP requires more bandwidth
+           SOAP defines its own security
+           SOAP services uses xml over https or MQ, it requires a wsdl file to describe the payload for XML messages
+
+
+     REST: Different data formats such as text, html, json,xml
+           its a architectural style
+           REST can use soap since its a concept and can use any protocol like HTTP, SOAP
+           REST doesn't define much standards like SOAP
+           REST requires less bandwidth
+           RESTful webservices inherits security measures from the uderlying transport
+           REST mostly uses http
+           
+           
+64. @Bean annotation ?
+Ans: By having a @Bean annotation over a method , we will have only one instance of the object that we create
+      @Bean -- returns singleton object
+
+65.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
