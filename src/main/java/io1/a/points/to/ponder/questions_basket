@@ -358,8 +358,115 @@ Ans: SOAP: XML only
 Ans: By having a @Bean annotation over a method , we will have only one instance of the object that we create
       @Bean -- returns singleton object
 
-65.  
+65.  In Spring cloud we have the Eureka Server which is the client side discovery server ?
+Ans : For implementation of this client side service discovery , we need to configure a Eureka Server & in that Eureka server we need to register the 
+      microservices as the Eureka client . This way Eureka server will know the application name , port and IP address of the microservices
+      When a client will ask for a certain microservice then it will be given the requested info
+      
+      Step 1: Configuration of the Eureka Server :
+              Eureka service is nothing but a separate microservice which acts as a Eureka Server. 
+              To make a microservice act as a eureka server , we need to do some changes :
+                  @ Add Eureka server dependencies at the time of project creation , add eureka server starter
+                  @ Enable Application to act as Eureka Server i.e @EurekaServer annotation over the main class 
+                  @ Configure the port of Eureka Server in application.properties file , configure the port for this Eureka Server
+                  @ Default port for Eureka Server is 8761
+                  @ Check Eureka Server on browser by calling localhost:8761. this is the default UI page which shows all the registered Eureka clients &
+                    other statics
+                  Note: Since Eureka Server is itself a microservice , hence along with other microservices it tries to register itself as Eureka client to 
+                        self server. It is okay in multi Eureka Server environment but in case of single Eureka Server , we need to disable it by adding 
+                        eureka.client.register-with-eureka = false & eureka.client.fetch-registry = false in application.properties
+                        
+      Step 2 : Configure microservices as Eureka client :
+               To serve as a client each microservice must include Eureka client dependencies.
+               @ Add Eureka client in pom.xml or add during the project creation
+               @ Provide Spring cloud version as a property
+               @ Configure Eureka server connection details . In case of multiple Eureka servers we need to provide the details of the Eureka server to
+                 which this Eureka client will register to in application.properties 
+               @ Enable the @RestTemplate or WebClient for server discovery . Add the @Loadbalanced annotation over the RestTemplate Bean (on method)
+                 so that the RestTemplate will resolve the application name and call the microservices accordingly
+               @ Eureka Server does the basic load balancing using the round robin pattern
+               @ Replace the IP address & port number of microservice by application name in calling microservice
+                  for example: restTemplate.getForObject("http://localhost:8080/home", Student.class); will become as below
+                               restTemplate.getForObject("http://student-application/home", Student.class);
+                               
+               Note: In this way Eureka Server helps in service discovery and that is also in a load balanced way. Although adding Eureka client starter
+                     auto configures the service as client but some time we need to add the annotations over the main class as @EnableEurekaClient
+                     
 
+66. What if multiple microservices are registered under the same name or what if multiple instances of same microservice is registered to Eureka-Server
+    (ofcourse on different ports or machine) how to do basic load balancing ?
+Ans: Basic load balancing is done by eureka server itelf at the client side
+
+67. How fault tolerance works or How eureka server knows a fault in a service or how to detect a service is down after registery ?
+Ans: Eureka server itself keeps watch over all the registered microservices by pinging them on a regular interval (a simple sol run multiple instance)
+
+68. What is a fault tolerance ?
+Ans : The property of a microservice application that how much it is tolerant for a specific fault is known as fault tolerance
+
+69. @value("${key}")
+    private String value;
+    
+70. What can be done to make the application fault tolerant at basic level or without using any library ?
+Ans @ We can run multiple instances of the microservice to work even when an instance is down
+    @ We can add timeout in resttemplates so that the slowness of one service doesn't effect the others
+    
+    
+71 What is fallback mechanism ?
+Ans : fallback is the alternative mechanism when there is a fault in the microservice or when a microservice is down
+      Different ways of implementing fallback:
+      @Throw an error
+      @Return default fallback response
+      @Use cache and return response from the previous data
+      
+      
+71. What is circuit breaking in programming ?
+Ans: Circuit Breaking is all about managing the failures in a graceful -fault tolerant manner which prevents failure cascading and gives a default
+     behaviour when the service fails
+     
+      
+72. Hystrix What is this ?
+Ans: Hystrix a Netflix's open source library which follows the circuit breaker pattern.
+               It allows us to introduce the fault tolerant and latency tolerance by isolating failures and by preventing them from cascading.
+               In this way it helps us to build a robust distributed system
+               
+               Implementing the Hystrix circuit breaker pattern :
+               Step 1:
+               @Add the hystrix dependency in the pom.xml
+               @Add @Enable circuit breaker in the main application class
+               @Add @HystrixCommand(fallBackMthod = "xyz") annotation to the method that needs circuit breaker. where xyz is the fallback method where
+                    the control would go in case of failure events
+               
+               Step 2: Configure Hystrix behaviour
+               @ Fallback method must have the same parameter list as the method on which the request actually failed also return type
+               @ Fallback method must be in the same class
+               @ Fallback must return proxy data or false data or data which doesn't require further API calling
+               @ Below @HystrixCommand multiple @HytrixProperty can be defined like timeout time, Error threshold percentage
+               
+               
+73. Hystrix dashboard ?
+Ans: Hystrix also provides the feature to display all the added circuit breakers in the API in a visual way. For this you just 
+     need to add the Spring-cloud-hystrix-dashboard dependencies
+     Note : It shows all the data like how many ciruit breakers are there and which one is active and how much processing time it is taking
+     
+     
+74. What is API gateway ?
+Ans: API gateway is like front door for all our requests made from different services
+     Advantages :
+     @ It provides a single entry point for the complete application
+     @ Automatically locates the requested resource (by connecting the discovery server)
+     @ By hiding resource location and providing only one entry point it provides security
+     @ They come with multiple monitoring and analytical tools which helps in application health analysis
+     
+     
+75. What is Spring Cloud Gateway ?
+Ans: Step 1:
+      @ Make a new project and add the spring-cloud-starter-gateway dependency
+      @ Also add the eureka client dependency : spring-cloud-starter-netflix-eureka-client
+      
+      Step 2:
+      @ Add @EnableEurekaClient on the main application class
+      @ Add the configuration in YAML file for the patterns of the microsevices that it needs to look into eureka server
+     
 
 
 
