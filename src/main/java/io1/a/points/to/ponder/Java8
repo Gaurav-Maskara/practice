@@ -328,7 +328,7 @@ https://www.baeldung.com/solid-principles
 
 2. Delete(DML) --> you can roll back data after delete on the other hand you cannot roll-back in case of Truncate(DDL)
                DDL --> create, drop , alter, rename
-               DML --> insert, update
+               DML --> insert, update, delete
 3. Delete is slower than Truncate
 4. Unique constraint --> Null can be there
 5. Primary --> null not allowed

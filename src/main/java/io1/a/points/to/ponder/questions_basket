@@ -537,6 +537,18 @@ Ans: * This process is platform independent
 
 
 
+86. Hibernate interview questions ?
+Ans: https://www.java67.com/2016/02/top-20-hibernate-interview-questions.html
+
+87. Difference betweeen first level and second level cache ?
+Ans: *The primary difference is that the first level cache is maintained at the Session level 
+       while the second level cache is maintained at the SessionFactory level.
+     *The data stored in the first level cache is accessible to the only Session who maintains it, while the second level cache is accessible to all.
+     *The first level cache is by default enabled while the second level cache is by default disabled
+
+
+88. Difference between save and persist in hibernate ?
+Ans: https://stackoverflow.com/questions/5862680/whats-the-difference-between-session-persist-and-session-save-in-hibernate          
 
 
 
