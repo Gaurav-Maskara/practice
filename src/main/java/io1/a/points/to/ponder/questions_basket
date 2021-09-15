@@ -75,7 +75,7 @@ Ans : 1.ClassNotFound: Its a checked exception which is thrown when the JVM trie
                        at run time. 
       3.InvalidClassException: Its a Runtime exception thrown during deserilization when the serial ver uid of the class not matches with that of
                               class descriptor read from the stream
-      4. UnsupportedClassVersionError: This occurs when a class is compiled using higher version JDK and is run on a lower version JDK
+      4.UnsupportedClassVersionError: This occurs when a class is compiled using higher version JDK and is run on a lower version JDK
 
 
 14. How to enable second level cache in your project ?
@@ -137,7 +137,7 @@ Ans: Test obj = (Test)Class.forName("Test").newInstance();
 
 29. Note : error can also be thrown but not caught as the catch block only caught exception
 
-30. Collection framework , collection is an interface, Collections is a utility class
+30. Collection framework , collection is the root interface of the framework, Collections is a utility class which contains various static utility methods
     Collection framework: provides an architecture to store and manipulate group of objects
     collection interface declares then method that needs to be implemented
     
@@ -468,6 +468,71 @@ Ans: Step 1:
       @ Add the configuration in YAML file for the patterns of the microsevices that it needs to look into eureka server
      
 
+76. JSP lifecycle ?
+Ans: JSP -> translation into Servlet -> 
+
+77. Marker interface examples ?
+Ans: Serializable, Cloneable
+
+78. Functional Interface examples ?
+Ans: Comparable, Comparator
+
+
+79. What is Factory design pattern ?
+Ans: Just define one interface or abstract class and let the child class to decide the way of instantiation & initiation
+
+80. Different types of approches to create a singleton class ?
+Ans: Eager Initialization , Static Block Initialization, Lazy Initialization, Thread Safe Singleton, Thread Safe using double check locking
+
+
+81. How can singleton pattern be destroyed and how to prevent it ?
+Ans: It can be destroyed through Reflection , Serialization , Cloning
+     * Prevention from reflection : use enum singleton pattern
+     * From serialization : override read resolve method in your singleton class to return the same object
+     * From Cloning : 
+                  * When singleton class implements cloneable interface: Override the clone method to either throw clone not supported exception
+                    explicitly or return the value from getinstancemethod
+                  * When singleton class hasn't implemented the cloneable interface but has extended a class which has extended cloneable interface:
+                    In this case through inheritance singleton class can also be cloned but solution is same i.e. override clone method in singleton class
+                    
+                    
+82. What is the default autowiring type in @autowired ?
+Ans: by type
+
+83. What is cloning ?
+Ans: To make anyclass eligible for cloning it much implement the cloneable interface & override the clone method, 
+     else it will throw clone not supported exception
+     Ways to do cloning:
+     * Shallow cloning : In this only the primitive types are copied however if there is any refence type say address in Student the clone 
+                         also starts pointing to the refenrnce address thereby creating a problem
+     * Deep cloning : 
+     
+			@Override
+			public Object clone() {
+			    User user = null;
+			    try {
+			        user = (User) super.clone();
+			    } catch (CloneNotSupportedException e) {
+			        user = new User(
+			          this.getFirstName(), this.getLastName(), this.getAddress());
+			    }
+			    user.address = (Address) this.address.clone();
+			    return user;
+			}
+			
+			
+			
+84.What is serialization ?
+Ans: Serialization is the process of writing the state of an object into a byte stream
+     Note: Serialization and Deserialization are platform independent process which means we can serialize on one platform and desizalise on other
+     
+85. Important points related to serialization 
+Ans: * This process is platform independent
+     * Static and transient variables are not serialized
+     * Constructor of a class never called during serialization to create the objects
+     * Only those classes which have implemented the serializable interface can be serizlibale interface
+     * If parent class has implemented the serializable interface then child can be serialized but vice-versa is not true
+     * Serialization can break the singleton pattern , so to avoid this class must override the readResolve method
 
 
 
