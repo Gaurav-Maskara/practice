@@ -403,11 +403,11 @@ Hint : we need to use self join here by using aliases 'E' and 'M'
     
 20. Write an SQl query to fetch all the duplicate rows in a table 
     select * , count(*) from employees group by emp_id having count(*) > 1;
-    select e_id, name, age, count(*) as dup_count from employees group by e_id, name, age, having count(e_id) >1 and count(name) > 1 and count(age) >1;
+    select e_id, name, age, count(*) as dup_count from employees group by e_id, name, age having count(e_id) >1 and count(name) > 1 and count(age) >1;
     
 21. How Self join works 
     (Write SQL to return the name of the manager for each employee in the same row)
-    select e.emp_id, e.emp_name, e.manager_id, m.emp_name, as manager_name from emp_manager as e join emp_manager as m ON e.manager_id = m.emp_id;
+    select e.emp_id, e.emp_name, e.manager_id, m.emp_name as manager_name from emp_manager as e join emp_manager as m ON e.manager_id = m.emp_id;
     
     
 22. Write Sql to fetch list of employees with same salary 
@@ -444,7 +444,7 @@ Hint : we need to use self join here by using aliases 'E' and 'M'
     
 30. Northwind: Find the list of late orders for all the employees
     select e.employeeid, firstname, count(*) as late_orders from orders as o inner join Employees as e 
-    on e.employeeid = o.employeeid where requireddate <= ShippedDate
+    on e.employeeid = o.employeeid where required date <= ShippedDate
     group by e.employeeid , e.firstname order by late_orders desc;
     
     
