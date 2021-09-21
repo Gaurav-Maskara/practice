@@ -1,13 +1,42 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 1. How to sort data that can’t fit into main memory?
 Ans: User external sorting where data is sorted in chunks and merged back to get the sorted result (External merge sorted is used here)
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 2. Name some garbage collection algos in java
-Ans: 
-
-
+Ans: https://howtodoinjava.com/java/garbage-collection/all-garbage-collection-algorithms/
+     1. Mark and sweep: scans the memory map and then deletes and then compaction is done
+     2. Concurrent Mark and Sweep : multiple threads do the above process> this is an improvement since the stop the world even time is minimized due to 
+                                    multiple threads doing the same work thereby improving the overall performance
+                                    To use CMS GC, use below JVM argument: -XX:+UseConcMarkSweepGC
+                                    Note: there are multiple options that we can use with CMS for its triggering when we require it like
+                                          Trigger ratio percentage, No of threads for GC, parallel threads, 
+     3. Serial Garbage Collection : It works on a single thread and uses : (preferred for small programs)
+                                    mark-sweep --> for new generation
+                                    mark-sweep-compact ---> old generation
+     4. Parallel garbage collection : Similar to Serial GC, it uses
+                                     mark-sweep --> for new generation
+                                     mark-sweep-compact ---> old generation
+                                     Multiple concurrent threads are used for marking and copying / compacting phases
+                                     Parallel Garbage Collector is suitable on multi-core machines
+     5.G1                           :Designed to be the replacement of CMS .it is parallel , concurrent, and incrementally compacting
+                                    * This approach divides the memroy area into multiple small regions . Each region is marked as either 
+                                     young generation (further divided into eden and survivor) and old generation. This allows the G1 to approach the 
+                                     problem incrementally
+     
+     Note: Till java 8, parallel GC was default algorithm.
+     Note: Since java 9, G1 has been set as default GC algorithm.                         
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                      
 3. Define factory design pattern
-Ans: It says just define the interface or abstract class to decide the way of instantation and initiation
+Ans: define an interface or abstract class for creating an object but let the subclasses decide which class to instantiate. 
+
+MVC, Singleton(@Bean) (To share common data across all tiers we had used the singleton pattern. ), 
+Template (jdbc template)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 4. Different approaches for creating a singleton clas 
 Ans : Eager initialization , static block initialization, lazy initialization, thread safe singleton, thread safe singleton using double check
@@ -24,10 +53,11 @@ Ans: 1. By Reflection
                           eg. in method --> protected Object readResolve(){ return getInstance()};
      3.From cloning : 
                     When singleton class implements cloneable interface 
-                    Ans:Overide the clone method and either return the same object or throw clonenot supported exception
+                    Ans:Overide the clone method and either return the same object or throw clone not supported exception
                     When the singleton class doen't implement the cloneable interface but extends a class, which has implemented the cloneable interface
                     Ans : The solution for this would be same as above
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 6. Cloning ?
 Ans: The class should implement the cloneable interface , also it should override the clone method
@@ -37,7 +67,9 @@ Ans: The class should implement the cloneable interface , also it should overrid
                                Employee cloned = (Employee)super.clone();
                                cloned.setDepartment((Department)cloned.getDepartment().clone());   
                                return cloned;
-                               
+                             
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+                             
                                
 7. What are the possible exception in serialization and deserialization ?
 Ans: IOException/ FileNotFound/ ClassNotFound/ InvalidClass
@@ -550,16 +582,42 @@ Ans: *The primary difference is that the first level cache is maintained at the 
 88. Difference between save and persist in hibernate ?
 Ans: https://stackoverflow.com/questions/5862680/whats-the-difference-between-session-persist-and-session-save-in-hibernate          
 
+89. Syntaxs ?
+Ans:  @GetMapping("/testBookingFeedback/{id}")
+      public ResponseEntity getTestBookingDetails(@PathVariable("id") int id)
+      
+      @PostMapping("/testBookingFeedback")
+      public ResponseEntity addTestResult(@RequestBody TestFeedback testFeedback){
+    
+      @PutMapping("/heavyresource/{id}")
+      public ResponseEntity<?> saveResource(@RequestBody HeavyResource heavyResource, @PathVariable("id") String id))
+      
+      @PatchMapping("/heavyresource/{id}")
+      public ResponseEntity<?> partialUpdateName(@RequestBody HeavyResourceAddressOnly partialUpdate, @PathVariable("id") String id)
+
+      @RequestMapping(value = "/heavyresource/{id}", method = RequestMethod.PATCH, consumes = MediaType.APPLICATION_JSON_VALUE)
+      public ResponseEntity<?> partialUpdateGeneric(@RequestBody Map<String, Object> updates, @PathVariable("id") String id)
+      
+      @DeleteMapping("/courses/{courseId}")
+      public List<Course> deleteCourse(@PathVariable String courseId)
 
 
+90. Statefull and stateless protocol ?
+Ans: HTTP --> stateless --> it doesnt't require to store the session information for multiple requests
+     FTP, Telnet --> stateful
 
 
-
-
-
-
-
-
+91. Static code analysis ?
+Ans: SonarQube
+     Link: https://www.baeldung.com/sonar-qube
+     Link: https://www.c-sharpcorner.com/article/step-by-step-sonarqube-setup-and-run-sonarqube-scanner/
+     
+     Add the file --> sonar-project.properties in the project:
+     sonar.projectKey="any unique name"
+     sonar.projectName="any unique name"
+     sonar.sourceEncoding=UTF-8
+     sonar.sources="list of folders which will scan"
+     sonar.exclusion="list of folders which will exclude from scan"
 
 
 
