@@ -33,7 +33,7 @@ Ans: https://howtodoinjava.com/java/garbage-collection/all-garbage-collection-al
 Ans: define an interface or abstract class for creating an object but let the subclasses decide which class to instantiate. 
 
 MVC, Singleton(@Bean) (To share common data across all tiers we had used the singleton pattern. ), 
-Template (jdbc template)
+Template (jdbc template), chain of responsibility
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -69,13 +69,14 @@ Ans: The class should implement the cloneable interface , also it should overrid
                                return cloned;
                              
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
-                             
-                               
 7. What are the possible exception in serialization and deserialization ?
 Ans: IOException/ FileNotFound/ ClassNotFound/ InvalidClass
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 8. What is serial version uid ?
-Ans: In serialization process , an Id is associated with each serilizable class to verify the object at both sender and receiver side, this id is serial ver uid
+Ans: In serialization process , an Id is associated with each serializable class to verify the object at both sender and receiver side, this id is serial ver uid
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 9. Define or state effect of different keywords on serialization?
 Ans: Final variables: serialized
@@ -84,9 +85,13 @@ Ans: Final variables: serialized
      Constructor of class is never called
      If the parent class has implemented the serializable interface then child class can be serialized but vice versa is not true
      
+------------------------------------------------------------------------------------------------------------------------------------------------------------
      
 10. Enums can be used in place of public static final variables 
     Its a class basically used to declare constants
+    
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+   
     
 11. What is the difference between get and load methods of hibernate ?
 Ans: Both of these methods are same as both are used to fetch the data from the DB
@@ -95,10 +100,22 @@ Ans: Both of these methods are same as both are used to fetch the data from the 
                      returns null if the object is not in DB
                      loads the data as soon as method is called
                 Load : It throws object not found if the object is not in the DB
-     
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
      
 12. What do you mean by persistence context ?
-Ans: Loading of object in persistence context means that the object is 
+Ans: The persistence context is the first-level cache where all the entities are fetched from the database or saved to the database
+     Persistence context keeps track of any changes made into a managed entity. 
+     If anything changes during a transaction, then the entity is marked as dirty. When the transaction completes, 
+     these changes are flushed into persistent storage. 
+     
+     
+Note: The EntityManager is the interface that lets us interact with the persistence context. 
+      Whenever we use the EntityManager, we are actually interacting with the persistence context.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
      
 13. What is the difference between ClassNotFound and NoClassDefFound exception ?
 Ans : 1.ClassNotFound: Its a checked exception which is thrown when the JVM tries to load a class using Class.forName() or ClassLoader.className()
@@ -110,30 +127,31 @@ Ans : 1.ClassNotFound: Its a checked exception which is thrown when the JVM trie
       4.UnsupportedClassVersionError: This occurs when a class is compiled using higher version JDK and is run on a lower version JDK
 
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 14. How to enable second level cache in your project ?
 Ans: To configure the second level cache there are various cache providers such as EHCache
      1. add the dependencies
      2. enable second level caching in configuration file 
      
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
      
 15. JVM architecture ?
 Ans : 
 
-16. Memory areas allocated by JVM ?
-Ans: There are 5 memory areas allocated:
-     1. Class (Method) area: this memory area stores the class level data of each class file(.class)
-                             it contains data such as metadata, static variables
-                             Note: There is only one class area per JVM shared by all classes
-     2 
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 17. Memory areas allocated by JVM ?
-Ans: there are 5 memeory areas allocated by JVM -
+Ans: there are 5 memory areas allocated by JVM -
      1. Class (method) Area :this memory area stores the class level data of each class file(.class) . It contains data such as metadata, contant runtime pool
                              static variables , code for methods 
                              Note : There is only one class area per jvm shared by all the classes
-     2. Heap Space : Its the memoey space where all the objects are created 
+     2. Heap Space : Its the memory space where all the objects are created 
                      Note: there is only one heap space per jvm shared by all the threads
-     3. Stack Memroy : In this memroy area all the local variables , local primitive variable, references to objects are created , stack frame per thread
+     3. Stack Memory : In this memory area all the local variables , local primitive variable, references to objects are created , stack frame per thread
                        Once thread is executed, the stack frame is also destroyed
                        Note: its thread safe since one stack frame is shared by only one thread
     
@@ -141,19 +159,32 @@ Ans: there are 5 memeory areas allocated by JVM -
                        Note:Each thread has its own pc area
      5. Native Method stack: Every method has its own native area where then native method data is stored
      
-     
+------------------------------------------------------------------------------------------------------------------------------------------------------------
      
 18. Class.for name can also be used for creating objects juts like new operator , refer the below example 
 Ans: Test obj = (Test)Class.forName("Test").newInstance();
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-19. This keyword refers to the isnstance of the current class
+19. This keyword refers to the instance of the current class
 
-20. Aggregation : has-a-relationship : eg Admin has invenory manager
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+20. Aggregation : has-a-relationship : eg. Admin has inventory manager
 21. Composition : has-a-relationship : Man has a car
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 22. Return type of the overriding method should be the same or the subclass of the return type of the parent class method
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 23. Interface can have private methods too since Java 9
-24. String class implements 3 intefaces --> Serializable, Comparable, CharSequence
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+24. String class implements 3 interfaces --> Serializable, Comparable, CharSequence
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 25. String constant pool is the memory area in heap memory where all the string literals are placed
 26. By default toString prints the hashcode value of the object
@@ -166,28 +197,41 @@ Ans: Test obj = (Test)Class.forName("Test").newInstance();
     #When parent class declares any exception then the child class method can declare same or sub class exception of parent class exception
        or not declare any exception
         
-
 29. Note : error can also be thrown but not caught as the catch block only caught exception
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 30. Collection framework , collection is the root interface of the framework, Collections is a utility class which contains various static utility methods
     Collection framework: provides an architecture to store and manipulate group of objects
-    collection interface declares then method that needs to be implemented
+    collection interface declares that method that needs to be implemented
     
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 31. Iterator interface facilitates the functionality of iterating the elements in forward direction only
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 32. LinkedList in java is internally doubly linked list. Also in hashmap the values in buckets are stored as a chain of doubly linked list
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 33.HashSet internally uses HashMap for storing the values
-   LinkedHashSet internally uses LinkedHashMap for storing the values. LinkedhashSet contains tow keys i.e. before and after which are used to 
+   LinkedHashSet internally uses LinkedHashMap for storing the values. LinkedhashSet contains two keys i.e. before and after which are used to 
                  maintain the insertion order
+                 
+------------------------------------------------------------------------------------------------------------------------------------------------------------
                  
 34. Note**: TreeSet cannot contain null values as it is used by treemap to determine its location , which is not possible in case of null values
             Also , priority queue and treemap cannot store null keys as they have to maintain the insertion order
             
+------------------------------------------------------------------------------------------------------------------------------------------------------------
             
 35. ArrayList is fail fast in nature which means concurrent operations are not allowed on it
     Note : inside the add method of arraylist , there is a check (ensureCapacity()) which checks if the size of the arraylist list is lesser than the 
            currently occupied , if its not it grows in size by 150% . the old data is copied (using clone) into a new array since the underlying data structure
            in a arraylist is array only
+           
+------------------------------------------------------------------------------------------------------------------------------------------------------------
     
 36. Fail fast iterator: The iterators which does not allow modification while iterating over it are known as fail fast iterators
     It throws concurrent modification exception     
@@ -208,41 +252,61 @@ Ans: Test obj = (Test)Class.forName("Test").newInstance();
                *It requires extra memory for cloning the collection
                *Slower as compared to fail fast
                
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+               
 37. How is it determined , if there is any modification in collection ?
-    Any modification is determined by comparing the modcount variable of the collection. Its a counter which gets incremented each time there is
+Ans:Any modification is determined by comparing the modcount variable of the collection. Its a counter which gets incremented each time there is
     some modification like addition or removal
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 38. Context switching in threads take lesser time as compared to multi processes
     If any exception occurs in one thread , it doesn't affect other threads
     
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
 39. Thread Scheduler is part of JVm which decides which thread should run
     There is no guarantee that which thread will be choosen to run by thread scheduler among all the runnable threads
     
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
 40. can we start a thread twice ?
 Ans: No. it will give Illegal Thread state exception
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 41. Default threads in Java..what are they ?
 Ans: As java provides built in support for multithreading there are various threads which are created and started when a Java program startes
      EG: main thread --> it has various other threads created or define by the user
          daemon thread --> garbage collector, finalizer
-         
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 42. How to create a deadlock in the main method ?
 Ans Use this statement --> Thread.currentThread().join();
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 43. Daemon threads ?
 Ans: These are service provider threads with almost least priority . These threads provide service to the other user thread and their life depends
      on mercy of user threads
      
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+     
 44. Join method ?
 Ans: It causes the currently running task to stop executing until the thread it joins completes its task or timed out
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 45. Yield Method ?
 Ans: yield method of thread class causes the currently executing thread object to pause temporarily and allow other threads to execute
      Note : This method notifies the thread scheduler that this thread is not doing anything particularly important and if there are any 
             other threads which needs to run then they should run
      Note: If there are no other threads with a higher priority to run, then the current thread continues to run
+     
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
      
 46. Suspend method ?(Deprecated) As they may lead to deadlock
 Ans: This method puts the invoking thread to waiting state until the same thread is resumed using the resume method
@@ -255,7 +319,9 @@ Ans: this method is used to stop the execution of the running thread
      How deadlock can be caused: if a thread holds a lock on an object and thread is suspended . Now another thread will wait to hold the lock of that object 
      until the previous thread is resumed. in case previous thread doesn't resume, it may lead to deadlock
      
-     
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 49. Thread Pool why ?
 Ans: In a web application , there are various requests made from multiple clients. There are two approaches to cater to this request. 
      (i)- Create a thread for each request
@@ -265,25 +331,35 @@ Ans: In a web application , there are various requests made from multiple client
      While, in the later approach a pool with a specific no of threads is created to cater to the requirement. If no thread is available
      to take the task , then the task remains in queue and executes as soon as a thread become available.
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 50. What is a thread pool ?
 Ans: A thread pool is a group of worker threads which are previously created and are available to execute the tasks and can be used 
      multiple times till there is no thread leakage or thread pool is shutdown
      
+------------------------------------------------------------------------------------------------------------------------------------------------------------
      
 51. Garbage collection is done automatically in java by daemon thread
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 52. What is unreachable or unreferenced object ?
 Ans: As we know that when a object is created, then it is assigned the memory in heap area. The call stack has just the reference to this object along with 
      local variables. However when the object loses its reference , then in this case , object becomes unreachable .
      
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+     
 53. Finalize method ?
 Ans: Every class has its own finalize method . When an object is destroyed by garbage collector then finalize method of that class is called.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 54. Difference between:
   
     Wait: Non static
           of object class
-          release the lock 
+         --> release the lock 
           called on object
           resume by notify
    
@@ -312,29 +388,38 @@ Ans: Every class has its own finalize method . When an object is destroyed by ga
            resume by resume method
            
            
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+           
 55. What is monolithic architecture ?
 Ans: The application architecture in which application has a single code base with multiple modules like product module, shipping module , user module
      This architecture mostly uses a single database
+     
+------------------------------------------------------------------------------------------------------------------------------------------------------------
      
 56. Microservices Architecture ?
 Ans: In this various small services are made to work together to serve as a bigger or enterprise application
      Different microservices communicate to each each other through light weight protocol like HTTP. 
      It can be seen as decoupling of modules to work together
      Modules are loosely coupled
-     
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
      
 57. By default embedded tomcat or spring boot application doesn't support JSP. for adding jsp support we need to add jasper dependencies in pom.xml
     then we add prefix and suffix in application.properties
     spring.mvc.view.suffix=.jsp
     spring.mvc.view.prefix=/pages/
     
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
 58. How many types of respositories are there for DB operations ?
 Ans: CrudRespository : basic crud operations
      PagingAndSortingRepository : it extends the CrudRespository and allows the user to sort and paginate the results
      JpaRepository : It extends the PagingAndSortingRepository and adds JPA specific featues like flush();
-     
+ 
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
      Example: Let student is the class which is mapped to student table and the roll no is the integer type which is the ID or primary key 
-     Basic crud operations would be availabe in the interface that extends CrudRespository etc.
+     Basic crud operations would be available in the interface that extends CrudRespository etc.
      
      Note: Since in real application we might need some complex queries, other than basic queries , so it will be done by below two steps
            (i): Create possible custom methods which are provided by spring .By default mostly operations are performed over id/primary key
@@ -344,18 +429,19 @@ Ans: CrudRespository : basic crud operations
                 our abstract method
                 eg. Query("From Student where name = ? order by rollNumber")
                     List<Student> findByNameSorted(String name);
-     
+                    
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+ 
 59. H2 database , add its dependency. localhost:8092/h2-console
 
 60. @RestController = @Controller + @ResponseBody
 
 61. @RequestMapping(path = "/addStudent", method = RequestMethod.POST)
-    
-    
-    
+   
+------------------------------------------------------------------------------------------------------------------------------------------------------------
     
 62. What is the difference between request param and path variable ?
-Ans: *request param --- values after ? in key value format--> /home/home.jsp?id=10&name= gaurav
+Ans: *request param --- values after ? in key value format--> /home/home.jsp?id=10&name=gaurav
      url will work with or without the request params.
      Receiving at server side by using @RequestParam annotation
      eg: @Getmapping("/home/home.jsp")
@@ -366,6 +452,8 @@ Ans: *request param --- values after ? in key value format--> /home/home.jsp?id=
       Receiving at server side by using the @PathVariable annotation 
       eg: @GetMapping("/home/{id}/{name}/home.jsp")
           public String getHome(@PathVariable ("id") int id, @PathVariable ("name") String name)
+          
+------------------------------------------------------------------------------------------------------------------------------------------------------------
           
 63. Difference between SOAP and REST
 Ans: SOAP: XML only
@@ -385,10 +473,13 @@ Ans: SOAP: XML only
            RESTful webservices inherits security measures from the uderlying transport
            REST mostly uses http
            
-           
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 64. @Bean annotation ?
 Ans: By having a @Bean annotation over a method , we will have only one instance of the object that we create
       @Bean -- returns singleton object
+      
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 65.  In Spring cloud we have the Eureka Server which is the client side discovery server ?
 Ans : For implementation of this client side service discovery , we need to configure a Eureka Server & in that Eureka server we need to register the 
@@ -424,6 +515,7 @@ Ans : For implementation of this client side service discovery , we need to conf
                Note: In this way Eureka Server helps in service discovery and that is also in a load balanced way. Although adding Eureka client starter
                      auto configures the service as client but some time we need to add the annotations over the main class as @EnableEurekaClient
                      
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 66. What if multiple microservices are registered under the same name or what if multiple instances of same microservice is registered to Eureka-Server
     (ofcourse on different ports or machine) how to do basic load balancing ?
