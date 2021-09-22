@@ -156,7 +156,7 @@
 
     
 22. Immutable class --> Make all the fields as private and final. There should not be any setter methods.
-    Class should be declared final . Perfrom deep cloning(eg. if there is hash map)
+    Class should be declared final . Perform deep cloning(eg. if there is hash map)
     Should a return a clone of the object whenever asked for. 
     
     
@@ -289,10 +289,9 @@
 
 1. Single Responsibility : A class should have only one responsibility
 2. Open for Extension Closed for Modification
-3. Liskov Substitution : If class A is a subtype of class B, we should be able to replace B with A without disrupting the behavior of our program
+3. Liskov's Substitution : If class B is a sub-type of class A, we should be able to replace A with B without disrupting the behavior of our program
 4. Interface Segregation Principle : larger interfaces should be split into smaller ones.
-5. Dependency Inversion : It means decoupling of sotware modules . So they are not inter depenedent on each other
-
+5. Dependency Inversion : It means decoupling of software modules . So they are not inter dependent on each other
 
 
 https://www.baeldung.com/solid-principles
