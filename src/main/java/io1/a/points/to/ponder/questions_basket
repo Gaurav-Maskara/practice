@@ -37,7 +37,6 @@ Template (jdbc template), chain of responsibility
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
 4. Different approaches for creating a singleton clas 
 Ans : Eager initialization , static block initialization, lazy initialization, thread safe singleton, thread safe singleton using double check
 Note : in eager initialization there is wastage of cpu if object is not required moreover exception handling can't be done
@@ -92,7 +91,6 @@ Ans: Final variables: serialized
     
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
    
-    
 11. What is the difference between get and load methods of hibernate ?
 Ans: Both of these methods are same as both are used to fetch the data from the DB
      Differences:
@@ -103,7 +101,6 @@ Ans: Both of these methods are same as both are used to fetch the data from the 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
     
-     
 12. What do you mean by persistence context ?
 Ans: The persistence context is the first-level cache where all the entities are fetched from the database or saved to the database
      Persistence context keeps track of any changes made into a managed entity. 
@@ -115,21 +112,17 @@ Note: The EntityManager is the interface that lets us interact with the persiste
       Whenever we use the EntityManager, we are actually interacting with the persistence context.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
-
      
 13. What is the difference between ClassNotFound and NoClassDefFound exception ?
 Ans : 1.ClassNotFound: Its a checked exception which is thrown when the JVM tries to load a class using Class.forName() or ClassLoader.className()
-                     method but could not find the class at the class path
+                       method but could not find the class at the class path
       2.NoClassDefFound: Its a Runtime exception which is thrown when JVM tries to load a class which was present at compile time & not found
-                       at run time. 
+                         at run time. 
       3.InvalidClassException: Its a Runtime exception thrown during deserilization when the serial ver uid of the class not matches with that of
-                              class descriptor read from the stream
+                               class descriptor read from the stream
       4.UnsupportedClassVersionError: This occurs when a class is compiled using higher version JDK and is run on a lower version JDK
 
-
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 14. How to enable second level cache in your project ?
 Ans: To configure the second level cache there are various cache providers such as EHCache
@@ -138,7 +131,6 @@ Ans: To configure the second level cache there are various cache providers such 
      
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-     
 15. JVM architecture ?
 Ans : 
 
@@ -156,13 +148,15 @@ Ans: there are 5 memory areas allocated by JVM -
                        Note: its thread safe since one stack frame is shared by only one thread
     
      4. PC(Program Counter) Register Area:This area holds the memory address of the JVM instructions which are currently being executed
-                       Note:Each thread has its own pc area
+                            Note:Each thread has its own pc area
      5. Native Method stack: Every method has its own native area where then native method data is stored
      
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
      
 18. Class.for name can also be used for creating objects juts like new operator , refer the below example 
 Ans: Test obj = (Test)Class.forName("Test").newInstance();
+
+By using cloning, by using serialization 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 19. This keyword refers to the instance of the current class
@@ -359,7 +353,7 @@ Ans: Every class has its own finalize method . When an object is destroyed by ga
   
     Wait: Non static
           of object class
-         --> release the lock 
+         -->>> release the lock 
           called on object
           resume by notify
    
@@ -562,7 +556,7 @@ Ans: Circuit Breaking is all about managing the failures in a graceful -fault to
      
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-72. Hystrix What is this ?
+72.  Hystrix What is this ?
 Ans: Hystrix a Netflix's open source library which follows the circuit breaker pattern.
                It allows us to introduce the fault tolerant and latency tolerance by isolating failures and by preventing them from cascading.
                In this way it helps us to build a robust distributed system
@@ -582,7 +576,7 @@ Ans: Hystrix a Netflix's open source library which follows the circuit breaker p
  
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
                
-73. Hystrix dashboard ?
+73.  Hystrix dashboard ?
 Ans: Hystrix also provides the feature to display all the added circuit breakers in the API in a visual way. For this you just 
      need to add the Spring-cloud-hystrix-dashboard dependencies
      Note : It shows all the data like how many ciruit breakers are there and which one is active and how much processing time it is taking

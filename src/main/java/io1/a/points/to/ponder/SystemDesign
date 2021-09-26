@@ -108,8 +108,8 @@ Note: if the use of the state is very short lived and no latency is accepted we 
 	   
 	9. Prod level machines can have ram of around : 72GB or 144Gb or even more is possible nowadays
 	   
-   9. @Value("${spring.redis.host}")
-    private String REDIS_HOSTNAME;
+   9.@Value("${spring.redis.host}")
+     private String REDIS_HOSTNAME;
    
     @Value("${spring.redis.port}")
     private int REDIS_PORT;                  // Setting up hostname and port for redis. Redis template in spring boot provides many methods
@@ -401,7 +401,7 @@ Note: if the use of the state is very short lived and no latency is accepted we 
 
 
 
------Architecture Patterns and Questionns -----------------------------------------------------------------------------------------------------------------
+-----Architecture Patterns and Questions ------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 1.Single Tier Application -- Presentation, Business, Data Access Layer in a single software package. Eg. MP3 player, MS Office

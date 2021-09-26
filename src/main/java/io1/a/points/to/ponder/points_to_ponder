@@ -8,61 +8,148 @@
   --> Sliding window technique (mostly applied on string , linked list and arrays)
   --> Is it possible to use two loops, instead of a nested loop ? As O(2n)<O(n^2)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
 4.Remember : If you need to do sorting , and if duplicates are not required after sorting ,
              use TreeSet instead of utility methods because , TreeSet internally uses Red Black Tree
              so the time complexity for the operations are guaranteed to be O(logn)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
              
 5.Using String builder for performing operations like concat can improve the time and space complexity (https://javapapers.com/wp-content/uploads/2015/09/String-Concatenation-Performance.png)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 6.Data Types --- byte , short, int, long , float , double, boolean , char
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 7.BigInteger class is used for mathematical operation which involves very 
              big integer calculations that are outside the limit of all available primitive data types.
+             
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+             
 8. int longest = Math.max (longest, currentValue);
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 9. While writing any solution , always think about the edge cases , like only value in a linked list , null as list,
    things appearing at the last of the list (like merging the list)
    
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+   
 10.To stop the loop , you can either break out of it , or just return
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 11.If the order is important , think if stack or queues can be used ?
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 12.For normal recursion , space complexity is atleast O(N)
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 13.For visualising recursion , you can think it as like a stack. In recursion local variable value is as per the stack . But global variable's value 
    can be changed by any stack and it will remain the same for all the stack(recursively called methods)
+   
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+   
 14.The binary-search algorithm takes log(n) time, because of the fact that the height of the tree (with n nodes) would be log(n).
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 15. For Fibonacci recursive implementation or any recursive algorithm, the space required is proportional to the maximum depth of the recursion tree, 
     because, that is the maximum number of elements that can be present in the implicit function call stack
+    
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
 16. MultiSet and MutiMap (from the guava library) can be used for duplicates key in each of them.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 17. BiMap (from Guava framework) in this both keys and values can act as the key to get the other
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 18. Use Math.max(number1, number2);
 19. Math.abs(number1 - number2)>1
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 20. Whenever you have to add something in program , try to use like double or long , so that it can handle large values , for scaling of the system.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 21. To clear the array completely --> listToReturn.clear(); and to copy all the elements again listToReturn.addAll(counterList);
-22. Character.toString('4'); Integer.parseInt("567"); bigint = bigint.add(new BigInteger("2"))
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+22. Character.toString('4'); Integer.parseInt("567"); bigint = bigint.add(new BigInteger("2"));
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 23. BigDecimal bd = new BigDecimal("1.0");
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 24. Think of bucketing, Collections.fill(list, obj) ; Arrays.fill(a, val);
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 25. When doing anytype of mathematical calculations , try to use long instead of int.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 26. Character.isLetterOrDigit('1'); Character.toLowerCase('A');
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 27. If in question if you are doing int addition or multiplication always take long to be on safer side
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 28. Character.getNumericValue(ch) -----> for converting char to int in java : Note: (int)c ---> will give the ASCII value 
     which will be incorrect
+    
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
 29.Very Very Very Very Important :
-In one of question you first used String and your solution timed out , but when you used StringBuilder , it easily passed the time constraint .
+   In one of question you first used String and your solution timed out , but when you used StringBuilder , it easily passed the time constraint .
+   
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+   
 LEARNING: You have read before, time taken by String is much more as compared to StringBuilder when the string are very Large
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 30. For reverse order sorting : Collections.sort(A, Collections.reverseOrder());
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 31.     hm.containsKey(key);
 		hm.containsValue(value);
+		
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 32. Arrays.toString(arr) ----> to print the contents of an array
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 33. In recursion if you have to call again , use ++i or i+1 and NEVER EVER i++ bcs the later 
     sends the value and increments it later.
     
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
 34. BitSet in java can be used if there is memory constraint instead of using boolean[] arr = new boolean[n];
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 35. if you just want to iterate through the stack or the queue and doesn't want to remove the values , you can use the iterator
     eg:  Iterator itr = pQueue.iterator();  stack.iterator();
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 36. The basic Priority Queue, without any comparator in java, works as min heap
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
