@@ -723,6 +723,9 @@ Ans:  @GetMapping("/testBookingFeedback/{id}")
       
       @DeleteMapping("/courses/{courseId}")
       public List<Course> deleteCourse(@PathVariable String courseId)
+      
+      @PostMapping("/upload")
+      public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file)
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -746,17 +749,26 @@ Ans: SonarQube
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+92. Learn CORS from the below website ?
+Ans : https://medium.com/@electra_chong/what-is-cors-what-is-it-used-for-308cafa4df1a
 
 
+93. Why CSRF is disabled in spring boot applications ?
+Ans: Our recommendation is to use CSRF protection for any request that could be processed by a browser by normal users. 
+     If you are only creating a service that is used by non-browser clients, you will likely want to disable CSRF protection.
 
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+93. What is future in Java ? (Important)
+Ans: https://www.baeldung.com/java-future
+     https://www.geeksforgeeks.org/callable-future-java/
+     
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+94. Google this for more questions : java tricky output questions ?
 
-
-
-
-
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
