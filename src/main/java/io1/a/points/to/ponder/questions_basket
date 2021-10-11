@@ -770,6 +770,127 @@ Ans: https://www.baeldung.com/java-future
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+95. What will be the output when the below method is called ?
+Ans: 
+    public static int result() {
+		
+		int x = 2;
+		
+		try {
+			throw new Exception();
+		}catch(Exception ex) {
+			return x;
+		}finally {
+			x = 10;
+		}
+	}                                  Ans : 2
+	
+	
+	
+	public static int result() {
+		
+		int x = 2;
+		
+		try {
+			throw new Exception();
+		}catch(Exception ex) {
+			return x;
+		}finally {
+			x = 10;
+			return x;
+		}
+	}                                 Ans : 10
+     
+
+
+
+   public static void result() {
+		 try {
+	            int i=9/0;
+	            System.out.println(i);
+	            return;
+	        } catch (Exception e) {
+	            System.out.println("exception caught");
+	            return;
+	        }
+	        System.out.println("task completed");
+	}                                                  Ans: Compilation error: Unreachable block of code
+
+
+
+
+
+
+
+
+		public static String method1() {
+		        try {
+		            int i = 9;
+		            System.out.println(i);
+		            return "from try";
+		        } catch (Exception e) {
+		            System.out.println("exception caught");
+		            return "from catch";
+		        } finally {
+		            System.out.println("finally block executing");
+		            return "from finally";
+		        }
+		    }
+                                                       Ans: exception caught
+                                                            finally block executing
+                                                            from catch 
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+96. An abstract class has a protected constructor (by default) allowing derived types to initialize it.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+97. ClassNotFoundException Vs NoClassDefFoundError in Java
+Ans: ClassNotFoundException: Occurs when you try to load a class at runtime using Class.forName() or loadClass() methods and requested classes 
+                            are not found in classpath. Its a checked exception
+                            Most of the time this exception will occur when you try to run application without updating classpath with JAR files
+
+     NoClassDefFoundError: NoClassDefFoundError occurs when class was present during compile time and program was compiled 
+                           and linked successfully but class was not present during runtime
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+98. What is an anonymous class ?
+Ans : A class which doesn't have any name is called an anonymous class. This class is both instantiated and declared in a single statement
+
+      Runnable r = new Runnable(){
+           public void run(){
+              //do something;
+           }
+      };
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+99. Default capacities ?
+Ans : map --> 16
+      set --> 16
+      concurrent hash map --> 16
+      list --> 10
+      vector --> 10
+     
+      queue --> 11
+      stack --> 10
+      
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+100. What is method reference in java 8 ?
+Ans: Method reference is used to refer method of functional interface. 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
 
 
 
