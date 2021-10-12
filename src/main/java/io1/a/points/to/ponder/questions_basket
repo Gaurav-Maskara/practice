@@ -153,10 +153,10 @@ Ans: there are 5 memory areas allocated by JVM -
      
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
      
-18. Class.for name can also be used for creating objects juts like new operator , refer the below example 
-Ans: Test obj = (Test)Class.forName("Test").newInstance();
+18.   Class.forName(); can also be used for creating objects juts like new operator , refer the below example 
+Ans:  Test obj = (Test)Class.forName("Test").newInstance();
 
-By using cloning, by using serialization 
+      By using cloning, by using serialization 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 19. This keyword refers to the instance of the current class
