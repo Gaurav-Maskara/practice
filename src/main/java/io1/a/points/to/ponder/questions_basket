@@ -1,7 +1,7 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 1. How to sort data that can’t fit into main memory?
-Ans: User external sorting where data is sorted in chunks and merged back to get the sorted result (External merge sorted is used here)
+Ans: Use external sorting where data is sorted in chunks and merged back to get the sorted result (External merge sorted is used here)
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 2. Name some garbage collection algos in java
@@ -33,7 +33,7 @@ Ans: https://howtodoinjava.com/java/garbage-collection/all-garbage-collection-al
 Ans: define an interface or abstract class for creating an object but let the subclasses decide which class to instantiate. 
 
 MVC, Singleton(@Bean) (To share common data across all tiers we had used the singleton pattern. ), 
-Template (jdbc template), chain of responsibility
+Template (jdbc template), chain of responsibility, Adapter design patter (Wrapper)
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -138,7 +138,7 @@ Ans :
 
 17. Memory areas allocated by JVM ?
 Ans: there are 5 memory areas allocated by JVM -
-     1. Class (method) Area :this memory area stores the class level data of each class file(.class) . It contains data such as metadata, contant runtime pool
+     1. Class (method) Area :this memory area stores the class level data of each class file(.class) . It contains data such as metadata, constant runtime pool
                              static variables , code for methods 
                              Note : There is only one class area per jvm shared by all the classes
      2. Heap Space : Its the memory space where all the objects are created 
@@ -148,12 +148,12 @@ Ans: there are 5 memory areas allocated by JVM -
                        Note: its thread safe since one stack frame is shared by only one thread
     
      4. PC(Program Counter) Register Area:This area holds the memory address of the JVM instructions which are currently being executed
-                            Note:Each thread has its own pc area
+                            Note:Each thread has its own PC area
      5. Native Method stack: Every method has its own native area where then native method data is stored
      
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
      
-18.   Class.forName(); can also be used for creating objects juts like new operator , refer the below example 
+18.   Class.forName(); can also be used for creating objects just like new operator , refer the below example 
 Ans:  Test obj = (Test)Class.forName("Test").newInstance();
 
       By using cloning, by using serialization 
@@ -260,12 +260,12 @@ Ans:Any modification is determined by comparing the modcount variable of the col
     
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
     
-39. Thread Scheduler is part of JVm which decides which thread should run
+39. Thread Scheduler is part of JVM which decides which thread should run
     There is no guarantee that which thread will be choosen to run by thread scheduler among all the runnable threads
     
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
     
-40. can we start a thread twice ?
+40. Can we start a thread twice ?
 Ans: No. it will give Illegal Thread state exception
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -280,7 +280,6 @@ Ans: As java provides built in support for multithreading there are various thre
 Ans Use this statement --> Thread.currentThread().join();
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 43. Daemon threads ?
 Ans: These are service provider threads with almost least priority . These threads provide service to the other user thread and their life depends
@@ -301,7 +300,6 @@ Ans: yield method of thread class causes the currently executing thread object t
      
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
  
-     
 46. Suspend method ?(Deprecated) As they may lead to deadlock
 Ans: This method puts the invoking thread to waiting state until the same thread is resumed using the resume method
 
@@ -314,7 +312,6 @@ Ans: this method is used to stop the execution of the running thread
      until the previous thread is resumed. in case previous thread doesn't resume, it may lead to deadlock
      
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 49. Thread Pool why ?
 Ans: In a web application , there are various requests made from multiple clients. There are two approaches to cater to this request. 
@@ -356,6 +353,16 @@ Ans: Every class has its own finalize method . When an object is destroyed by ga
          -->>> release the lock 
           called on object
           resume by notify
+          
+ Note: when wait method is called from a synchronized context, the following things happen
+       #the calling thread gives up the lock
+       #the calling thread gives up the CPU
+       #the calling thread goes to the monitor's waiting pool
+       
+  And in case notify() method, following things happen 
+       #One of the waiting thread (may be random thread) moves out of the monitor's waiting pool
+       #Thread comes into ready state(RUNNABLE)
+       #Tries its best to acquire the monitor lock before it can proceed to the method execution
    
    
    Sleep: Static
@@ -413,7 +420,7 @@ Ans: CrudRespository : basic crud operations
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
     
      Example: Let student is the class which is mapped to student table and the roll no is the integer type which is the ID or primary key 
-     Basic crud operations would be available in the interface that extends CrudRespository etc.
+     Basic CRUD operations would be available in the interface that extends CrudRespository etc.
      
      Note: Since in real application we might need some complex queries, other than basic queries , so it will be done by below two steps
            (i): Create possible custom methods which are provided by spring .By default mostly operations are performed over id/primary key
@@ -564,7 +571,7 @@ Ans: Hystrix a Netflix's open source library which follows the circuit breaker p
                Implementing the Hystrix circuit breaker pattern :
                Step 1:
                @Add the hystrix dependency in the pom.xml
-               @Add @Enable circuit breaker in the main application class
+               @Add @Enable circuit breaker in the main application class by adding @EnableHystrix in the main application
                @Add @HystrixCommand(fallBackMthod = "xyz") annotation to the method that needs circuit breaker. where xyz is the fallback method where
                     the control would go in case of failure events
                
@@ -625,11 +632,10 @@ Ans: Just define one interface or abstract class and let the child class to deci
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-80. Different types of approches to create a singleton class ?
+80. Different types of approaches to create a singleton class ?
 Ans: Eager Initialization , Static Block Initialization, Lazy Initialization, Thread Safe Singleton, Thread Safe using double check locking
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
-
 
 81. How can singleton pattern be destroyed and how to prevent it ?
 Ans: It can be destroyed through Reflection , Serialization , Cloning
@@ -673,7 +679,7 @@ Ans: To make anyclass eligible for cloning it much implement the cloneable inter
 			
 84.What is serialization ?
 Ans: Serialization is the process of writing the state of an object into a byte stream
-     Note: Serialization and Deserialization are platform independent process which means we can serialize on one platform and desizalise on other
+     Note: Serialization and Deserialization are platform independent process which means we can serialize on one platform and deserialize on other
      
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
      
@@ -726,6 +732,9 @@ Ans:  @GetMapping("/testBookingFeedback/{id}")
       
       @PostMapping("/upload")
       public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file)
+      
+      @Getmapping("/home")   ---> home?id='1'&name='gaurav'
+      public String getHome(@RequestParam ("id") int id, @RequestParam ("name") String name)
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -838,7 +847,7 @@ Ans:
 		    }
                                                        Ans: exception caught
                                                             finally block executing
-                                                            from catch 
+                                                            from finally
 
 
 
@@ -847,10 +856,10 @@ Ans:
 96. An abstract class has a protected constructor (by default) allowing derived types to initialize it.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
-97. ClassNotFoundException Vs NoClassDefFoundError in Java
+97.  ClassNotFoundException Vs NoClassDefFoundError in Java
 Ans: ClassNotFoundException: Occurs when you try to load a class at runtime using Class.forName() or loadClass() methods and requested classes 
-                            are not found in classpath. Its a checked exception
-                            Most of the time this exception will occur when you try to run application without updating classpath with JAR files
+                             are not found in classpath. Its a checked exception
+                             Most of the time this exception will occur when you try to run application without updating classpath with JAR files
 
      NoClassDefFoundError: NoClassDefFoundError occurs when class was present during compile time and program was compiled 
                            and linked successfully but class was not present during runtime
@@ -884,12 +893,17 @@ Ans : map --> 16
 Ans: Method reference is used to refer method of functional interface. 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
+101. Difference between Encapsulation and Data hiding ?
+Ans : Encapsulation : Is more about bundling of the similar type of items together . As we don't want our code base to be scattered all over the place
+                      In short encapsulation can be thought of as a container where we need to place the similar items together
 
-
-
-
-
-
+      Data Hiding: is a way to protect the data from the outside world . So that no one can change its state unless authorized . which is achieved by making the
+      instance variable private/protected then we are making the outside entities from making changes to it.
+      Note:# Data hiding is not possible without Encapsulation . We cannot hide our data without placing it in some container . However Encapsulation is possible
+             without hiding the data
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+102. Grouping by some examples ? (Important)
+Ans : https://www.javacodegeeks.com/2021/05/java-8-streams-group-by-multiple-fields-with-collectors-groupingby.html
 
 
 
