@@ -170,7 +170,9 @@
     
 1. Design patterns : Creational , Structural , Behavioral
     
-    Creational--> Factory --> define an interface or abstract class for creating an object but let the subclasses decide which class to instantiate
+    Creational--> 
+    
+                  Factory --> define an interface or abstract class for creating an object but let the subclasses decide which class to instantiate
                   Abstract Factory -->
                   Prototype --> cloning of an existing object instead of creating new one
                                 This pattern should be followed, if the cost of creating a new object is expensive and resource intensive

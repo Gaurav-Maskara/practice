@@ -992,6 +992,33 @@ Ans: (https://howtodoinjava.com/maven/maven-dependency-scopes/) Compile(default)
      Test: This indicates dependencies which are required only for test purposes (eg. JUnit)
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
+108. Design patters define ?
+Ans: Types --> Creational , Structural , Behavioral 
+
+     Creational:
+               Singleton
+               Factory Pattern
+               Abstract Factory Pattern
+               Builder Pattern
+               Prototype Pattern
+               
+     Structural:
+               Adapter Pattern
+               Proxy Pattern
+               Facade Pattern
+               Bridge Pattern
+               
+     Behavioral:
+               Chain of Responsibility
+               
+     
+     Miscellaneous:
+                 DAO
+                 Dependecy injection pattern
+                 MVC
+
+
+
 
 
 
