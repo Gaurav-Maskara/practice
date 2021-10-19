@@ -992,21 +992,26 @@ Ans: (https://howtodoinjava.com/maven/maven-dependency-scopes/) Compile(default)
      Test: This indicates dependencies which are required only for test purposes (eg. JUnit)
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
-108. Design patters define ?
+108. Design patters define ? (https://www.journaldev.com/1827/java-design-patterns-example-tutorial)
 Ans: Types --> Creational , Structural , Behavioral 
 
      Creational:
-               Singleton
-               Factory Pattern
-               Abstract Factory Pattern
-               Builder Pattern
-               Prototype Pattern
+               Singleton : 
+               Factory Pattern : 
+               Abstract Factory Pattern : 
+               Builder Pattern : https://howtodoinjava.com/design-patterns/creational/builder-pattern-in-java/
+               Prototype Pattern : 
                
      Structural:
-               Adapter Pattern
-               Proxy Pattern
-               Facade Pattern
-               Bridge Pattern
+               Adapter Pattern :
+               Proxy Pattern : 
+               Fly-weight Pattern: The fly-weight design pattern is used when we need to create a lot of Objects of a class
+                                   Since every object consumes memory space that can be crucial for low memory devices, such as mobile 
+                                   devices or embedded systems, the flyweight design pattern can be applied to reduce the load on memory by sharing objects. 
+                                   String Pool implementation in java is one of the best examples of Flyweight pattern implementation.
+               Facade Pattern : Provide a wrapper interface on top of the existing interface to help client application, to reduce the complexity when the
+                                scale of the system increases and its difficult to manage the same.
+               Bridge Pattern : 
                
      Behavioral:
                Chain of Responsibility
