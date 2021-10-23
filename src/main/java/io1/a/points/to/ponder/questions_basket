@@ -37,7 +37,7 @@ Template (jdbc template), chain of responsibility, Adapter design patter (Wrappe
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-4. Different approaches for creating a singleton clas 
+4. Different approaches for creating a singleton class 
 Ans : Eager initialization , static block initialization, lazy initialization, thread safe singleton, thread safe singleton using double check
 Note : in eager initialization there is wastage of cpu if object is not required moreover exception handling can't be done
        but exception handling can be done in static block
@@ -354,16 +354,16 @@ Ans: Every class has its own finalize method . When an object is destroyed by ga
           called on object
           resume by notify
           
- Note: when wait method is called from a synchronized context, the following things happen
-       #the calling thread gives up the lock
-       #the calling thread gives up the CPU
-       #the calling thread goes to the monitor's waiting pool
-       
-  And in case notify() method, following things happen 
-       #One of the waiting thread (may be random thread) moves out of the monitor's waiting pool
-       #Thread comes into ready state(RUNNABLE)
-       #Tries its best to acquire the monitor lock before it can proceed to the method execution
-   
+					 Note: when wait method is called from a synchronized context, the following things happen
+					       #the calling thread gives up the lock
+					       #the calling thread gives up the CPU
+					       #the calling thread goes to the monitor's waiting pool
+	       
+					  And in case notify() method, following things happen 
+					       #One of the waiting thread (may be random thread) moves out of the monitor's waiting pool
+					       #Thread comes into ready state(RUNNABLE)
+					       #Tries its best to acquire the monitor lock before it can proceed to the method execution
+	   
    
    Sleep: Static
           of thread class
@@ -963,7 +963,6 @@ Ans: By using mockserver : eg: (link : https://examples.javacodegeeks.com/enterp
  
 }
 
-
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 106. Serialization and Deserialization ?
 Ans: FileOutputStream file = new FileOutputStream(filename);
@@ -992,6 +991,7 @@ Ans: (https://howtodoinjava.com/maven/maven-dependency-scopes/) Compile(default)
      Test: This indicates dependencies which are required only for test purposes (eg. JUnit)
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 108. Design patters define ? (https://www.journaldev.com/1827/java-design-patterns-example-tutorial)
 Ans: Types --> Creational , Structural , Behavioral 
 
@@ -1004,23 +1004,47 @@ Ans: Types --> Creational , Structural , Behavioral
                
      Structural:
                Adapter Pattern :
-               Proxy Pattern : 
+               Proxy Pattern : Provide a surrogate or placeholder for another object to control access to it
+               				   Let’s say we have a class that can run some command on the system. Now if we are using it, it’s fine but 
+               				   if we want to give this program to a client application, it can have severe issues because the 
+               				   client program can issue a command to delete some system files or change some settings that you don’t want
+               
+               
                Fly-weight Pattern: The fly-weight design pattern is used when we need to create a lot of Objects of a class
                                    Since every object consumes memory space that can be crucial for low memory devices, such as mobile 
                                    devices or embedded systems, the flyweight design pattern can be applied to reduce the load on memory by sharing objects. 
                                    String Pool implementation in java is one of the best examples of Flyweight pattern implementation.
                Facade Pattern : Provide a wrapper interface on top of the existing interface to help client application, to reduce the complexity when the
                                 scale of the system increases and its difficult to manage the same.
-               Bridge Pattern : 
                
+
      Behavioral:
-               Chain of Responsibility
+               Template Method Pattern: Creating a method stub. The template method defines the steps to execute an algorithm and it can provide a default
+                                        implementation that might be common for all or some of the classes
+     
+               Chain of Responsibility: This is used for loose coupling. The object in the chain will decide who will be processing the request.
+                                        the request actually passes through a chain of methods.
+                                        
+               Observer Pattern : When you are interested in the state of an object. In observer pattern the object that watches on the state of another
+               					  Object is called the Observer and the object that is being watched is called Subject
+               					  JMS uses Observer pattern to allow applications to subscribe and publish data to other applications
+               
+               Strategy Pattern : When we have multiple algorithms for a specific task and the client decides the actual implementation at runtime.
+                                  Eg: Collections.sort() --> takes the Comparator 
+                				  
                
      
      Miscellaneous:
-                 DAO
-                 Dependecy injection pattern
+                 DAO : DAO design pattern is used to decouple the data persistence logic to a separate layer.
+                       The idea is to keep the service layer separate from the Data Access layer
+                 
+                 Dependecy Injection pattern : 
                  MVC
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 
 
 
