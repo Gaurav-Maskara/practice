@@ -1043,8 +1043,32 @@ Ans: Types --> Creational , Structural , Behavioral
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+109. Glance on the below link for Java 8 Questions ?
+Ans : https://www.interviewbit.com/java-8-interview-questions/
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+110.    Given Integer []arrayP= {2,1,4,3,2,1,1,2,7,6,5,2};
+		Arrange the numbers in such a way that the number having the 
+		maximum occurences should appear first and if the number of occurances of 
+		2 numbers are same, then they should be sorted in ascending order
+		o/p should be
+		{2,2,2,2,1,1,1,3,4,5,6,7}
+
+Ans :
+       Integer[] arrayP= {2,1,4,3,2,1,1,2,7,6,5,2};
+			
+			LinkedHashMap<Integer, Long> collect = Stream.of(arrayP).collect(Collectors.groupingBy(Function.identity(), Collectors.counting())).entrySet()
+					.stream().sorted((o1, o2) -> {
+						if (o1.getValue() != o2.getValue()) {
+							return (int) (o2.getValue() - o1.getValue());
+						}
+
+						return o1.getKey() - o2.getKey();
+					}).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (o1, o2) -> o1,
+							LinkedHashMap::new));
+      
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
