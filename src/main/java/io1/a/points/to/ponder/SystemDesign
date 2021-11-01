@@ -104,9 +104,8 @@ Note: if the use of the state is very short lived and no latency is accepted we 
 	   . Write -around cache : Data is written in Db only . Cache is marked as invalid .It is written later in cache
 	   . Write- back cache :   Data is written in cache only. It is written in Db later
 	   Read heavy system : can use caching
-	   Cache Eviction : LRU is the most used technique, next is LFU
 	   
-	9. Prod level machines can have ram of around : 72GB or 144Gb or even more is possible nowadays
+   9.Prod level machines can have ram of around : 72GB or 144Gb or even more is possible nowadays
 	   
    9.@Value("${spring.redis.host}")
      private String REDIS_HOSTNAME;
@@ -187,7 +186,7 @@ Note: if the use of the state is very short lived and no latency is accepted we 
 	      (So, basically it provides single point of failure tolerance)
 
   7. MultiLevel sharding. Indexing in relational database internally uses B+ tree which gives O(log(n)) insertion and search operation
-  8. Master Slave : Slave can pull data from master either synchronously or aync
+  8. Master Slave : Slave can pull data from master either synchronously or asyn
 
 ----- Sharding -------------------------------------------------------------------------------------------------------------------------------------
 ----------------------------------------------------------------------------------------------------------------------------------------------------
@@ -209,7 +208,7 @@ Note: if the use of the state is very short lived and no latency is accepted we 
 ----- CAP theorem ------------------------------------------------------------------------------------------------------------------------------------
 
 	1. CAP theorem (Its quite a common question related to compromises around Relational and NoSql Databases) : Cap stands for -->consistency, availability and
-	   partition tolerant. As per this theorem --> When network partition occurs , system cannot be both consistent and highly available    
+	   partition tolerant. As per this theorem --> When network partition occurs (network failure) , system cannot be both consistent and highly available    
 	   Conflict Resolution after network is back to normal on CAP theorem :
 	    --> Majority Based
 	    --> Time stamp based
@@ -486,7 +485,7 @@ Extended Requirements --> Searching tweets, Replying tweets, trending topics, tw
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
------Architecture Patterns and Questionns -----------------------------------------------------------------------------------------------------------------
+-----Architecture Patterns and Questions -----------------------------------------------------------------------------------------------------------------
 
 1. Can you name some metrics for measuring system performance?
 Ans : The three most common metrics used to measure a system's performance are availability, latency and throughput. These metrics help 
@@ -571,7 +570,7 @@ Ans: #Physical Db security
 10. DB optimization 
 ans : # Proper indexing 
       # retrieve the relevant data only
-      # getting rid of subqueries
+      # getting rid of sub-queries
       # avoid using loops
       # Index all the columns used in where , order by and group by
       # Normalize tables
@@ -652,7 +651,7 @@ Ans:       *Requirement Gathering* --> (Functional + Non Functional + Extended (
            *Business Logic : What the system will do and how it will do it
            *First Design for a single server and don't start with a nosqlDB and always start with RDBMS
            *High Level Design*
-           *Detailed Design*
+           *Detailed Design* (Low Level Design)
            *Now we can scale the above one server system by adding more servers
            *Identifying and resolving bottlenecks*
            
@@ -668,7 +667,7 @@ Ans:       *Requirement Gathering* --> (Functional + Non Functional + Extended (
                           url shortenings(write): 500M(30*24*3600) = 200 url/s
                           url redirections(read): 100*200 = 20K/sec
                 4. Storage : Assume every url is 500 bytes -> 500M * 5(years)*12(months)*500bytes= 15TB
-                5. Bandwidth (TPS/QPS): This basically helps in estimating the network IO load as too much network io load cannot be handled by a single server
+                5. Bandwidth (TPS/QPS): This basically helps in estimating the network IO load as too much network IO load cannot be handled by a single server
                               Read:20K * 500 bytes = 10MB/sec
                               Write:200 * 500 bytes = 100Kb/sec
                 6. Caching: (80:20 Rule -> that is 20 percent of the url generate 80% of the traffic)
@@ -734,6 +733,9 @@ Ans:       *Requirement Gathering* --> (Functional + Non Functional + Extended (
    Note : if you haven't been given the functionalities then you can visualize what you have already seen in real life
    
 LinkedIn Schema :
+--> Features : --> View/ Edit Profile By user, Education Details, Employer details, recommendation, connection requests, Post, Comment, Like
+
+
 #User profile :
   -id (pk (primary key))
   -profile_pic_url
@@ -741,26 +743,82 @@ LinkedIn Schema :
   -email
   -phoneNo
   
-#Skills
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+#Skills :
+ -id
+ -name
+ 
+#user-skills
+ --id
+ --user-id
+ --skill-id
+ 
+ 
+#Company
+ --id
+ --name
+ --start_year
+ --end_year
+ --description
+ 
+ 
+#Education
+ --id
+ --name
+ --start_year
+ --end-year
+ --cgpa
+ 
+ 
+#user_education
+ --id
+ --user_id
+ --education_id
+ 
+ 
+#user_company
+ --id
+ --user_id
+ --company_id
+ 
+ 
+#Recommendation
+ --id
+ --user-id
+ --receipinet_id
+ 
+ 
+#Connection
+  --id
+  --user-id1
+  --user_id2
+  ----is_accepted --> true (If both are mutual)
+  
+  
+#Post
+ --id
+ --user-id
+ --text
+ 
+ 
+#Comment
+ --id
+ --user_id (made by user)
+ --post_id
+ --text
+ 
+ 
+#post_like
+ --id
+ --post_id
+ --user_id
+ 
+ 
+#comment_like
+ --id
+ --comment_id
+ --user_id
+ 
     
 -----Schema Design ----------------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------------------------------

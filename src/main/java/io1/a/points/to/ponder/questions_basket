@@ -985,7 +985,7 @@ Ans: (https://howtodoinjava.com/maven/maven-dependency-scopes/) Compile(default)
 
      Compile : Default, The libary should be present at the compile time and it gets bundled with the jar
      Provided: Provided means that you need the JAR for compiling, but at run time there is already a 
-               JAR provided by the environment so you don't need it packaged with your app. Eg. Servlet Api provided during the runtime
+               JAR provided by the environment so you don't need it to be packaged with your app. Eg. Servlet Api provided during the runtime
                
      Runtime: The dependecies with this scope are required at runtime, but they are not needed for compilation of the project code: Eg. JDBC (eg.MySql) Driver
      Test: This indicates dependencies which are required only for test purposes (eg. JUnit)
@@ -1067,8 +1067,269 @@ Ans :
 						return o1.getKey() - o2.getKey();
 					}).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (o1, o2) -> o1,
 							LinkedHashMap::new));
+							
+							
+							
+							
+							
+		public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm)
+      {
+           // Create a list from elements of HashMap
+	        List<Map.Entry<String, Integer> > list =
+	               new LinkedList<Map.Entry<String, Integer> >(hm.entrySet());
+	 
+	        // Sort the list
+	        Collections.sort(list, new Comparator<Map.Entry<String, Integer> >() {
+	            public int compare(Map.Entry<String, Integer> o1,
+	                               Map.Entry<String, Integer> o2)
+	            {
+	                return (o1.getValue()).compareTo(o2.getValue());
+	            }
+	        });
+	         
+	        // put data from sorted list to hashmap
+	        Map<String, Integer> temp = new LinkedHashMap<String, Integer>();
+	        for (Map.Entry<String, Integer> aa : list) {
+	            temp.put(aa.getKey(), aa.getValue());
+	        }
+	        return temp;
+      }					
+							
+							
       
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+111. Difference between PermGen and Metaspace ?
+Ans : Java 8 onwards Metasapce is used. Metaspace is an area where the metadata about the class is stored , its dynamic in nature that is 
+      this memory region grows automatically 
+      
+      PermGen was used before Java 8 . This also stores the class Metadata , but it is not dynamic in nature and cannot grow its size by itself 
+                                       we need to configure its size
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+112. How HTTPS works ?
+Ans: https://stackoverflow.com/questions/6241991/how-exactly-https-ssl-works
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+113.How JWT works ?
+Ans: https://www.bezkoder.com/jwt-json-web-token/
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+114. What is count down latch in multithreading ?
+Ans : https://www.geeksforgeeks.org/countdownlatch-in-java/
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+115. How to unit test static and private methods using JUnit ?
+Ans: https://dzone.com/articles/unit-testing-static-methods-with-mockito
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+116. Will the below child class Compile ? Also when calling the display methods , which of them should be required to be surrounded by try-catch ?
+Ans:
+     class Parent {
+	    void display () throws IOException, SQLException{
+	        
+	    }
+	  }
+
+
+	class Child extends Parent  {
+	  public  void display () {
+	
+	    }
+	 }
+
+
+        Parent p= new Parent();
+		Child c= new Child();
+		Parent p1= new Child();
+
+
+
+		p.display();
+		c.display();
+		p1.display();
+		
+		
+		Also, see the below:
+		
+		class Parent {
+         void display () throws IOException, SQLException{
+        
+         }
+        }
+
+
+		class Child extends Parent  {
+		    public  void display () throws SQLException {
+		        throw new SQLException();
+		    }
+		}
+				
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+117. Difference between mvn package and install ?
+Ans: https://stackoverflow.com/questions/16602017/how-are-mvn-clean-package-and-mvn-clean-install-different
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+118. what is the use of actuator in spring boot ?
+Ans: Actuator is mainly used to expose operational information about the running application — health, metrics, info, dump, env, etc
+
+
+	    /auditevents lists security audit-related events such as user login/logout. Also, we can filter by principal or type among other fields.
+	    /beans returns all available beans in our BeanFactory. Unlike /auditevents, it doesn't support filtering.
+	    /conditions, formerly known as /autoconfig, builds a report of conditions around autoconfiguration.
+	    /configprops allows us to fetch all @ConfigurationProperties beans.
+	    /env returns the current environment properties. Additionally, we can retrieve single properties.
+	    /flyway provides details about our Flyway database migrations.
+	    /health summarizes the health status of our application.
+	    /heapdump builds and returns a heap dump from the JVM used by our application.
+	    /info returns general information. It might be custom data, build information or details about the latest commit.
+	    /liquibase behaves like /flyway but for Liquibase.
+	    /logfile returns ordinary application logs.
+	    /loggers enables us to query and modify the logging level of our application.
+	    /metrics details metrics of our application. This might include generic metrics as well as custom ones.
+	    /prometheus returns metrics like the previous one, but formatted to work with a Prometheus server.
+	    /scheduledtasks provides details about every scheduled task within our application.
+	    /sessions lists HTTP sessions given we are using Spring Session.
+	    /shutdown performs a graceful shutdown of the application.
+	    /threaddump dumps the thread information of the underlying JVM.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+118. What is spring sleuth and Zipkin?
+Ans: 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+119. How to configure multiple datasources in spring boot ?
+Ans:  https://stackoverflow.com/questions/26308035/spring-boot-spring-data-jpa-with-multiple-datasources
+
+        # database configuration
+		spring.datasource.url=jdbc:h2:file:~/main-source;AUTO_SERVER=TRUE
+		spring.datasource.username=sa
+		spring.datasource.password=
+		spring.datasource.driver-class-name=org.h2.Driver
+		spring.datasource.continueOnError=true
+		spring.datasource.initialize=false
+		
+		# another database configuration
+		another.datasource.url=jdbc:sqlserver://localhost:1433;DatabaseName=another;
+		another.datasource.username=username
+		another.datasource.password=
+		another.datasource.hibernate.dialect=org.hibernate.dialect.SQLServer2008Dialect 
+		another.datasource.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+120. How to externalize properties file in spring boot ?
+Ans : 
+     @SpringBootApplication
+	 @PropertySource("file:D:\\Projets\\XXXXX\\Config\\application.properties")
+	 public class WyApplication extends SpringBootServletInitializer {
+
+	    public static void main(String[] args) {
+	        SpringApplication.run(WyApplication.class, args);
+	    }
+
+     }   
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+121. How to use native queries in Spring Data JPA ?
+Ans : 
+      @Query( value = "SELECT * FROM Users u WHERE u.status = ?1", nativeQuery = true)
+      User findUserByStatusNative(Integer status);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+122. How to use a db sequence for id in spring data JPA ?
+
+Ans :   @Repository
+		public interface MyRepository extends JpaRepository<Myentity, Long> {
+		
+		    @Query(value = "SELECT SCHEMA.SEQUENCE_NAME.nextval FROM dual", nativeQuery = true)
+		    public BigDecimal getNextValMySequence();
+		
+		}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+123. How to reduce the memory consumption by spring boot application ?
+Ans: https://stackoverflow.com/questions/44491257/how-to-reduce-spring-boot-memory-usage
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+124. How to limit the number of threads for spring boot application ?
+Ans: Add this in properties file and then define the number of threads that you want
+     server.tomcat.max-threads = 1
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+125. Spring boot JNDI with embedded tomcat ?
+Ans: https://github.com/wilkinsona/spring-boot-sample-tomcat-jndi
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+126. Filters in Spring Boot ?
+Ans:   @Component
+       @Order(1)
+       public class TransactionFilter implements Filter {
+       
+       @Override
+       public void doFilter
+       
+       
+       Filter with url pattern:
+       
+       package com.javadevjournal.filter;
+
+		import javax.servlet.*;
+		import javax.servlet.annotation.WebFilter;
+		import java.io.IOException;
+		
+		@WebFilter("/greeting")
+		public class GreetingFilter implements Filter {
+		
+		    @Override
+		    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+		        System.out.println("filter for greeting project");
+		        filterChain.doFilter(servletRequest,servletResponse);
+		    }
+		}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+127. What is cyclic barrier in Multi Threading ?
+Ans: https://www.geeksforgeeks.org/java-util-concurrent-cyclicbarrier-java/
+     https://www.baeldung.com/java-cyclic-barrier --- better
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+128. How to use a DB sequence for generating IDs in JPA ?
+Ans: 
+
+        @Entity
+		public class User {
+		    
+		    @Id
+			@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_seq_gen")
+			@SequenceGenerator(name = "users_seq_gen", sequenceName = "users_id_seq")
+			public Long getId() {
+			     return id;
+			}
+			
+		}
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+129. How Kafka works detailed explanation ? What is the use of Zookeeper --> Broker --> Topic --> Partition --> Offset ?
+Ans : https://medium.com/debutinfotech/achieving-fault-tolerance-with-kafka-a-detailed-explanation-a9828929d00d
+
+      Thus, Kafka achieves fault tolerance by duplicating each partition over a number of servers.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
