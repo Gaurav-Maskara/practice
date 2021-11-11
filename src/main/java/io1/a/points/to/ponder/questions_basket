@@ -1338,6 +1338,11 @@ Ans : https://medium.com/debutinfotech/achieving-fault-tolerance-with-kafka-a-de
 
 
 
+
+
+
+
+
 3. Third party garbage collectors
 4. PermGen space (where classes are stored) is 64MB on Sun JVMs.
 5. metaspace in java 8

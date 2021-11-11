@@ -15,11 +15,9 @@
 Note: if the use of the state is very short lived and no latency is accepted we can go for stateful system , since the state would be stored in the 
       application itself thereby low latency. Example PubG game wherein you shoot another player
 
-
-
-
------------------------------------------------------------------------------------------------------------------------------------------------------
 ------Stateless and Stateful ------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
  
 -----------------------------------------------------------------------------------------------------------------------------------------------------
 ------Load Balancer ---------------------------------------------------------------------------------------------------------------------------------
@@ -328,7 +326,7 @@ Note: if the use of the state is very short lived and no latency is accepted we 
 4. SQL :When to consider: Lots of data management and BI tools rely on SQL. If you have a flat tabular data model that isn't going to change very often
         and doesnt't need to scale out.
         Those with a large ecosystem of SQL skills and tools and numerous existing applications may choose to continue using a relational data mode
-        Cons: Postgres can support replication but more advanced features such as automatic failover must be supported by third party products.
+        Cons: Postgres can support replication but more advanced features such as automatic fail-over must be supported by third party products.
               Whereas MongoDB has in-built self-healing capabilities.
 5. SQL : Can be preferred where we many small tables and very small data is required sometimes in fragment , unlike NoSql which stores all document
          in json format at one place
@@ -485,7 +483,7 @@ Extended Requirements --> Searching tweets, Replying tweets, trending topics, tw
 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
------Architecture Patterns and Questions -----------------------------------------------------------------------------------------------------------------
+-----Architecture Patterns and Questions ------------------------------------------------------------------------------------------------------------------
 
 1. Can you name some metrics for measuring system performance?
 Ans : The three most common metrics used to measure a system's performance are availability, latency and throughput. These metrics help 
