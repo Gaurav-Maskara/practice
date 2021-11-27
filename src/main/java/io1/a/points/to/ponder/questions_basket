@@ -1330,13 +1330,21 @@ Ans : https://medium.com/debutinfotech/achieving-fault-tolerance-with-kafka-a-de
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+130. Find second higest using streams in java 8 ?
+Ans: list.stream().sorted(Comparator.reverseOrder()).limit(2).skip(1).findFirst()
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+131. Must read the below blog to understand in detail with ease about the working of Group By ?
+Ans: https://learnsql.com/blog/how-does-sql-group-by-work/
+     https://learnsql.com/blog/sql-order-of-operations/
+     
+Note: the order of the execution is as below:
+      FROM -> JOIN -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY
+      
+Note: REMEMBER: Group by is mostly used for analytics thats the reason its used with aggregrate functions which operates on the grouped results
 
-
-
-
-
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
