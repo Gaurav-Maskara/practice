@@ -1330,7 +1330,7 @@ Ans : https://medium.com/debutinfotech/achieving-fault-tolerance-with-kafka-a-de
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-130. Find second higest using streams in java 8 ?
+130. Find second highest using streams in java 8 ?
 Ans: list.stream().sorted(Comparator.reverseOrder()).limit(2).skip(1).findFirst()
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1367,7 +1367,37 @@ Ans:
 			) as temp2
 			
 			where temp2.paidBills = temp2.totalBills;
+			
+			
+			
+			BUT, BUT , BUT ---- below is the better approach || Because there is no inner query in this
+			
+			select bill.bill_no, 
+			count(case bill_charge="paid" then 1 else null end)  as paidBills, 
+			count(*)  as totalBills 
+			from bill 
+			join bill_charge 
+			on bill.bill_no = bill_charge.bill_no 
+			group by bill.bill_no
+			having
+			paidBills = totalBills;
 
+
+
+Another : Other Example , in Similar Type:
+
+			select * from 
+			(select *,month(dob),  
+			count(case when caste = 'OC' || caste = 'ST' || caste = 'MBC' || caste = 'BC' || caste = 'SC' then 1 else null end) as STCaste, 
+			count(*) as totalCaste from citizens c group by month(dob)) temp2
+			where STCaste = totalCaste;
+
+			select *,month(dob),  
+			count(case when caste = 'OC' || caste = 'ST' || caste = 'MBC' || caste = 'BC' || caste = 'SC' then 1 else null end) as STCaste, 
+			count(*) as totalCaste 
+			from citizens c 
+			group by month(dob) 
+			having totalCaste = STCaste;
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
