@@ -1346,6 +1346,30 @@ Note: REMEMBER: Group by is mostly used for analytics thats the reason its used 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+132.        Bill -> bill no, open date, total_amt, total_disc
+			Bill_charge -> charge_id, bill_no, payment_status,rate,qty,amt,disc
+
+
+			write a query to select list of bill where all its charges are paid
+			payment_status -> paid/unpaid
+
+Ans: 
+
+			select bill_no from 
+			(
+			select bill.bill_no, 
+			count(case bill_charge="paid" then 1 else null end)  as paidBills, 
+			count(*)  as totalBills 
+			from bill 
+			join bill_charge 
+			on bill.bill_no = bill_charge.bill_no 
+			group by bill.bill_no
+			) as temp2
+			
+			where temp2.paidBills = temp2.totalBills;
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
