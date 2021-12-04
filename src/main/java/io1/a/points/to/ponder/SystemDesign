@@ -34,13 +34,14 @@ Note: if the use of the state is very short lived and no latency is accepted we 
    To the Rescue of above issue is consistent Hashing : 
    
    Load balancing techniques --> Round Robin , Least Connection , Random
-                                 # Least Connection method
+                                 # *Least Connection method
                                  # Least response Time
                                  # Least Bandwidth Method: this method selects the server that is serving the least amount of traffic in terms of Mbps
-                                 # Round Robin
+                                 # *Round Robin
                                  # Weighted Round Robin : Best
-                                 # ip Hash
-   
+                                 # *ip Hash (Sticky Sessions)-- This policy ensures that requests from a particular client are always directed to the
+                                                               same backedn server
+    Note: * --> denotes those techniques which are preferred more over the others
    
    Two Types of Load balancers in case of Software Load Balancer :
       Layer 4 : Works on Transport Layer and has access to TCP, UDP, IP, Port (this load balancer will be faster as there will be lesser computation as 

@@ -1401,6 +1401,84 @@ Another : Other Example , in Similar Type:
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+133. How to achieve loose coupling ?
+Ans: By making use of Interfaces and Factory Design Pattern
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+ Docker :
+
+1. Dockerfile -- contains the information that the image requires to run on the docker container
+2. Sample contents of a docker file, which runs a simple js hello world on console
+   FROM node:alpine
+   COPY . /app
+   WORKDIR /app
+   CMD node app.js
+   
+3. docker image ls
+   docker run hello-docker
+   docker pull codewithmosh/hello-docker
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
