@@ -1342,7 +1342,7 @@ Ans: https://learnsql.com/blog/how-does-sql-group-by-work/
 Note: the order of the execution is as below:
       FROM -> JOIN -> WHERE -> GROUP BY -> HAVING -> SELECT -> ORDER BY
       
-Note: REMEMBER: Group by is mostly used for analytics thats the reason its used with aggregrate functions which operates on the grouped results
+Note: REMEMBER: Group by is mostly used for analytics thats the reason its used with aggregate functions which operates on the grouped results
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1406,6 +1406,57 @@ Ans: By making use of Interfaces and Factory Design Pattern
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+133. When to use parallel stream in Java as splitting into many threads has performance implications because many threads need to wait to get their cpu
+     timings, on top of that there is overhead of context switching as well as clubbing of the results together ?
+     
+Ans: In this article, we explored the difference between sequential and parallel streams in Java. We learned that parallel streams make use of the 
+     default fork-join pool and its worker threads.
+     Then we saw how parallel streams do not always bring performance benefits. We considered the overhead of managing multiple threads, 
+     memory locality, splitting the source and merging the results. We saw that arrays are a great data source for parallel execution 
+     because they bring the best possible locality and can split cheaply and evenly.
+     Finally, we looked at the NQ model and recommended using parallel streams only when we have actual performance requirements.
+
+Source: https://www.baeldung.com/java-when-to-use-parallel-stream
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+134. Print consecutive numbers using 5 threads ?
+Ans:
+
+		import java.util.concurrent.ExecutorService;
+		import java.util.concurrent.Executors;
+		
+		class Counter implements Runnable {
+		    private static int counter = 0;
+		    private static final int limit = 1000;
+		    private static final int threadPoolSize = 5;
+		    private static final Object lock = new Object();
+		
+		    public static void main(String[] args) {
+		        ExecutorService executorService = Executors.newFixedThreadPool(threadPoolSize);
+		       
+		        Counter counter = new Counter();
+		        
+		        for (int i = 0; i < threadPoolSize; i++) {
+		            executorService.submit(new Counter());
+		        }
+		        executorService.shutdown();
+		    }
+		
+		    @Override
+		    public void run() {
+		        while (counter < limit) {
+		            increaseCounter();
+		        }
+		    }
+		
+		    private void increaseCounter() {
+		        synchronized (lock) {
+		            System.out.println(Thread.currentThread().getName() + " : " + counter);
+		            counter++;
+		        }
+		    }
+		}
+
 
 
 
@@ -1419,11 +1470,6 @@ Ans: By making use of Interfaces and Factory Design Pattern
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
  Docker :
 
 1. Dockerfile -- contains the information that the image requires to run on the docker container
@@ -1436,16 +1482,6 @@ Ans: By making use of Interfaces and Factory Design Pattern
 3. docker image ls
    docker run hello-docker
    docker pull codewithmosh/hello-docker
-
-
-
-
-
-
-
-
-
-
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 

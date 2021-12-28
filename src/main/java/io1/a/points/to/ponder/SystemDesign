@@ -40,7 +40,7 @@ Note: if the use of the state is very short lived and no latency is accepted we 
                                  # *Round Robin
                                  # Weighted Round Robin : Best
                                  # *ip Hash (Sticky Sessions)-- This policy ensures that requests from a particular client are always directed to the
-                                                               same backedn server
+                                                                same back-end server
     Note: * --> denotes those techniques which are preferred more over the others
    
    Two Types of Load balancers in case of Software Load Balancer :
